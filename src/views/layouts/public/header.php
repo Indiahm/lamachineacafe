@@ -23,24 +23,28 @@
             </div>
         </div>
 
-        <div class="logo bar">
-            <div><img src="/lamachineacafe/public/images/La machine.svg" width="200" height="200" class="d-inline-block align-top" alt="logo">
-            </div>
 
-            <div>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+        <div class="menu">
+            <div class="logo-bar">
+                <div><img src="/lamachineacafe/public/images/logo3.svg" width="300" height="200"
+                        class="d-inline-block align-top" alt="logo">
+                </div>
 
-            <div class="bouton-connexion" id="bouton-connexion-acceuil">
-                <a href="">Se connecter</a>
-                <img src="/lamachineacafe/public/images/person-circle.svg" alt="se connecter">
-            </div>
+                <div>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
 
-            <div class="panier">
-                <img src="/lamachineacafe/public/images/bag-fill.svg" alt="panier">
+                <div class="bouton-connexion" id="bouton-connexion-acceuil">
+                    <a href="">Se connecter</a>
+                    <img src="/lamachineacafe/public/images/person-circle.svg" alt="se connecter">
+                </div>
+
+                <div class="panier">
+                    <img src="/lamachineacafe/public/images/bag-fill.svg" alt="panier">
+                </div>
             </div>
         </div>
 

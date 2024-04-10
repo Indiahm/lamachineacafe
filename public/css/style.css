@@ -11,5 +11,33 @@ img {
 .bandeau {
     background-color: #008000;
     color: #ffffff;
+    font-family: Arial, sans-serif;
+	font-size: 10px; 
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
     
 }
+
+
+.logo-bar {
+	display: flex;
+	justify-content: space-evenly; 
+	align-items: center;
+	margin: 0; 
+    padding: 0;
+  }
+
+
+  .d-flex {
+	width: 700px;
+  }
+
+
+.menu{
+	background-color: #fcf9f2;
+}
+  
