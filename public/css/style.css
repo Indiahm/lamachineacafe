@@ -6,3 +6,10 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
+
+.bandeau {
+    background-color: #008000;
+    color: #ffffff;
+    
+}
