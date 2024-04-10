@@ -21,7 +21,7 @@
         </div>
 
         <div class="logo bar">
-            <div><img src="logo-la-machine-à-café.png" alt="logo">
+            <div><img src="images/logo-la-machine-à-café.png" width="200" height="200" class="d-inline-block align-top" alt="logo">
             </div>
 
             <div>
