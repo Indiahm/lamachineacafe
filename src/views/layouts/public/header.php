@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
 
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/lamachineacafe/public/css/reset.css">
+    <link rel="stylesheet" href="/lamachineacafe/public/css/style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="logo bar">
-            <div><img src="/lamachineacafe/public/images/bag-fill.svg" width="200" height="200" class="d-inline-block align-top" alt="logo">
+            <div><img src="/lamachineacafe/public/images/La machine.svg" width="200" height="200" class="d-inline-block align-top" alt="logo">
             </div>
 
             <div>
@@ -36,11 +36,11 @@
 
             <div class="bouton-connexion" id="bouton-connexion-acceuil">
                 <a href="">Se connecter</a>
-                <img src="person-circle.svg" alt="se connecter">
+                <img src="/lamachineacafe/public/images/person-circle.svg" alt="se connecter">
             </div>
 
             <div class="panier">
-                <img src="bag-fill.svg" alt="panier">
+                <img src="/lamachineacafe/public/images/bag-fill.svg" alt="panier">
             </div>
         </div>
 
