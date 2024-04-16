@@ -51,41 +51,38 @@ function displayAlert (): void
 	}
 }
 
-/**
- * Check if user is logged in
- * @param array $match The match array from AltoRouter
- * @param AltoRouter $router The router
- */
-function checkAdmin (array $match, AltoRouter $router)
+function logoutTimer()
 {
-	$existAdmin = strpos($match['target'], 'admin_');
-	if ($existAdmin !== false && empty($_SESSION['user']['id'])) {
-		header('Location: ' . $router->generate('login'));
-		die;
-	}
+    global $router;
+
+    if (!empty($_SESSION['user']['lastLogin'])) {
+        $expireHour = 1;
+
+        $now = new DateTime();
+        $now->setTimezone(new DateTimeZone('Europe/Paris'));
+
+        $lastLogin = new DateTime($_SESSION['user']['lastLogin']);
+
+        if ($now->diff($lastLogin)->h >= $expireHour) {
+            unset($_SESSION['user']);
+            alert('Vous avez été déconnecté pour inactivité', 'danger');
+            header('Location: ' . $router->generate('login'));
+            die;
+        }
+    }
+}
+
+function checkAdmin(array $match, AltoRouter $router)
+{
+    $isAdminRoute = strpos($match['target'], 'admin_') !== false;
+    if ($isAdminRoute && empty($_SESSION['user']['id'])) {
+        header('Location: ' . $router->generate('login'));
+        die;
+    }
 }
 
 
-function logoutTimer ()
-{
-	global $router;
 
-	if (!empty($_SESSION['user']['lastLogin'])) {
-		$expireHour = 1;
-
-		$now = new DateTime();
-		$now->setTimezone(new DateTimeZone('Europe/Paris'));
-
-		$lastLogin = new DateTime($_SESSION['user']['lastLogin']);
-
-		if ($now->diff($lastLogin)->h >= $expireHour) {
-			unset($_SESSION['user']);
-			alert('Vous avez été déconnecté pour inactivité', 'danger');
-			header('Location: ' . $router->generate('login'));
-			die;
-		}
-	}
-}
 
 
 // die;

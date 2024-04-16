@@ -1,0 +1,36 @@
+#details-movie {
+    font-size: 20px;
+    color: white;
+
+    .col {
+        margin-bottom: 80px;
+    }
+
+    li {
+        margin-left: 450px;
+        line-height: 30px;
+
+        .cadre {
+            background-color: white;
+        }
+    }
+
+    img {
+        max-width: 350px; 
+        position: absolute;
+        margin-left: 50px;
+        border: 3px solid black;
+    }
+
+    h1 {
+        margin-left: 445px;
+        margin-bottom: 20px; 
+        border-bottom: 2px solid #999; 
+    }
+
+    p {
+        margin-left: 450px;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+}

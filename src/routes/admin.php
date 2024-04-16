@@ -9,6 +9,12 @@ $router->map( 'GET|POST', $admin . '/connexion', 'users/login', 'login'); // 3
 $router->map( 'GET', $admin . '/deconnexion', 'users/admin_logout', 'logout');
 $router->map( 'GET', $admin . '/mot-de-passe-oublie', '', 'lostPassword'); // 7
 $router->map( 'GET', $admin . '/utilisateurs', 'users/admin_index', 'users'); // 1
-$router->map( 'GET|POST', $admin . '/utilisateurs/editer/[uuid:id]', 'users/admin_edit', 'editUser'); // 2 / 5
-$router->map( 'GET|POST', $admin . '/utilisateurs/editer/', 'users/admin_edit', 'addUser'); // 2 / 5
-$router->map( 'GET', $admin . '/utilisateurs/supprimer/[uuid:id]', 'users/admin_delete', 'deleteUser'); // 6
+
+// Produits
+
+$router->map('GET', $admin . '/produits', 'products/admin_tableproducts', 'products'); // Afficher la liste des produits
+$router->map('GET|POST', $admin . '/produits/editer/[i:id]', 'products/admin_product_edit', 'editProduct'); // Éditer un produit existant
+$router->map('GET|POST', $admin . '/produits/editer', 'products/admin_product_edit', 'addProduct'); // Ajouter un nouveau produit
+$router->map( 'GET', $admin . '/produits/supprimer/[i:id]', 'products/admin_deleteproducts', 'deleteProduct');
+
+

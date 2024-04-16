@@ -1,5 +1,10 @@
-<?
-
+<?php
+/**
+ * Check if a field is empty
+ * @param string $field
+ * @param string $message
+ * @return array
+ */
 function checkEmptyFields ($field, $message = 'Veuillez renseigner cette information.')
 {
 	$result	= ['class' => '', 'message' => ''];
@@ -13,3 +18,13 @@ function checkEmptyFields ($field, $message = 'Veuillez renseigner cette informa
 
 	return $result;
 }
+
+
+function getValue (string $field): string
+{
+	if (isset($_POST[$field])) { 
+	return $_POST[$field];
+}
+	return '';
+}
+

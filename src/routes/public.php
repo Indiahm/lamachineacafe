@@ -1,13 +1,10 @@
 <?php
 
-$router->addMatchTypes(['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*']);
+$public = '';
 
-// Movies
-$router->map( 'GET', '/', 'home', 'home');
-$router->map( 'GET', '/recherche', 'search');
-$router->map( 'GET', '/film/[slug:slug]', 'detailsMovie', 'details');
+// Définir la route pour afficher le formulaire d'inscription
+$router->map('GET', '/register', 'views/registerView', 'registerView'); 
 
-// Pages
-$router->map( 'GET', '/politique-confidentialite', 'privacy');
-$router->map( 'GET', '/mentions-legales', 'legalNotice');
 
+
+?>
