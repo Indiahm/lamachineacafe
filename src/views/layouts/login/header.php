@@ -32,14 +32,11 @@
           <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/categories">Categories</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="http://movies.test/admin/films">Marques</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/utilisateurs">Utilisateurs</a>
         </li>
       </ul>
       <div class="navbar-text">
-      <a href="" class= "btn btn-danger">Déconnexion</a>
+      <a href="" class="btn btn-danger">Déconnexion</a>
 </div>
     </div>
   </div>

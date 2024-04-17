@@ -1,55 +1,64 @@
 <?php get_header('Se connecter', 'login'); ?>
 
-<style>
-	html,
-	body,
-	.vertical-center {
-		height: 100%;
-	}
 
-	.form-signin {
-		max-width: 330px;
-		padding: 1rem;
-	}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Se connecter</div>
 
-	.form-signin .form-floating:focus-within {
-		z-index: 2;
-	}
+                <div class="card-body">
+                    <?php if (!empty($error_message)) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= $error_message ?>
+                        </div>
+                    <?php endif; ?>
 
-	.form-signin input[type="email"] {
-		margin-bottom: -1px;
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
-	}
+                    <?php if (isset($_SESSION['success_message'])) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= $_SESSION['success_message'] ?>
+                        </div>
+                        <?php unset($_SESSION['success_message']); ?>
+                    <?php endif; ?>
 
-	.form-signin input[type="password"] {
-		margin-bottom: 10px;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-	}
-</style>
+                    <?php if (isset($_SESSION['welcome_message'])) : ?>
+                        <div class="alert alert-info" role="alert">
+                            <?= $_SESSION['welcome_message'] ?>
+                        </div>
+                        <?php unset($_SESSION['welcome_message']); ?>
+                    <?php endif; ?>
 
-<div class="d-flex align-items-center py-4 bg-body-tertiary vertical-center">
-<form action="" method="post" class="form-signin w-100 m-auto">
-    <h1 class="h3 mb-3 fw-normal text-center">Se connecter</h1>
-    <div class="form-floating">
-		<input type="text" name="comment" style="display:none">
-		<?php $error = checkEmptyFields('email'); ?>
-		<input type="email" name="email" class="form-control <?= $error['class']; ?>" id="floatingInput" placeholder="Email">
-		<label for="floatingInput">Email</label>
-		<?= $error['message']; ?>
+                    <?php if ($_SESSION['role'] !== 'admin') : ?>
+                    <div class="alert alert-danger" role="alert">
+                    Vous n'avez pas les droits requis pour accéder à cette page.
+                    </div>
+                    <?php endif; ?>
+
+                    <form method="POST" action="<?= $router->generate('login'); ?>">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Adresse email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                            <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-3">
+                <a href="<?= $router->generate('register'); ?>">Pas encore inscrit ? Créer un compte ici</a>
+            </div>
+        </div>
     </div>
-    <div class="form-floating">
-		<?php $error = checkEmptyFields('pwd'); ?>
-		<input type="password" name="pwd" class="form-control <?= $error['class']; ?>" id="floatingPassword" placeholder="Mot de passe">
-		<label for="floatingPassword">Mot de passe</label>
-		<?= $error['message']; ?>
-    </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Connexion</button>
-    <p class="mt-4 mb-3 text-body-secondary text-center">
-		<a href="<?= $router->generate('register'); ?>">Inscription</a>
-	</p>
-  </form>
 </div>
 
 <?php get_footer('login'); ?>

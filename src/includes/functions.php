@@ -71,23 +71,3 @@ function logoutTimer()
         }
     }
 }
-
-function checkAdmin(array $match, AltoRouter $router)
-{
-    $isAdminRoute = strpos($match['target'], 'admin_') !== false;
-    if ($isAdminRoute && empty($_SESSION['user']['id'])) {
-        alert('Vous devez être connecté pour accéder à cette page.', 'error');
-        header('Location: ' . $router->generate('login'));
-        die;
-    }
-    
-    // Vérifier si l'utilisateur est un administrateur
-    if ($isAdminRoute && isset($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'admin') {
-        alert('Vous n\'avez pas les autorisations nécessaires pour accéder à cette page.', 'error');
-        header('Location: ' . $router->generate('login'));
-        die;
-    }
-}
-
-// die;
- 
