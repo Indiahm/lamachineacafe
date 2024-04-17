@@ -4,7 +4,7 @@ session_start();
 require '/Applications/MAMP/htdocs/lamachineacafe/vendor/autoload.php';
 
 $data = ['foo' => 'bar'];
-var_dump($data); // Affiche le contenu du tableau $data
+// var_dump($data); // Affiche le contenu du tableau $data
 
 
 
@@ -37,12 +37,12 @@ logoutTimer();
 
 
 // Inclure le fichier de contrôleur de la page d'accueil
-require '/Applications/MAMP/htdocs/lamachineacafe/src/controllers/homeController.php'; 
+// require '/Applications/MAMP/htdocs/lamachineacafe/src/controllers/homeController.php'; 
 
 // Le fichier de contrôleur devrait s'occuper de récupérer les données nécessaires pour la vue et les passer à la vue
 
 // Inclure la vue avec les données passées
-require '/Applications/MAMP/htdocs/lamachineacafe/src/views/homeView.php'; 
+// require '/Applications/MAMP/htdocs/lamachineacafe/src/views/homeView.php'; 
 
 // test connexion bdd 
 // $db = getDatabaseInstance();

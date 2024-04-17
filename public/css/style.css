@@ -1,5 +1,6 @@
 * {
 	box-sizing: border-box;
+	
 }
 
 img {
@@ -7,6 +8,10 @@ img {
 	height: auto;
 }
 
+body {
+	background-color: #fcf9f2; 
+
+}
 
 .bandeau {
     background-color: #008000;
@@ -41,3 +46,7 @@ img {
 	background-color: #fcf9f2;
 }
   
+
+#titre1 {
+	color: #0000ff;
+}

@@ -5,7 +5,8 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../config');
 $dotenv->load();
 
 
-function getDatabaseInstance() {
+function getDatabaseInstance()
+{
     static $db = null;
 
     if ($db === null) {
