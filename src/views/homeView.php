@@ -1,3 +1,5 @@
+<?php get_header('Accueil'); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -22,3 +24,6 @@
     } else {
         echo "Aucun produit trouvé.";
     }
+
+
+    get_footer('Accueil'); ?>
