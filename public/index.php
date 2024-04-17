@@ -44,30 +44,39 @@ require '/Applications/MAMP/htdocs/lamachineacafe/src/controllers/homeController
 // Inclure la vue avec les données passées
 require '/Applications/MAMP/htdocs/lamachineacafe/src/views/homeView.php'; 
 
-
-
-
-
-// if (!empty($match['target'])) {
-//     checkAdmin($match, $router);
-//     $data = []; // données à envoyer à la vue
-//     $_GET = array_merge($_GET, $match['params']);
-//     require SRC . 'models/' . $match['target'] . 'Model.php';
-//     require SRC . 'controllers/' . $match['target'] . 'Controller.php';
-
-//     // Charger le fichier de vue classique
-//     $viewFile = SRC . 'views/' . $match['target'] . 'View.php';
-    
-//     if (file_exists($viewFile)) {
-//         // Inclure le fichier de vue
-//         require $viewFile;
-//     } else {
-//         // Si le fichier de vue n'existe pas, afficher une erreur 404
-//         header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-//         //die '404';
-//     }
+// test connexion bdd 
+// $db = getDatabaseInstance();
+// if ($db) {
+//     echo "Connexion à la base de données établie avec succès.";
 // } else {
-//     // Si la cible est vide, afficher une erreur 404
-//     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-//     //die '404';
+//     echo "Échec de la connexion à la base de données.";
 // }
+
+
+
+
+
+
+if (!empty($match['target'])) {
+     checkAdmin($match, $router);
+     $data = []; // données à envoyer à la vue
+     $_GET = array_merge($_GET, $match['params']);
+     require SRC . 'models/' . $match['target'] . 'Model.php';
+     require SRC . 'controllers/' . $match['target'] . 'Controller.php';
+
+     // Charger le fichier de vue classique
+     $viewFile = SRC . 'views/' . $match['target'] . 'View.php';
+    
+     if (file_exists($viewFile)) {
+         // Inclure le fichier de vue
+         require $viewFile;
+     } else {
+         // Si le fichier de vue n'existe pas, afficher une erreur 404
+         header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+         //die '404';
+     }
+ } else {
+     // Si la cible est vide, afficher une erreur 404
+     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+     //die '404';
+}

@@ -1,10 +1,9 @@
 <?php
-define('SRC', __DIR__ . '/../');
+
+// define('SRC', __DIR__ . '/../');
 
 require_once '/Applications/MAMP/htdocs/lamachineacafe/src/models/homeModel.php';
 
-$beansMachines = listBeanMachines();
-// var_dump($beansMachines);
+$produits = getProduits();
 
-
-require(SRC . 'views/homeView.php');
+require '/Applications/MAMP/htdocs/lamachineacafe/src/views/homeView.php';
