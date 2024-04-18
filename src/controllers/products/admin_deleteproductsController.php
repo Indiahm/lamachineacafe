@@ -3,7 +3,7 @@
 if (!empty($_GET['id'])) {
     $productId = $_GET['id'];
     $product = getProductById();
-    
+
     if ($product) {
         deleteProduct();
     } else {

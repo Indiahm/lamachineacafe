@@ -30,8 +30,7 @@ if (!empty($match['target'])) {
     $_GET = array_merge($_GET, $match['params']);
     require SRC . 'models/' . $match['target'] . 'Model.php';
     require SRC . 'controllers/' . $match['target'] . 'Controller.php';
-    
+
     // Load classic PHP view
     require SRC . 'views/' . $match['target'] . 'View.php';
 }
-

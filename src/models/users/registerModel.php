@@ -31,3 +31,11 @@ function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstN
 
     return $success;
 }
+
+function displayMessage($message, $type = 'success') {
+    if ($type === 'success') {
+        echo "<div class='alert alert-success mt-4' role='alert'>$message</div>";
+    } elseif ($type === 'error') {
+        echo "<div class='alert alert-danger mt-4' role='alert'>$message</div>";
+    }
+}

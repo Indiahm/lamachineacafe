@@ -38,3 +38,5 @@ function saveLastLogin($userId)
     $query->execute(['id' => $userId]);
 }
 
+
+

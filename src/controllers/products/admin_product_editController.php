@@ -41,5 +41,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty(array_filter($errorMessage)))
 if (!empty($_GET['id'])) {
     $_POST = (array) getProduct();
 }
-
-?>

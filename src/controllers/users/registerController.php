@@ -12,16 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Vérifier si les mots de passe correspondent
     if ($password !== $confirmPassword) {
-        echo "Les mots de passe ne correspondent pas.";
+        displayMessage("Les mots de passe ne correspondent pas.", 'error');
         exit;
     }
 
     // Appeler la fonction pour enregistrer l'utilisateur
     $registrationSuccess = registerUser($email, $password, $shippingAddress, $phoneNumber, $firstName, $lastName);
-
-    if ($registrationSuccess) {
-        echo "Inscription réussie !";
-    } else {
-        echo "L'adresse e-mail est déjà utilisée.";
-    }
 }

@@ -22,17 +22,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Enregistrement des données dans la session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $role;
+        $_SESSION['first_name'] = $user['first_name'];
+        $_SESSION['last_name'] = $user['last_name'];
 
-         // Message de bienvenue
-         $_SESSION['welcome_message'] = "Bienvenue {$user['first_name']} {$user['last_name']}.";
-         
-         // Redirection en fonction du rôle de l'utilisateur
+        // Message de bienvenue
+        $_SESSION['welcome_message'] = "Bienvenue {$user['first_name']} {$user['last_name']}.";
+
+        // Redirection en fonction du rôle de l'utilisateur
         if ($role === 'admin') {
             $_SESSION['success_message'] = "Authentification réussie en tant qu'administrateur.";
-            header('Location: ' . $router->generate('login')); // Modifier la route selon votre application
+            header('Location: ' . $router->generate('login')); 
         } else {
             $_SESSION['success_message'] = "Authentification réussie en tant qu'utilisateur.";
-            header('Location: ' . $router->generate('login')); // Modifier la route selon votre application
+            header('Location: ' . $router->generate('login')); 
         }
         exit();
     } else {
