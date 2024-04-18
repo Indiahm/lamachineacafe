@@ -26,4 +26,4 @@
     }
 
 
-    get_footer('Accueil'); ?>
+    get_footer('Public'); ?>

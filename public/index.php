@@ -67,16 +67,19 @@ if (!empty($match['target'])) {
      // Charger le fichier de vue classique
      $viewFile = SRC . 'views/' . $match['target'] . 'View.php';
     
-     if (file_exists($viewFile)) {
-         // Inclure le fichier de vue
-         require $viewFile;
-     } else {
-         // Si le fichier de vue n'existe pas, afficher une erreur 404
-         header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-         //die '404';
-     }
- } else {
-     // Si la cible est vide, afficher une erreur 404
-     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-     //die '404';
+
+
+     // double la view
+//      if (file_exists($viewFile)) {
+//          // Inclure le fichier de vue
+//          require $viewFile;
+//      } else {
+//          // Si le fichier de vue n'existe pas, afficher une erreur 404
+//          header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+//          //die '404';
+//      }
+//  } else {
+//      // Si la cible est vide, afficher une erreur 404
+//      header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+//      //die '404';
 }
