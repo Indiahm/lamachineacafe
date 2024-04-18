@@ -1,13 +1,11 @@
 <?php
 
 
-// Vérification du rôle de l'utilisateur
 if ($_SESSION['role'] !== 'admin') {
     // Affichage du message d'erreur
-    echo "Vous n'avez pas les droits requis pour accéder à cette page.";
+        header('Location: ' . $router->generate('login'));
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>

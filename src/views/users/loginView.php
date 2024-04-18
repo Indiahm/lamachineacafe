@@ -7,34 +7,40 @@
                 <div class="card-header">Se connecter</div>
 
                 <div class="card-body">
-                    <?php if (!empty($error_message)) : ?>
+                    <?php
+                    // Récupération et affichage des messages d'erreur
+                    $errors = getAndClearMessages('error');
+                    foreach ($errors as $error) :
+                    ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <?= $error_message ?>
+                            <?= htmlspecialchars($error) ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                    <?php endif; ?>
+                    <?php endforeach; ?>
 
-                    <?php if (isset($_SESSION['success_message'])) : ?>
+                    <?php
+                    // Récupération et affichage des messages de succès
+                    $successes = getAndClearMessages('success');
+                    foreach ($successes as $success) :
+                    ?>
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <?= htmlspecialchars($success) ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endforeach; ?>
+
+                    <?php
+                    // Affichage du message de succès d'inscription s'il est présent dans la session
+                    if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'] === true) :
+                    ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?= $_SESSION['success_message'] ?>
+                            Inscription réussie ! Connectez-vous avec vos identifiants.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                        <?php unset($_SESSION['success_message']); ?>
-                    <?php endif; ?>
-
-                    <?php if (isset($_SESSION['welcome_message'])) : ?>
-                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                            <?= $_SESSION['welcome_message'] ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php unset($_SESSION['welcome_message']); ?>
-                    <?php endif; ?>
-
-                    <?php if (isset($_GET['success_message'])) : ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?= htmlspecialchars($_GET['success_message']) ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                        <?php
+                        // Supprimer la session après l'avoir affichée pour qu'elle ne soit plus affichée lors des rechargements de la page
+                        unset($_SESSION['registration_success']);
+                        ?>
                     <?php endif; ?>
 
                     <form method="POST" action="<?= $router->generate('login'); ?>">
@@ -74,6 +80,6 @@
     errorMessages.forEach(message => {
         setTimeout(() => {
             message.style.display = 'none';
-        }, 5000); // 5000 millisecondes = 5 secondes
+        }, 10000); // 5000 millisecondes = 5 secondes
     });
 </script>

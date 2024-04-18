@@ -7,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-
     // Vérification des informations d'identification de l'utilisateur
     $user = checkUserCredentials($email, $password);
 
@@ -18,27 +17,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Récupération du rôle de l'utilisateur
         $role = getUserRole($user['id']);
 
-        var_dump($user);
         // Enregistrement des données dans la session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $role;
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
 
-        // Message de bienvenue
-        $_SESSION['welcome_message'] = "Bienvenue {$user['first_name']} {$user['last_name']}.";
-
-        // Redirection en fonction du rôle de l'utilisateur
+        // Message de bienvenue en fonction du rôle
         if ($role === 'admin') {
-            $_SESSION['success_message'] = "Authentification réussie en tant qu'administrateur.";
-            header('Location: ' . $router->generate('login')); 
+            $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté en tant qu'administrateur.";
         } else {
-            $_SESSION['success_message'] = "Authentification réussie en tant qu'utilisateur.";
-            header('Location: ' . $router->generate('login')); 
+            $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté en tant qu'utilisateur.";
         }
+        addMessage('success', $welcomeMessage);
+
+        // Redirection vers la page de connexion
+        header('Location: ' . $router->generate('login'));
         exit();
     } else {
-        // Affichage d'un message d'erreur si les informations d'identification sont incorrectes
-        $error_message = "Identifiants incorrects. Veuillez réessayer.";
+        // Ajout d'un message d'erreur si les informations d'identification sont incorrectes
+        $errorMessage = "Identifiants incorrects. Veuillez réessayer.";
+        addMessage('error', $errorMessage);
     }
 }
+

@@ -39,3 +39,61 @@ function displayMessage($message, $type = 'success') {
         echo "<div class='alert alert-danger mt-4' role='alert'>$message</div>";
     }
 }
+
+function checkExistingUserInfo($firstName, $lastName, $shippingAddress, $phoneNumber)
+{
+    global $db;
+    
+    // Vérifier si le prénom, le nom, l'adresse de livraison et le numéro de téléphone existent déjà dans la base de données
+    $sql = "SELECT * FROM users WHERE first_name = :first_name OR last_name = :last_name OR shipping_address = :shipping_address OR phone_number = :phone_number";
+    $query = $db->prepare($sql);
+    $query->execute([
+        'first_name' => $firstName,
+        'last_name' => $lastName,
+        'shipping_address' => $shippingAddress,
+        'phone_number' => $phoneNumber
+    ]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    // Créer un tableau pour stocker les champs existants
+    $existingFields = [];
+
+    // Vérifier chaque champ pour déterminer lesquels existent déjà
+    if ($result) {
+        if ($result['first_name'] === $firstName) {
+            $existingFields[] = 'Prénom';
+        }
+        if ($result['last_name'] === $lastName) {
+            $existingFields[] = 'Nom';
+        }
+        if ($result['shipping_address'] === $shippingAddress) {
+            $existingFields[] = 'Adresse de livraison';
+        }
+        if ($result['phone_number'] === $phoneNumber) {
+            $existingFields[] = 'Numéro de téléphone';
+        }
+    }
+
+    return $existingFields;
+}
+
+// Fonction pour récupérer et effacer les messages stockés dans la session
+function getAndClearMessages($type) {
+    $messages = [];
+
+    if (isset($_SESSION[$type]) && is_array($_SESSION[$type])) {
+        $messages = $_SESSION[$type];
+        // Effacer les messages de la session
+        unset($_SESSION[$type]);
+    }
+
+    return $messages;
+}
+
+// Fonction pour vérifier si le mot de passe respecte les critères de sécurité
+function isValidPassword($password) {
+    // Au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
+    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/', $password);
+}
+
+?>

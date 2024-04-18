@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
+    <!-- Inclure Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,6 +17,12 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                     <div class="row">
+                        <?php if (isset($error_message) && !empty($error_message)) : ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?= $error_message ?>
+                            </div>
+                        <?php endif;
+                        0 ?>
                         <div class="col text-center">
                             <h1>Inscription</h1>
                         </div>
@@ -61,17 +69,6 @@
                         <div class="row justify-content-start mt-4">
                             <div class="col">
                                 <button type="submit" class="btn btn-primary mt-4">S'inscrire</button>
-                            </div>
-                            <div class="col">
-                                <?php
-                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    if (isset($_SESSION['success'])) {
-                                        echo "<div class='alert alert-success mt-4' role='alert'>Inscription réussie avec succès !</div>";
-                                    } else {
-                                        echo "<div class='alert alert-danger mt-4' role='alert'>L'adresse e-mail est déjà utilisée.</div>";
-                                    }
-                                }
-                                ?>
                             </div>
                         </div>
                     </form>
