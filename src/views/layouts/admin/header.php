@@ -3,7 +3,7 @@
 
 if ($_SESSION['role'] !== 'admin') {
     // Affichage du message d'erreur
-        header('Location: ' . $router->generate('login'));
+    header('Location: ' . $router->generate('login'));
     exit();
 }
 ?>
@@ -63,13 +63,16 @@ if ($_SESSION['role'] !== 'admin') {
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/categories">Categories</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://lamachineacafe.test/admin/utilisateurs">Utilisateurs</a>
+                            </li>
                         <?php endif; ?>
                     </ul>
                     <div class="navbar-text me-auto">
                         <span class="admin-name">Admin:</span> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>
                     </div>
                     <div class="navbar-text">
-                    <a href="<?= $router->generate('logout') ?>" class="btn btn-danger">Déconnexion</a>
+                        <a href="<?= $router->generate('logout') ?>" class="btn btn-danger">Déconnexion</a>
                     </div>
                 </div>
             </div>

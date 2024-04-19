@@ -12,6 +12,9 @@ $router->map( 'GET|POST', $admin . '/connexion', 'users/login', 'login');
 $router->map( 'GET', $admin . '/deconnexion', 'users/admin_logout', 'logout');
 $router->map( 'GET', $admin . '/mot-de-passe-oublie', '', 'lostPassword'); // 7
 $router->map( 'GET', $admin . '/utilisateurs', 'users/admin_index', 'users'); // 1
+$router->map( 'GET|POST', $admin . '/utilisateurs/editer/[i:id]', 'users/admin_edit', 'editUser'); // 2 / 5
+$router->map( 'GET|POST', $admin . '/utilisateurs/editer/', 'users/admin_edit', 'addUser'); // 2 / 5
+
 
 
 // Produits

@@ -90,9 +90,7 @@ function getAndClearMessages($type) {
     return $messages;
 }
 
-// Fonction pour vérifier si le mot de passe respecte les critères de sécurité
 function isValidPassword($password) {
-    // Au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial
     return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/', $password);
 }
 
