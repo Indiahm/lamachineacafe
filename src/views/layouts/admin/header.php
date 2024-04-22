@@ -98,4 +98,59 @@ if ($_SESSION['role'] !== 'admin') {
                 font-weight: bold;
                 color: black;
             }
+
+            body {
+                background-color: #f8f9fa;
+            }
+
+            .container {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .navbar {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .navbar-nav .nav-link {
+                color: #333;
+            }
+
+            .navbar-nav .nav-link:hover {
+                color: #007bff;
+            }
+
+            .admin-name {
+                color: #333;
+            }
+
+            .btn-outline-danger {
+                color: #dc3545;
+                border-color: #dc3545;
+            }
+
+            .btn-outline-danger:hover {
+                color: #fff;
+                background-color: #dc3545;
+                border-color: #dc3545;
+            }
+
+            .form-control {
+                border-color: #ced4da;
+            }
+
+            .alert {
+                margin-bottom: 20px;
+            }
+
+            footer {
+                padding: 20px 0;
+                background-color: #343a40;
+                color: #fff;
+                text-align: center;
+            }
         </style>

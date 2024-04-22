@@ -3,7 +3,6 @@
 <div class="container">
     <h2 class="my-4">Liste des utilisateurs</h2>
 
-    <a href="<?= $router->generate('addUser'); ?>" class="btn btn-success mb-4">Ajouter un utilisateur</a>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
