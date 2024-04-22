@@ -11,4 +11,7 @@ $_SESSION['logout_success_message'] = "Déconnexion réussie";
 // Rediriger vers la page de connexion
 header('Location: ' . $router->generate('login'));
 exit();
+
+
+
 ?>

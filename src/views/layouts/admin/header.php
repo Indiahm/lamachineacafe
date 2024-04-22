@@ -1,13 +1,3 @@
-<?php
-
-
-if ($_SESSION['role'] !== 'admin') {
-    // Affichage du message d'erreur
-    header('Location: ' . $router->generate('login'));
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +46,6 @@ if ($_SESSION['role'] !== 'admin') {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <?php if ($_SESSION['role'] === 'admin') : ?>
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/produits">Produits </a>
                             </li>
@@ -69,7 +58,6 @@ if ($_SESSION['role'] !== 'admin') {
                             <li class="nav-item">
                                 <a class="nav-link" href="https://lamachineacafe.test/admin/marques">Marques</a>
                             </li>
-                        <?php endif; ?>
                     </ul>
                     <div class="navbar-text me-auto">
                         <span class="admin-name">Admin:</span> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>

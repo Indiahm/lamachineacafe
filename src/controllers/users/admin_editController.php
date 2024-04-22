@@ -46,3 +46,5 @@ if (!empty($_POST)) {
 }
 
 $roles = getRoles();
+checkAdminAccess($router);
+

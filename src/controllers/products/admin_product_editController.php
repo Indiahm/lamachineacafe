@@ -42,4 +42,6 @@ if (!empty($_GET['id'])) {
     $_POST = (array) getProduct();
 }
 
+checkAdminAccess($router);
+
 ?>

@@ -3,3 +3,5 @@
 
 
 $products = getProducts();
+
+checkAdminAccess($router);

@@ -1,4 +1,5 @@
-<?php get_header('Liste des Marques', 'admin'); ?>
+<?php get_header('Liste des Marques', 'admin');?>
+
 
 <div class="container">
     <h2 class="mb-4">Liste des Marques</h2>

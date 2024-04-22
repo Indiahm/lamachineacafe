@@ -9,3 +9,5 @@ deleteCategories();
 
 header('Location:' . $router->generate('categories'));
 die;
+
+checkAdminAccess($router);

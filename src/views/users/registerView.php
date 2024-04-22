@@ -1,4 +1,4 @@
-<?php get_header('Inscription', 'login'); ?>
+<?php get_header('Inscription', 'public'); ?>
 
 <!DOCTYPE html>
 <html lang="fr">

@@ -32,3 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errorMessage['nom'])) {
     // Affichage d'un message de succès
     alert('La catégorie a été ajoutée ou mise à jour avec succès', 'success');
 }
+
+checkAdminAccess($router);

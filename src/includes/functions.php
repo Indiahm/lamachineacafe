@@ -8,9 +8,25 @@
 function get_header(string $title, string $layout ='public'): void
 {
     global $router;
+
+    // Vérifier si l'utilisateur est connecté et s'il a un rôle défini
+    if (isset($_SESSION['role'])) {
+        // Si l'utilisateur est connecté, déterminer le layout en fonction de son rôle
+        switch ($_SESSION['role']) {
+            case 'admin':
+                $layout = 'admin';
+                break;
+            case 'utilisateur':
+                $layout = 'login';
+                break;
+            default:
+                $layout = 'public'; // Par défaut, utiliser le layout public
+        }
+    }
+
+    // Inclure le bon en-tête en fonction du layout sélectionné
     require_once '../src/views/layouts/' . $layout . '/header.php';
 }
-
 
 /**
  * Get the footer
@@ -71,3 +87,11 @@ function logoutTimer()
         }
     }
 }
+
+function checkAdminAccess($router) {
+    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+        header('Location: ' . $router->generate('login'));
+        exit();
+    }
+}
+?>

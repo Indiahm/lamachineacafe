@@ -1,4 +1,4 @@
-<?php get_header('Se connecter', 'login'); ?>
+<?php get_header('Se connecter', 'public'); ?>
 
 <div class="container">
     <div class="row justify-content-center mt-5">
