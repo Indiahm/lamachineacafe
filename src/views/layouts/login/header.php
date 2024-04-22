@@ -46,13 +46,7 @@
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/produits">Produits </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/categories">Categories</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/utilisateurs">Utilisateurs</a>
+                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/produits">Menu Admin</a>
               </li>
             </ul>
             <div class="navbar-text">

@@ -1,14 +1,14 @@
-<?php get_header('Créer une catégorie', 'admin'); ?>
+<?php get_header('Modifier une marque', 'admin'); ?>
 
 <div class="formulaire">
     <div class="d-flex align-items-center py-4 vertical-center">
         <form action="" class="form-signin w-100 m-auto" method="post" novalidate> 
-            <h1 class="h3 mb-4 display-6 fw-normal text-center">Créer une Catégorie:</h1>
+            <h1 class="h3 mb-4 display-6 fw-normal text-center">Modifier une Marque:</h1>
             
             <div class="form-floating">
                 <?php $error = checkEmptyFields('nom'); ?>
-                <input type="text" name="nom" id="nom" class="mb-2 form-control <?= $error['class']; ?>" value="<?= getValue('nom'); ?>" placeholder="Nom de la catégorie">
-                <label for="nom" class="form-label">Nom de la catégorie</label>
+                <input type="text" name="nom" id="nom" class="mb-2 form-control <?= $error['class']; ?>" value="<?= getValue('nom'); ?>" placeholder="Nom de la marque">
+                <label for="nom" class="form-label">Nom de la marque</label>
                 <?= $errorMessage['nom']; ?>
             </div>
 
@@ -23,11 +23,8 @@
 <style>
     html,
     body,
-
     .formulaire{
-
         background-color: #DCDCDC;
-
     }
     .vertical-center {
         height: 50%;
@@ -58,4 +55,3 @@
 </style>
 </body>
 </html>
-

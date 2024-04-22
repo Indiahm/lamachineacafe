@@ -17,13 +17,13 @@ $errorMessage = [
     'poids' => '',
     'watts' => '',
     'dimensions' => '',
-    'categorie_id' => '' // Ajout de l'erreur pour le champ de catégorie
-
+    'categorie_id' => '', // Ajout de l'erreur pour le champ de catégorie
+    'marque_id' => '' // Ajout de l'erreur pour le champ de marque
 ];
 
 // Vérification des champs requis uniquement si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $requiredFields = ['nom', 'description', 'prix', 'modele', 'stock', 'code_ean', 'origine', 'poids', 'watts', 'dimensions', 'categorie_id']; // Ajout du champ de catégorie
+    $requiredFields = ['nom', 'description', 'prix', 'modele', 'stock', 'code_ean', 'origine', 'poids', 'watts', 'dimensions', 'categorie_id', 'marque_id']; // Ajout du champ de marque
     foreach ($requiredFields as $field) {
         if (empty($_POST[$field])) {
             $errorMessage[$field] = 'Veuillez renseigner ce champ';
@@ -41,3 +41,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty(array_filter($errorMessage)))
 if (!empty($_GET['id'])) {
     $_POST = (array) getProduct();
 }
+
+?>

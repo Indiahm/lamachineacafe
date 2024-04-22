@@ -1,12 +1,17 @@
 <?php
 
 function deleteProduct() {
+    global $db;
     try { 
-        global $db;
-        $sql = 'DELETE FROM products WHERE id = :id'; 
+        $productId = $_GET['id'];
+        $sql = 'DELETE FROM produits WHERE id = :id'; 
         $query = $db->prepare($sql);
-        $query->execute(['id' => $_GET['id']]);
-        alert('Le produit a bien été supprimé.', 'success');
+        $query->execute(['id' => $productId]);
+        if ($query->rowCount() > 0) {
+            alert('Le produit a bien été supprimé.', 'success');
+        } else {
+            alert('Impossible de trouver le produit à supprimer.', 'danger');
+        }
     } catch (PDOException $e) {
         if ($_ENV['DEBUG']) {
             dump($e->getMessage());
@@ -18,11 +23,12 @@ function deleteProduct() {
 }
 
 function getProductById() {
+    global $db;
     try {
-        global $db;
-        $sql = 'SELECT * FROM products WHERE id = :id';
+        $productId = $_GET['id'];
+        $sql = 'SELECT * FROM produits WHERE id = :id';
         $query = $db->prepare($sql);
-        $query->execute(['id' => $_GET['id']]);
+        $query->execute(['id' => $productId]);
         return $query->fetch();
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {

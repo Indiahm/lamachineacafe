@@ -2,7 +2,7 @@
 
 <h2 class="mb-4">Liste des produits</h2>
 
-<a href="<?= $router->generate('addProduct'); ?>" class="btn btn-success mb-4">Ajouter une Categories</a>
+<a href="<?= $router->generate('addProduct'); ?>" class="btn btn-success mb-4">Ajouter un nouveau produit</a>
 
 <div class="table-responsive">
 <table class="table table-striped table-bordered">

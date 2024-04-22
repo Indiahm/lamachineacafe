@@ -9,7 +9,7 @@ $errorMessage = [
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification si le champ 'nom' est vide
     if (empty($_POST['nom'])) {
-        $errorMessage['nom'] = 'Merci de remplir le nom de la catégorie'; // Stocker le message d'erreur
+        $errorMessage['nom'] = 'Merci de remplir le nom de la marque'; // Stocker le message d'erreur
     }
 }
 
@@ -23,12 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($errorMessage['nom'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errorMessage['nom'])) {
     // Si un ID est présent dans la requête, il s'agit d'une mise à jour
     if (!empty($_GET['id'])) {
-        updateCategory();
+        updateMarque();
     } else {
         // Sinon, il s'agit d'un ajout
-        addCategory();
+        addMarque();
     }
 
     // Affichage d'un message de succès
-    alert('La catégorie a été ajoutée ou mise à jour avec succès', 'success');
+    alert('La marque a été ajoutée ou mise à jour avec succès', 'success');
 }

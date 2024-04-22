@@ -95,6 +95,16 @@
                     </div>
                 </div>
             </div>
+          <!-- Ajout de la sélection de la marque -->
+          <div class="form-floating mb-3">
+                <select name="marque_id" id="marque_id" class="form-select">
+                    <option value="" selected disabled>Sélectionner une marque</option>
+                    <?php foreach ($marques as $marque) : ?>
+                        <option value="<?= $marque['id']; ?>"><?= $marque['nom']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <label for="marque_id">Marque</label>
+            </div>
 
             <!-- Champ de sélection pour la catégorie -->
             <div class="form-floating mb-3">

@@ -66,20 +66,23 @@ if ($_SESSION['role'] !== 'admin') {
                             <li class="nav-item">
                                 <a class="nav-link" href="http://lamachineacafe.test/admin/utilisateurs">Utilisateurs</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://lamachineacafe.test/admin/marques">Marques</a>
+                            </li>
                         <?php endif; ?>
                     </ul>
                     <div class="navbar-text me-auto">
                         <span class="admin-name">Admin:</span> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>
                     </div>
                     <div class="navbar-text">
-    <a href="<?= $router->generate('logout') ?>" class="btn btn-outline-danger btn-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out mr-2">
-            <path d="M5 3l17 9L5 21" />
-            <path d="M16 12H6" />
-        </svg>
-        Déconnexion
-    </a>
-</div>
+                        <a href="<?= $router->generate('logout') ?>" class="btn btn-outline-danger btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out mr-2">
+                                <path d="M5 3l17 9L5 21" />
+                                <path d="M16 12H6" />
+                            </svg>
+                            Déconnexion
+                        </a>
+                    </div>
 
                 </div>
             </div>
