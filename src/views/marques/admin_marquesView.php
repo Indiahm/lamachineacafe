@@ -3,8 +3,15 @@
 
 <div class="container">
     <h2 class="mb-4">Liste des Marques</h2>
-
     <a href="<?= $router->generate('addMarque'); ?>" class="btn btn-success mb-4">Ajouter une Marque</a>
+
+    <form class="form-inline my-2 my-lg-0" method="POST" action="">
+    <div class="input-group">
+        <div class="input-group-prepend">
+        </div>
+        <input class="form-control mr-sm-2 mb-4 custom-search-input" type="search" placeholder="Rechercher une marque" aria-label="Search" name="search">
+    </div>
+</form>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered">

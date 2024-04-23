@@ -62,19 +62,15 @@
             </linearGradient>
             <path fill="url(#mqGAn~AfKUNcLhPwXVdulb)" d="M27,29c0-1.657-1.343-3-3-3s-3,1.343-3,3c0,1.304,0.837,2.403,2,2.816V35c0,0.552,0.448,1,1,1	s1-0.448,1-1v-3.184C26.163,31.403,27,30.304,27,29z" />
           </svg> Menu Utilisateur | La Machine a Cafe </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" Cinema>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/connexion">Connexion</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/inscription">Inscription</a>
-              </li>
-            </ul>
-          </div>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex align-items-center">
+          <button type="button" class="btn btn-success px-3 me-2" onclick="window.location.href='https://lamachineacafe.test/admin/connexion'">Se connecter</button>
+          <button type="button" class="btn btn-primary me-3" onclick="window.location.href='https://lamachineacafe.test/inscription'">Inscription</button>
         </div>
+
+      </div>
+      </div>
       </div>
     </nav>
   </header>

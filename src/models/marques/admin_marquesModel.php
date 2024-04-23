@@ -12,3 +12,4 @@ function getMarques()
     return $query->fetchAll();
 }
 ?>
+

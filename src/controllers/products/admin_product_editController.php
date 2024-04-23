@@ -4,6 +4,19 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
+// Générez le jeton CSRF lors de l'affichage du formulaire
+generateCsrfToken();
+
+// Vérifiez le jeton CSRF lors du traitement du formulaire
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!verifyCsrfToken($_POST['csrf_token'])) {
+        // Le jeton CSRF est invalide, gérer l'erreur
+        die("Erreur CSRF : Le jeton CSRF est invalide.");
+    }
+    
+}
+
 $errorMessage = [
     'nom' => '',
     'description' => '',

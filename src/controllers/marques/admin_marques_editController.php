@@ -33,4 +33,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errorMessage['nom'])) {
     alert('La marque a été ajoutée ou mise à jour avec succès', 'success');
 }
 
+
 checkAdminAccess($router);

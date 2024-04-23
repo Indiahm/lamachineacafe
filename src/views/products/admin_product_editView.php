@@ -125,7 +125,8 @@
                     <input type="reset" class="btn btn-warning w-100 py-2 " value="Réinitialiser">
                 </div>
             </div>
-            
+                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+
 
         </form>
     </div>

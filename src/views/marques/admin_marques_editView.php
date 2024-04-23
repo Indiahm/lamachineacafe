@@ -5,6 +5,7 @@
         <form action="" class="form-signin w-100 m-auto" method="post" novalidate> 
             <h1 class="h3 mb-4 display-6 fw-normal text-center">Modifier une Marque:</h1>
             
+            
             <div class="form-floating">
                 <?php $error = checkEmptyFields('nom'); ?>
                 <input type="text" name="nom" id="nom" class="mb-2 form-control <?= $error['class']; ?>" value="<?= getValue('nom'); ?>" placeholder="Nom de la marque">

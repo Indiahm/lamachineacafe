@@ -76,3 +76,30 @@ function checkAdminAccess($router)
         exit();
     }
 }
+
+
+function generateCsrfToken()
+{
+    if (!isset($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+}
+
+function verifyCsrfToken($token)
+{
+    return isset($_SESSION['csrf_token']) && $token === $_SESSION['csrf_token'];
+}
+
+
+/* Search items by table and column */
+function searchItems($table, $column, $searchTerm)
+{
+    global $db;
+
+    $sql = "SELECT * FROM $table WHERE $column LIKE :searchTerm";
+    $query = $db->prepare($sql);
+    $query->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+    $query->execute();
+
+    return $query->fetchAll();
+}
