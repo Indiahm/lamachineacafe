@@ -22,7 +22,6 @@ require SRC . 'routes/admin.php';
 $match = $router->match();
 
 require SRC . 'includes/functions.php';
-logoutTimer();
 
 
 if (!empty($match['target'])) {

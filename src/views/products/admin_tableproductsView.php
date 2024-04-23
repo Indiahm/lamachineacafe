@@ -40,7 +40,9 @@
                     <td class="table-light text-center align-middle"><?= htmlentities($product->marque); ?></td>
 
                     <td class="table-secondary text-center align-middle">
-
+                        <a href="<?= $router->generate('editProduct', ['id' =>  $product->id]); ?>" class="btn btn-primary btn-sm mr-2">
+                            Modifier
+                        </a>
                         <a href="<?= $router->generate('deleteProduct', ['id' =>  $product->id]); ?>" class="btn btn-danger btn-sm mr-2">
                             Supprimer
                     </td>
