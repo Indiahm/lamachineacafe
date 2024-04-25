@@ -14,6 +14,8 @@
 
 <body>
 
+    <img src="public/images/cafe.png" alt="">
+
 
     <h2 id="titre1">Toutes nos machines à café</h2>
     <?php if ($produits) {

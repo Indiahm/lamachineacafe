@@ -16,15 +16,14 @@
 <body>
 
     <header>
-        <div class="header">
 
-            <div class=bandeau>
-                <div>
-                    <h2>Livraison gratuite à partir de 50 euros</h2>
-                </div>
+        <div class=bandeau>
+            <div>
+                <h2>Livraison gratuite à partir de 50 euros</h2>
             </div>
+        </div>
 
-
+        <div class="header">
             <div class="menu">
                 <div class="logo-bar">
                     <div><img src="/lamachineacafe/public/images/logo3.svg" width="300" height="200"
@@ -48,51 +47,27 @@
                     </div>
                 </div>
             </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Machine à café à grain</a></li>
+                    <li><a href="#">Machine à café à expresso</a></li>
 
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Machine à café à grain</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Machine à café expresso</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Cafetières
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Nos cafés à grain</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Nos cafés moulus</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Nous découvrir</a>
-                            </li>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Cafetières</a>
+                        <div class="dropdown-content">
+                            <a href="#">Catégorie 1</a>
+                            <a href="#">Catégorie 2</a>
+                            <a href="#">Catégorie 3</a>
+                            <a href="#">Catégorie 4</a>
+                        </div>
+                    </li>
+                    <li><a href="#">Nos cafés en grain</a></li>
+                    <li><a href="#">Nos cafés moulus</a></li>
+                    <li><a href="#">Nous découvrir</a></li>
+
+
+                </ul>
             </nav>
     </header>
 
