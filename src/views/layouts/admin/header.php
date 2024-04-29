@@ -45,37 +45,46 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/produits">Produits </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="https://lamachineacafe.test/admin/categories">Categories</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="http://lamachineacafe.test/admin/utilisateurs">Utilisateurs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://lamachineacafe.test/admin/marques">Marques</a>
-                            </li>
-                    </ul>
                     <div class="navbar-text me-auto">
-                        <span class="admin-name">Admin:</span> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>
                     </div>
-                    <div class="navbar-text">
-                        <a href="<?= $router->generate('logout') ?>" class="btn btn-outline-danger btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out mr-2">
-                                <path d="M5 3l17 9L5 21" />
-                                <path d="M16 12H6" />
-                            </svg>
-                            Déconnexion
-                        </a>
-                    </div>
-
                 </div>
             </div>
         </nav>
     </header>
+
+    <div class="sidebar">
+
+        <span class="admin-name">Admin /</span> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>
+
+        <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu mr-2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            Liste des Menus
+        </h1>
+        <nav class="nav flex-column">
+
+            <a class="nav-link active" href="https://lamachineacafe.test/admin/produits">
+                <i class="fas fa-tachometer-alt mr-2"></i> Produit
+            </a>
+            <a class="nav-link" href="http://lamachineacafe.test/admin/utilisateurs">
+                <i class="fas fa-users mr-2"></i> Utilisateurs
+            </a>
+            <a class="nav-link" href="https://lamachineacafe.test/admin/categories">
+                <i class="fas fa-cogs mr-2"></i> Catégories
+            </a>
+
+            <a class="nav-link" href="https://lamachineacafe.test/admin/marques">
+                <i class="fas fa-cogs mr-2"></i> Marques
+            </a>
+
+            <a id="logout" class="nav-link" href="<?= $router->generate('logout') ?>" class="btn btn-outline-danger btn-sm">
+                <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
+            </a>
+        </nav>
+    </div>
 
     <main class="container mb-4">
 
@@ -112,10 +121,6 @@
                 color: #007bff;
             }
 
-            .admin-name {
-                color: #333;
-            }
-
             .btn-outline-danger {
                 color: #dc3545;
                 border-color: #dc3545;
@@ -141,4 +146,51 @@
                 color: #fff;
                 text-align: center;
             }
+
+            .admin-name {
+                color: #333;
+                margin-left: 30px;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 98px;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                padding: 48px 0 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                background-color: #f8f9fa;
+            }
+
+            .nav-link {
+                color: #495057;
+                font-size: 18px;
+                font-weight: 400;
+            }
+
+            .nav-link .nav-link:hover {
+                color: #007bff;
+            }
+
+            #logout {
+                color: #FF6666;
+                font-weight: 600;
+            }
+
+            h1 {
+                font-size: 20px;
+                margin-left: 15px;
+                margin-right: 15px;
+                margin-bottom: 25px;
+                margin-top: 25px;
+            }
+
         </style>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+</body>
+
+</html>
