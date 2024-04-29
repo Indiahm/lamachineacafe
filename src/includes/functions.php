@@ -103,3 +103,10 @@ function searchItems($table, $column, $searchTerm)
 
     return $query->fetchAll();
 }
+
+function getTotalPagesCount($limit) {
+    $totalBrands = getTotalBrandsCount();
+    return ceil($totalBrands / $limit);
+    return ceil($totalBrands / $limit);
+
+}

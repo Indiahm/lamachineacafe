@@ -13,7 +13,6 @@ function getMarques()
 }
 
 
-// Fonction pour récupérer les marques avec pagination
 function getBrandWithPagination($offset, $limit) {
     global $db;
 
@@ -26,7 +25,6 @@ function getBrandWithPagination($offset, $limit) {
     return $query->fetchAll(PDO::FETCH_OBJ);
 }
 
-// Fonction pour obtenir le nombre total de marques
 function getTotalBrandsCount() {
     global $db;
 
@@ -37,3 +35,4 @@ function getTotalBrandsCount() {
     $result = $query->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
 }
+

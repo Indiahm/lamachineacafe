@@ -1,30 +1,5 @@
 <?php 
 
-// Fonction pour récupérer les catégories avec pagination
-function getCategoryWithPagination($offset, $limit) {
-    global $db;
-
-    $sql = "SELECT * FROM categories LIMIT :limit OFFSET :offset";
-    $query = $db->prepare($sql);
-    $query->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
-    $query->execute();
-
-    return $query->fetchAll(PDO::FETCH_OBJ);
-}
-
-function getTotalCategoriesCount() {
-    global $db;
-
-    $sql = "SELECT COUNT(*) AS total FROM categories";
-    $query = $db->prepare($sql);
-    $query->execute();
-
-    $result = $query->fetch(PDO::FETCH_ASSOC);
-    return $result['total'];
-}
-
-
 function getCategories()
 {
     global $db;
@@ -48,3 +23,26 @@ function searchCategories($searchTerm)
     return $query->fetchAll();
 }
 
+
+function getCategoryWithPagination($offset, $limit) {
+    global $db;
+
+    $sql = "SELECT * FROM categories LIMIT :limit OFFSET :offset";
+    $query = $db->prepare($sql);
+    $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getTotalCategoriesCount() {
+    global $db;
+
+    $sql = "SELECT COUNT(*) AS total FROM categories";
+    $query = $db->prepare($sql);
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+}

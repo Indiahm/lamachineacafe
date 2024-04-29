@@ -5,7 +5,7 @@
 <a href="<?= $router->generate('addProduct'); ?>" class="btn btn-success mb-4">Ajouter un nouveau produit</a>
 
 <div class="table-responsive">
-    <table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col" class="text-center">Nom</th>
