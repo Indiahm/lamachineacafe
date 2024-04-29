@@ -14,4 +14,29 @@ function getProducts()
 
     return $query->fetchAll(PDO::FETCH_OBJ);
 }
-?>
+
+// Fonction pour récupérer les produits avec pagination
+function getProductsWithPagination($offset, $limit) {
+    global $db;
+
+    $sql = "SELECT * FROM produits LIMIT :limit OFFSET :offset";
+    $query = $db->prepare($sql);
+    $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+// Fonction pour obtenir le nombre total de produits
+function getTotalProductsCount() {
+    global $db;
+
+    $sql = "SELECT COUNT(*) AS total FROM produits";
+    $query = $db->prepare($sql);
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+}
+

@@ -7,12 +7,12 @@
     <a href="<?= $router->generate('addCategories'); ?>" class="btn btn-success mb-4">Ajouter une Catégorie</a>
 
     <form class="form-inline my-2 my-lg-0" method="POST" action="">
-    <div class="input-group">
-        <div class="input-group-prepend">
+        <div class="input-group">
+            <div class="input-group-prepend">
+            </div>
+            <input class="form-control mr-sm-2 mb-4 custom-search-input" type="search" placeholder="Rechercher une catégorie" aria-label="Search" name="search">
         </div>
-        <input class="form-control mr-sm-2 mb-4 custom-search-input" type="search" placeholder="Rechercher une catégorie" aria-label="Search" name="search">
-    </div>
-</form>
+    </form>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
@@ -43,5 +43,16 @@
             </tbody>
         </table>
     </div>
+
+    <nav aria-label="Pagination">
+        <ul class="pagination justify-content-end">
+            <?php for ($page = 1; $page <= $totalPages; $page++) { ?>
+                <li class="page-item <?php if ($currentPage == $page) echo 'active'; ?>">
+                    <a class="page-link" href="?page=<?= $page; ?>"><?= $page; ?></a>
+                </li>
+            <?php } ?>
+        </ul>
+    </nav>
+
 
     <?php get_footer('admin'); ?>

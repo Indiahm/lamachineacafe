@@ -41,6 +41,16 @@
                 <?php } ?>
             </tbody>
         </table>
+        <nav aria-label="Pagination">
+        <ul class="pagination justify-content-end">
+        <?php for ($page = 1; $page <= $totalPages; $page++) { ?>
+            <li class="page-item <?php if ($currentPage == $page) echo 'active'; ?>">
+                <a class="page-link" href="?page=<?= $page; ?>"><?= $page; ?></a>
+            </li>
+        <?php } ?>
+    </ul>
+</nav>
+</div>
     </div>
 </div>
 

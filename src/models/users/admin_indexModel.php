@@ -25,3 +25,28 @@ function getUsers()
         return 'N/A';
     }
 }
+
+// Fonction pour récupérer les utilisateurs avec pagination
+function getUsersWithPagination($offset, $limit) {
+    global $db;
+
+    $sql = "SELECT * FROM users LIMIT :limit OFFSET :offset";
+    $query = $db->prepare($sql);
+    $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+// Fonction pour obtenir le nombre total d'utilisateurs
+function getTotalUsersCount() {
+    global $db;
+
+    $sql = "SELECT COUNT(*) AS total FROM users";
+    $query = $db->prepare($sql);
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+}

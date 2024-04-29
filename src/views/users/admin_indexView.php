@@ -1,8 +1,10 @@
-<?php get_header('Liste des utilisateurs', 'admin'); ?>
+<?php 
+
+get_header('Liste des utilisateurs', 'admin');
+?>
 
 <div class="container">
     <h2 class="my-4">Liste des utilisateurs</h2>
-
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
@@ -38,6 +40,19 @@
             </tbody>
         </table>
     </div>
+
+    <nav aria-label="Pagination">
+    <ul class="pagination justify-content-end">
+            <?php for ($page = 1; $page <= $totalPages; $page++) { ?>
+                <li class="page-item <?php if ($currentPage == $page) echo 'active'; ?>">
+                    <a class="page-link" href="?page=<?= $page; ?>"><?= $page; ?></a>
+                </li>
+            <?php } ?>
+        </ul>
+    </nav>
 </div>
 
-<?php get_footer('login'); ?>
+<?php 
+// Inclure le pied de page
+get_footer('login'); 
+?>

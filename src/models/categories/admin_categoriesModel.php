@@ -1,7 +1,30 @@
 <?php 
 
+// Fonction pour récupérer les catégories avec pagination
+function getCategoryWithPagination($offset, $limit) {
+    global $db;
 
-/* Get all categories */
+    $sql = "SELECT * FROM categories LIMIT :limit OFFSET :offset";
+    $query = $db->prepare($sql);
+    $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getTotalCategoriesCount() {
+    global $db;
+
+    $sql = "SELECT COUNT(*) AS total FROM categories";
+    $query = $db->prepare($sql);
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+}
+
+
 function getCategories()
 {
     global $db;
@@ -13,7 +36,6 @@ function getCategories()
     return $query->fetchAll();
 }
 
-/* Search categories by name */
 function searchCategories($searchTerm)
 {
     global $db;
@@ -25,3 +47,4 @@ function searchCategories($searchTerm)
 
     return $query->fetchAll();
 }
+
