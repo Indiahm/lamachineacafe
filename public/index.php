@@ -1,4 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+
 <?php
+
+
 session_start();
 
 require '/Applications/MAMP/htdocs/lamachineacafe/vendor/autoload.php';
@@ -58,18 +79,19 @@ logoutTimer();
 
 
 if (!empty($match['target'])) {
-     checkAdmin($match, $router);
-     $data = []; // données à envoyer à la vue
-     $_GET = array_merge($_GET, $match['params']);
-     require SRC . 'models/' . $match['target'] . 'Model.php';
-     require SRC . 'controllers/' . $match['target'] . 'Controller.php';
+    checkAdmin($match, $router);
+    $data = []; // données à envoyer à la vue
+    $_GET = array_merge($_GET, $match['params']);
+    require SRC . 'models/' . $match['target'] . 'Model.php';
+    require SRC . 'controllers/' . $match['target'] . 'Controller.php';
 
-     // Charger le fichier de vue classique
-     $viewFile = SRC . 'views/' . $match['target'] . 'View.php';
-    
+    // Charger le fichier de vue classique
+    $viewFile = SRC . 'views/' . $match['target'] . 'View.php';
+}
 
 
-     // double la view
+
+// double la view
 //      if (file_exists($viewFile)) {
 //          // Inclure le fichier de vue
 //          require $viewFile;
@@ -82,4 +104,4 @@ if (!empty($match['target'])) {
 //      // Si la cible est vide, afficher une erreur 404
 //      header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 //      //die '404';
-}
+

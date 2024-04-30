@@ -1,112 +1,98 @@
 * {
-	box-sizing: border-box;
-	
+  box-sizing: border-box;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 body {
-	background-color: #fcf9f2; 
-
+  background-color: #fcf9f2;
 }
 
-
-																				
-
-
-
-									/* HEADER */
+/* HEADER */
 
 .menu {
-    text-align: center;
+  text-align: center;
+  font-family: "League Spartan", sans-serif;
+  font-size: 17px;
 }
 
 .menu a {
-    margin: 0 30px; 
+  margin: 0 30px;
 }
 
 header {
-	background-color: #fcf9f2;
-	color: #fff;
-	padding: 10px;
+  background-color: #fcf9f2;
+  color: #fff;
+  padding: 10px;
 }
 nav ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 nav ul li {
-	display: inline;
-	margin-right: 20px;
+  display: inline;
+  margin-right: 20px;
 }
 nav ul li a {
-    text-decoration: none;
-    color: #008000;
+  text-decoration: none;
+  color: #008000;
 }
 .dropdown {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 .dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f9f9f9;
-	min-width: 160px;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-	z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 .dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 .dropdown-content a:hover {
-	background-color: #ddd;
+  background-color: #ddd;
 }
 .dropdown:hover .dropdown-content {
-	display: block;
+  display: block;
 }
 
 .bandeau {
-    background-color: #008000;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-	font-size: 12px; 
-	display: flex;
-    justify-content: center;
-    align-items: center;
-	padding-top: 10px;
-	padding-bottom: 10px;
-
-    
+  background-color: #008000;
+  color: #ffffff;
+  font-family: "League Spartan", sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
 }
-
 
 .logo-bar {
-	display: flex;
-	justify-content: space-evenly; 
-	align-items: center;
-	margin: 0; 
-    padding: 0;
-  }
-
-
-  .d-flex {
-	width: 700px;
-  }
-
-
-.menu{
-	background-color: #fcf9f2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
-  
 
-#titre1 {
-	color: #0000ff;
+.d-flex {
+  width: 700px;
+}
+
+.menu {
+  background-color: #fcf9f2;
 }
 
 /* .bouton-connexion {
@@ -114,14 +100,45 @@ nav ul li a {
 
 } */
 
+.form-control {
+  border-radius: 100px;
+}
 
+.form-control textarea {
+  color: #008000;
+  font-size: 20px;
+  font-family: "League Spartan", sans-serif;
+}
 
+.btn-outline-success {
+  border-radius: 100px;
+}
 
+.d-flex {
+  font-family: "League Spartan", sans-serif;
+  font-size: 40px;
+}
 
+.menu a {
+  text-decoration: none;
+  font-family: "League Spartan", sans-serif;
+  font-size: 16px;
+  color: #008000;
+}
 
+.form-control::placeholder {
+  font-family: "League Spartan", sans-serif;
+  color: #008000;
+  font-size: 14px;
+}
 
+/* PAGE ACCUEIL  */
 
+#titre1 {
+  color: #0000ff;
+}
 
-
-
-									/* PAGE ACCUEIL  */
+.page {
+  margin-left: 40px; /* Marge à gauche */
+  margin-right: 40px; /* Marge à droite */
+}
