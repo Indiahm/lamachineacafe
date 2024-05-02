@@ -1,5 +1,10 @@
 <?php
 
+// Vérification de la soumission du formulaire
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Vérification si l'utilisateur a été déconnecté en raison d'une inactivité
+    checkSessionTimeout();
+
 
 // Vérification de la soumission du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,13 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         addMessage('success', $welcomeMessage);
 
         // Redirection vers la page de connexion
-        header('Location: ' . $router->generate('login'));
+        header('Location: ' . $router->generate('products'));
         exit();
     } else {
         // Ajout d'un message d'erreur si les informations d'identification sont incorrectes
         $errorMessage = "Identifiants incorrects. Veuillez réessayer.";
         addMessage('error', $errorMessage);
     }
+}
 }
 
 

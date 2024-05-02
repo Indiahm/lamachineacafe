@@ -56,3 +56,5 @@ get_header('Liste des utilisateurs', 'admin');
 // Inclure le pied de page
 get_footer('login'); 
 ?>
+
+<?php checkSessionTimeout(); ?>

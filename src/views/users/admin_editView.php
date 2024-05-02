@@ -80,3 +80,5 @@
         background-color: #DCDCDC;
     }
 </style>
+
+<?php checkSessionTimeout(); ?>

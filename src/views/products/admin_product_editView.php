@@ -4,6 +4,8 @@
     <div class="d-flex align-items-center py-4 vertical-center">
         <form action="" class="form-signin w-100 m-auto" method="post" enctype="multipart/form-data" novalidate>
 
+
+
             <h1 class="h3 mb-4 display-6 fw-normal text-center">Créer un Produit:</h1>
 
             <div class="form-floating mb-3">
@@ -95,8 +97,8 @@
                     </div>
                 </div>
             </div>
-          <!-- Ajout de la sélection de la marque -->
-          <div class="form-floating mb-3">
+            <!-- Ajout de la sélection de la marque -->
+            <div class="form-floating mb-3">
                 <select name="marque_id" id="marque_id" class="form-select">
                     <option value="" selected disabled>Sélectionner une marque</option>
                     <?php foreach ($marques as $marque) : ?>
@@ -125,7 +127,7 @@
                     <input type="reset" class="btn btn-warning w-100 py-2 " value="Réinitialiser">
                 </div>
             </div>
-                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
 
         </form>

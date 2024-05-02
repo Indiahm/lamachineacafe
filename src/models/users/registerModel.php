@@ -77,18 +77,7 @@ function checkExistingUserInfo($firstName, $lastName, $shippingAddress, $phoneNu
     return $existingFields;
 }
 
-// Fonction pour récupérer et effacer les messages stockés dans la session
-function getAndClearMessages($type) {
-    $messages = [];
 
-    if (isset($_SESSION[$type]) && is_array($_SESSION[$type])) {
-        $messages = $_SESSION[$type];
-        // Effacer les messages de la session
-        unset($_SESSION[$type]);
-    }
-
-    return $messages;
-}
 
 function isValidPassword($password) {
     return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/', $password);

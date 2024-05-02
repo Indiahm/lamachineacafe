@@ -1,11 +1,23 @@
 <?php get_header('Liste des produits', 'admin'); ?>
 
+<?php
+// Récupération et affichage des messages de succès
+$successes = getAndClearMessages('success');
+foreach ($successes as $success) :
+?>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <?= htmlspecialchars($success) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endforeach; ?>
+
 <h2 class="mb-4">Liste des produits</h2>
+
 
 <a href="<?= $router->generate('addProduct'); ?>" class="btn btn-success mb-4">Ajouter un nouveau produit</a>
 
 <div class="table-responsive">
-<table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col" class="text-center">Nom</th>
@@ -66,3 +78,4 @@
 
 
 <?php get_footer('admin'); ?>
+

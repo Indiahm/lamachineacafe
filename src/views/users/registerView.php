@@ -80,3 +80,5 @@
 </html>
 
 <?php get_footer('login'); ?>
+
+<?php checkSessionTimeout(); ?>

@@ -38,15 +38,7 @@ function saveLastLogin($userId)
     $query->execute(['id' => $userId]);
 }
 
-function addMessage($type, $message) {
-    $_SESSION[$type][] = $message;
-}
 
-function getAndClearMessages($type) {
-    $messages = isset($_SESSION[$type]) ? $_SESSION[$type] : [];
-    unset($_SESSION[$type]);
-    return $messages;
-}
 
 
 
