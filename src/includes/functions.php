@@ -128,22 +128,15 @@ function getAndClearMessages($type)
     return $messages;
 }
 
-// Déconnecte l'utilisateur après une minute d'inactivité
 function checkSessionTimeout()
 {
-    // Durée d'inactivité avant déconnexion (en secondes)
-    $inactiveTimeout = 600; // 1 minute
+    $inactiveTimeout = 600; 
 
-    // Vérifie si la session est démarrée
     if (session_status() == PHP_SESSION_ACTIVE) {
-        // Vérifie si une heure de dernière activité est enregistrée dans la session
         if (isset($_SESSION['last_activity'])) {
-            // Calcule le temps écoulé depuis la dernière activité
             $inactiveTime = time() - $_SESSION['last_activity'];
 
-            // Si le temps écoulé dépasse le délai d'inactivité, détruit la session et déconnecte l'utilisateur
             if ($inactiveTime > $inactiveTimeout) {
-                // Définir le message de déconnexion dans une variable de session
                 $_SESSION['logout_message'] = "Vous avez été déconnecté en raison d'une inactivité.";
 
                 session_unset();    // Unset all session values
