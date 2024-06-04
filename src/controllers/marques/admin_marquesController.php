@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
     // Si aucune donnée de recherche n'a été soumise, conservez toutes les marques
     $marques = getMarques();
 }
+
      
 $marquesPerPage = 5;
 

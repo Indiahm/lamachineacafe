@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Marques</title>
-    <link rel="stylesheet" href="public/css/main.css"> 
+    <link rel="stylesheet" href="public/css/main.css">
 </head>
+
 <body>
-    
+
     <header>
         <?php get_header('Liste des Marques', 'admin'); ?>
     </header>
@@ -22,6 +24,7 @@
                 <input class="form-control mr-sm-2 mb-4 custom-search-input" type="search" placeholder="Rechercher une marque" aria-label="Rechercher" name="search">
             </div>
         </form>
+
 
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -60,4 +63,5 @@
     </div>
 
 </body>
+
 </html>

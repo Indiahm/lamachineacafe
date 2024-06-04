@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des utilisateurs</title>
     <link rel="stylesheet" href="styles.css"> <!-- Assurez-vous de lier correctement votre feuille de style -->
 </head>
+
 <body>
     <header>
         <?php get_header('Liste des utilisateurs', 'admin'); ?>
@@ -32,7 +34,17 @@
                     <?php foreach ($users as $user) { ?>
                         <tr>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->email); ?></td>
-                            <td class="text-center align-middle"><?= getRoleName($user->role_id); ?></td>
+                            <td class="text-center align-middle"><?php
+                                                                    $roleName = getRoleName($user->role_id);
+                                                                    if ($roleName == "admin") {
+                                                                        echo '<span style="color: red; font-weight: bold;">' . $roleName . '</span>';
+                                                                    } elseif ($roleName == "utilisateur") {
+                                                                        echo '<span style="color: blue; font-weight: bold;">' . $roleName . '</span>';
+                                                                    } else {
+                                                                        echo $roleName;
+                                                                    }
+                                                                    ?></td>
+
                             <td class="text-center align-middle"><?= htmlspecialchars($user->created); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->shipping_address); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->phone_number); ?></td>
@@ -61,4 +73,5 @@
 
     <?php checkSessionTimeout(); ?>
 </body>
+
 </html>

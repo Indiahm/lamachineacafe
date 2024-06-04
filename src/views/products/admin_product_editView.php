@@ -1,4 +1,4 @@
-<?php get_header('Créer un Produit', 'ADMIN'); ?>
+<?php get_header('Modifier un Produit', 'ADMIN'); ?>
 
 <div class="formulaire">
     <div class="d-flex align-items-center py-4 vertical-center">
@@ -6,7 +6,7 @@
 
 
 
-            <h1 class="h3 mb-4 display-6 fw-normal text-center">Créer un Produit:</h1>
+            <h1 class="h3 mb-4 display-6 fw-normal text-center">Modifier un Produit:</h1>
 
             <div class="form-floating mb-3">
                 <?php $error = checkEmptyFields('nom'); ?>

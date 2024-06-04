@@ -63,4 +63,9 @@ function handleDatabaseError(PDOException $e)
     }
 }
 
+// Appel à la fonction pour récupérer les catégories
+$categories = getCategories();
+
+// Appel à la fonction pour récupérer les marques
+$marques = getMarques();
 

@@ -54,35 +54,7 @@ function addProduct()
     }
 }
 
-// Récupérer les catégories depuis la base de données
-function getCategories()
-{
-    global $db;
 
-    try {
-        $sql = 'SELECT id, nom FROM categories';
-        $query = $db->query($sql);
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        handleDatabaseError($e);
-        return [];
-    }
-}
-
-// Récupérer les marques depuis la base de données
-function getMarques()
-{
-    global $db;
-
-    try {
-        $sql = 'SELECT id, nom FROM marques';
-        $query = $db->query($sql);
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        handleDatabaseError($e);
-        return [];
-    }
-}
 
 function checkMarqueExists($marqueId): bool
 {

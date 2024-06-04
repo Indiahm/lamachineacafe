@@ -19,14 +19,16 @@ function getProducts()
 function getProductsWithPagination($offset, $limit) {
     global $db;
 
-    $sql = "SELECT * FROM produits LIMIT :limit OFFSET :offset";
+    $sql = "SELECT * FROM produits LIMIT :offset, :limit";
     $query = $db->prepare($sql);
-    $query->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $query->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $query->bindParam(':limit', $limit, PDO::PARAM_INT);
     $query->execute();
 
     return $query->fetchAll(PDO::FETCH_OBJ);
 }
+
+
 
 // Fonction pour obtenir le nombre total de produits
 function getTotalProductsCount() {

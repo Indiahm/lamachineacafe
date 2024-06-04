@@ -1,16 +1,5 @@
 <?php 
 
-function getCategories()
-{
-    global $db;
-
-    $sql = 'SELECT id, nom, created_at, updated_at FROM categories';
-    $query = $db->prepare($sql);
-    $query->execute();
-
-    return $query->fetchAll();
-}
-
 function searchCategories($searchTerm)
 {
     global $db;

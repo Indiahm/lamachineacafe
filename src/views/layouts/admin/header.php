@@ -38,7 +38,7 @@
 
     <div class="sidebar">
 
-        <span class="admin-name">Admin | </span> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>
+        <span class="admin-name">Admin | </span> <span class="name"> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></span>
 
         <h1>
             <i class="fas fa-bars mr-2"></i>
@@ -141,8 +141,13 @@
             }
 
             .admin-name {
-                color: #333;
                 margin-left: 30px;
+
+            }
+
+            .name {
+                color: #FF6666;
+                font-weight: 700;
             }
 
             .sidebar {
