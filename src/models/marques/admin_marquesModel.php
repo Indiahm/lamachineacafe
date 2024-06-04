@@ -1,16 +1,18 @@
 <?php
 
-function getBrandWithPagination($offset, $limit) {
+function getBrandWithPagination($offset, $limit)
+{
     global $db;
 
-    $sql = "SELECT * FROM marques LIMIT :limit OFFSET :offset";
+    $sql = "SELECT * FROM marques LIMIT ? OFFSET ?";
     $query = $db->prepare($sql);
-    $query->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $query->bindValue(1, $limit, PDO::PARAM_INT);
+    $query->bindValue(2, $offset, PDO::PARAM_INT);
     $query->execute();
 
     return $query->fetchAll(PDO::FETCH_OBJ);
 }
+
 
 function getTotalBrandsCount() {
     global $db;

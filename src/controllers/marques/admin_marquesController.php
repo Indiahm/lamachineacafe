@@ -16,7 +16,7 @@ $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 $offset = ($currentPage - 1) * $marquesPerPage;
 
-$marques = getBrandWithPagination($offset, $marquesPerPage);
+$paginatedMarques = getBrandWithPagination($offset, $marquesPerPage);
 
 $totalMarques = getTotalBrandsCount();
 

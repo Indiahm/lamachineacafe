@@ -37,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($marques as $marque) { ?>
+                    <?php foreach ($paginatedMarques as $marque) { ?>
                         <tr>
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->nom); ?></td>
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->created_at); ?></td>

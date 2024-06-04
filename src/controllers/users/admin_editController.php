@@ -2,8 +2,6 @@
 
 $errorMessage = [
     'email' => false,
-    'pwd' => false,
-    'pwd-conf' => false
 ];
 
 if (!empty($_POST)) {
@@ -17,8 +15,8 @@ if (!empty($_POST)) {
     }
 
     // Enregistrer l'utilisateur dans la base de données
-    if (!empty($_POST['email']) && !empty($_POST['pwd']) && !empty($_POST['pwd-conf'])) {
-        if (!$errorMessage['email'] && !$errorMessage['pwd'] && !$errorMessage['pwd-conf']) {
+    if (!empty($_POST['email'])) {
+        if (!$errorMessage['email']) {
             // Ajoutez la récupération du rôle à partir des données POST
             $role_id = $_POST['role_id'];
 
@@ -47,4 +45,6 @@ if (!empty($_POST)) {
 
 $roles = getRoles();
 checkAdminAccess($router);
+
+?>
 

@@ -101,6 +101,7 @@ function searchItems($table, $column, $searchTerm)
     $query->execute();
 
     return $query->fetchAll(PDO::FETCH_OBJ);
+
 }
 
 
@@ -130,7 +131,7 @@ function getAndClearMessages($type)
 
 function checkSessionTimeout()
 {
-    $inactiveTimeout = 600; 
+    $inactiveTimeout = 600;
 
     if (session_status() == PHP_SESSION_ACTIVE) {
         if (isset($_SESSION['last_activity'])) {
@@ -179,3 +180,4 @@ function getMarques()
         return [];
     }
 }
+

@@ -27,8 +27,6 @@
                     <?php $error = checkEmptyFields('pwd'); ?>
                     <label for="pwd" class="form-label">Mot de Passe : *</label>
                     <input type="password" name="pwd" id="pwd" class="form-control <?= $error['class']; ?>">
-                    <div class="invalid-feedback"><?= $error['message']; ?></div>
-                    <div class="text-danger"><?= $errorMessage['pwd']; ?></div>
                     <small class="form-text">La règle des mots de passe</small>
                 </div>
 
@@ -36,8 +34,6 @@
                     <?php $error = checkEmptyFields('pwd-conf'); ?>
                     <label for="pwd-conf" class="form-label">Confirmation du mot de passe : *</label>
                     <input type="password" name="pwd-conf" id="pwd-conf" class="form-control <?= $error['class']; ?>">
-                    <div class="invalid-feedback"><?= $error['message']; ?></div>
-                    <div class="text-danger"><?= $errorMessage['pwd-conf']; ?></div>
                     <small class="form-text">Veuillez saisir une nouvelle fois votre mot de passe</small>
                 </div>
 
