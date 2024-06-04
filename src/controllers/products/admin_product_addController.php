@@ -26,9 +26,10 @@ $errorMessage = [
     'poids' => '',
     'watts' => '',
     'dimensions' => '',
-    'image' => '', // Ajout de l'image dans les messages d'erreur
+    'image' => '', 
     'categorie_id' => '',
-    'marque_id' => ''
+    'marque_id' => '',
+    'image' => ''
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -79,7 +80,7 @@ if (!empty($_GET['id'])) {
         $_POST['dimensions'] = $productData['dimensions'];
         $_POST['categorie_id'] = $productData['categorie_id'];
         $_POST['marque_id'] = $productData['marque_id'];
-        $_POST['image'] = $productData['image']; // Ajout de l'image dans les données du produit
+        $_POST['image'] = $productData['image']; 
     }
 }
 

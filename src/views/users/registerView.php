@@ -15,6 +15,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <div class="wrapper">
                     <div class="row">
                         <?php if (isset($error_message) && !empty($error_message)) : ?>
                             <div class="alert alert-danger" role="alert">
@@ -68,6 +69,7 @@
                         <div class="row justify-content-start mt-4">
                             <div class="col">
                                 <button type="submit" class="btn btn-primary mt-4">S'inscrire</button>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -77,8 +79,15 @@
     </section>
 </body>
 
+
 </html>
 
 <?php get_footer('login'); ?>
 
 <?php checkSessionTimeout(); ?>
+
+
+<style>
+
+    
+</style>

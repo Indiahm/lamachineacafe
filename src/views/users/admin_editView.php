@@ -12,6 +12,7 @@
 <div class="container">
 <h1 class="mb-4 text-center">Editer un utilisateur</h1>
 
+
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form action="" class="form-signin" method="post" novalidate>
@@ -72,3 +73,10 @@
 </style>
 
 <?php checkSessionTimeout(); ?>
+
+<style>
+  .ligne {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+</style>

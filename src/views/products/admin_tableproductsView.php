@@ -13,8 +13,9 @@ foreach ($successes as $success) :
 
 <h2 class="mb-4">Liste des produits</h2>
 
+<div class="ligne"></div>
 
-<a href="<?= $router->generate('addProduct'); ?>" class="btn btn-success mb-4">Ajouter un nouveau produit</a>
+<a href="<?= $router->generate('addProduct'); ?>" class="btn btn-success mb-4">+ Ajouter un nouveau produit</a>
 
 <div class="table-responsive">
     <table class="table table-striped table-bordered">
@@ -51,7 +52,7 @@ foreach ($successes as $success) :
                     <td class="table-light text-center align-middle"><?= htmlentities($product->categorie); ?></td>
                     <td class="table-light text-center align-middle"><?= htmlentities($product->marque); ?></td>
 
-                    <td class="table-secondary text-center align-middle">
+                    <td class="table-light text-center align-middle">
                         <a href="<?= $router->generate('editProduct', ['id' =>  $product->id]); ?>" class="btn btn-primary btn-sm mr-2">
                             Modifier
                         </a>
@@ -79,3 +80,9 @@ foreach ($successes as $success) :
 
 <?php get_footer('admin'); ?>
 
+<style>
+  .ligne {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+</style>

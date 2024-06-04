@@ -16,7 +16,13 @@
 
     <div class="container">
         <h2 class="mb-4">Liste des Marques</h2>
-        <a href="<?= $router->generate('addMarque'); ?>" class="btn btn-success mb-4">Ajouter une Marque</a>
+
+        <div class="ligne"></div>
+
+
+        <a href="<?= $router->generate('addMarque'); ?>" class="btn btn-success mb-4">+ Ajouter une Marque</a>
+
+
 
         <form class="form-inline my-2 my-lg-0" method="POST" action="">
             <div class="input-group">
@@ -42,7 +48,7 @@
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->nom); ?></td>
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->created_at); ?></td>
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->updated_at); ?></td>
-                            <td class="table-secondary text-center align-middle">
+                            <td class="table-light text-center align-middle">
                                 <a href="<?= $router->generate('editMarque', ['id' =>  $marque->id]); ?>" class="btn btn-primary btn-sm mr-2">Modifier</a>
                                 <a href="<?= $router->generate('deleteMarque', ['id' =>  $marque->id]); ?>" class="btn btn-danger btn-sm">Supprimer</a>
                             </td>
@@ -65,3 +71,11 @@
 </body>
 
 </html>
+
+
+<style>
+  .ligne {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+</style>

@@ -16,6 +16,9 @@
     <div class="container">
         <h2 class="my-4">Liste des utilisateurs</h2>
 
+        <div class="ligne"></div>
+
+
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
@@ -50,7 +53,7 @@
                             <td class="text-center align-middle"><?= htmlspecialchars($user->phone_number); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->first_name); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->last_name); ?></td>
-                            <td class="text-center align-middle">
+                            <td class="table-light text-center align-middle">
                                 <a href="<?= $router->generate('editUser', ['id' =>  $user->id]); ?>" class="btn btn-primary btn-sm mr-2">Modifier</a>
                             </td>
                         </tr>
@@ -75,3 +78,11 @@
 </body>
 
 </html>
+
+
+<style>
+  .ligne {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+</style>
