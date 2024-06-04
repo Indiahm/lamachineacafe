@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?> | La Machine a Cafe </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,30 +41,31 @@
         <span class="admin-name">Admin | </span> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>
 
         <h1>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu mr-2">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+            <i class="fas fa-bars mr-2"></i>
             Liste des Menus
         </h1>
         <nav class="nav flex-column">
 
             <a class="nav-link active" href="https://lamachineacafe.test/admin/produits">
-                <i class="fas fa-tachometer-alt mr-2"></i> Produit
+                <i class="fas fa-boxes mr-2"></i> Produit
             </a>
             <a class="nav-link" href="http://lamachineacafe.test/admin/utilisateurs">
                 <i class="fas fa-users mr-2"></i> Utilisateurs
             </a>
             <a class="nav-link" href="https://lamachineacafe.test/admin/categories">
-                <i class="fas fa-cogs mr-2"></i> Catégories
+                <i class="fas fa-th-list mr-2"></i> Catégories
             </a>
 
             <a class="nav-link" href="https://lamachineacafe.test/admin/marques">
-                <i class="fas fa-cogs mr-2"></i> Marques
+                <i class="fas fa-tags mr-2"></i> Marques
             </a>
 
-            <a id="logout" class="nav-link" href="<?= $router->generate('logout') ?>" class="btn btn-outline-danger btn-sm">
+            <a class="nav-link" href="">
+                <i class="fas fa-tags mr-2"></i> Commandes
+            </a>
+
+
+            <a id="logout" class="nav-link" href="<?= $router->generate('logout') ?>">
                 <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
             </a>
         </nav>
@@ -75,7 +77,7 @@
 
         <style>
             .bg-beige {
-                background-color: #d0b49f
+                background-color: #d0b49f;
             }
 
             .navbar.navbar-expand-lg .navbar-nav .nav-link {
@@ -158,10 +160,12 @@
                 color: #495057;
                 font-size: 18px;
                 font-weight: 400;
+                padding: 10px 20px;
             }
 
-            .nav-link .nav-link:hover {
+            .nav-link:hover {
                 color: #007bff;
+                background-color: #d0b49f;
             }
 
             #logout {
@@ -178,8 +182,8 @@
             }
         </style>
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
 </body>
 

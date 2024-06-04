@@ -19,7 +19,7 @@ $router->map( 'GET|POST', $admin . '/utilisateurs/editer/', 'users/admin_edit', 
 
 $router->map('GET', $admin . '/produits', 'products/admin_tableproducts', 'products');
 $router->map('GET|POST', $admin . '/produits/editer/[i:id]', 'products/admin_product_edit', 'editProduct'); 
-$router->map('GET|POST', $admin . '/produits/editer', 'products/admin_product_edit', 'addProduct');
+$router->map('GET|POST', $admin . '/produits/add', 'products/admin_product_add', 'addProduct');
 $router->map( 'GET', $admin . '/produits/supprimer/[i:id]', 'products/admin_deleteproducts', 'deleteProduct');
 
 // Categories   

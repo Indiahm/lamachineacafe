@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="public/css/main.css"> 
 </head>
 <body>
+    
     <header>
         <?php get_header('Liste des Marques', 'admin'); ?>
     </header>
