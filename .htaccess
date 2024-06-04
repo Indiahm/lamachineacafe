@@ -15,3 +15,5 @@ RewriteRule ^(.*)$ /lamachineacafe/public/$1 [L]
 #redirect to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
+
+AddType application/javascript .jsx
