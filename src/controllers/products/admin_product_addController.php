@@ -4,7 +4,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 // Générez le jeton CSRF lors de l'affichage du formulaire
 generateCsrfToken();
 
@@ -14,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Le jeton CSRF est invalide, gérer l'erreur
         die("Erreur CSRF : Le jeton CSRF est invalide.");
     }
-    
 }
 
 $errorMessage = [
@@ -28,6 +26,7 @@ $errorMessage = [
     'poids' => '',
     'watts' => '',
     'dimensions' => '',
+    'image' => '', // Ajout de l'image dans les messages d'erreur
     'categorie_id' => '',
     'marque_id' => ''
 ];
@@ -40,12 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    // Vérification de l'existence de l'image
+    if (!isset($_FILES['image'])) {
+        $errorMessage['image'] = 'Veuillez sélectionner une image';
+    }
+
     if (empty(array_filter($errorMessage))) {
         if (!empty($_GET['id'])) {
             updateProduct();
             alert('Le produit a été mis à jour avec succès', 'success');
         } else {
-            addProduct(); 
+            addProduct();
             alert('Le produit a été ajouté avec succès', 'success');
         }
     }
@@ -62,7 +66,7 @@ if (!empty($_GET['id'])) {
     if ($query->rowCount() > 0) {
         $productData = $query->fetch(PDO::FETCH_ASSOC);
 
-        $_POST['product_id'] = $productId; 
+        $_POST['product_id'] = $productId;
         $_POST['nom'] = $productData['nom'];
         $_POST['description'] = $productData['description'];
         $_POST['prix'] = $productData['prix'];
@@ -74,7 +78,8 @@ if (!empty($_GET['id'])) {
         $_POST['watts'] = $productData['watts'];
         $_POST['dimensions'] = $productData['dimensions'];
         $_POST['categorie_id'] = $productData['categorie_id'];
-        $_POST['marque_id'] = $productData['marque_id']; 
+        $_POST['marque_id'] = $productData['marque_id'];
+        $_POST['image'] = $productData['image']; // Ajout de l'image dans les données du produit
     }
 }
 

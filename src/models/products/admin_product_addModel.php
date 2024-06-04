@@ -21,6 +21,35 @@ function addProduct()
             return false;
         }
 
+        // Vérification de l'existence de l'image
+        if (!isset($_FILES['image'])) {
+            $errorMessage = "Aucune image n'a été sélectionnée.";
+            handleDatabaseError(new PDOException($errorMessage));
+            return false;
+        }
+
+        // Traitement de l'image téléchargée
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+        $image_file_type = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        // Vérifiez si le fichier est une image valide
+        $check = getimagesize($_FILES["image"]["tmp_name"]);
+        if($check !== false) {
+            // Déplacez le fichier téléchargé vers l'emplacement cible
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                $image_path = $target_file;
+            } else {
+                $errorMessage = "Une erreur s'est produite lors du téléchargement de l'image.";
+                handleDatabaseError(new PDOException($errorMessage));
+                return false;
+            }
+        } else {
+            $errorMessage = "Le fichier téléchargé n'est pas une image valide.";
+            handleDatabaseError(new PDOException($errorMessage));
+            return false;
+        }
+
         // Préparation des données du produit à ajouter
         $data = [
             'nom' => $_POST['nom'],
@@ -33,12 +62,13 @@ function addProduct()
             'poids' => $_POST['poids'],
             'watts' => $_POST['watts'],
             'dimensions' => $_POST['dimensions'],
+            'image' => $image_path, // Ajouter cette ligne
             'categorie_id' => $categoryId,
             'marque_id' => $marqueId,
         ];
 
         // Requête SQL pour insérer le produit
-        $sql = 'INSERT INTO produits (nom, description, prix, modele, stock, code_ean, origine, poids, watts, dimensions, categorie_id, marque_id) VALUES (:nom, :description, :prix, :modele, :stock, :code_ean, :origine, :poids, :watts, :dimensions, :categorie_id, :marque_id)';
+        $sql = 'INSERT INTO produits (nom, description, prix, modele, stock, code_ean, origine, poids, watts, dimensions, image, categorie_id, marque_id) VALUES (:nom, :description, :prix, :modele, :stock, :code_ean, :origine, :poids, :watts, :dimensions, :image, :categorie_id, :marque_id)'; // Mettre à jour cette ligne
 
         $query = $db->prepare($sql);
         $query->execute($data);
@@ -54,8 +84,7 @@ function addProduct()
     }
 }
 
-
-
+// Vérifier si une marque existe
 function checkMarqueExists($marqueId): bool
 {
     global $db;
@@ -72,6 +101,7 @@ function checkMarqueExists($marqueId): bool
     }
 }
 
+// Vérifier si une catégorie existe
 function checkCategoryExists($categoryId): bool
 {
     global $db;

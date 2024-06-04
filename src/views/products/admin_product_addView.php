@@ -4,8 +4,6 @@
     <div class="d-flex align-items-center py-4 vertical-center">
         <form action="" class="form-signin w-100 m-auto" method="post" enctype="multipart/form-data" novalidate>
 
-
-
             <h1 class="h3 mb-4 display-6 fw-normal text-center">Créer un Produit:</h1>
 
             <div class="form-floating mb-3">
@@ -119,6 +117,13 @@
                 <label for="categorie_id">Catégorie</label>
             </div>
 
+            <!-- Ajout du champ pour l'image -->
+            <div class="form-floating mb-3">
+                <input type="file" name="image" id="image" class="form-control">
+                <label for="image">Image du produit</label>
+                <?= $errorMessage['image']; ?>
+            </div>
+
             <div class="row">
                 <div class="col-md-6">
                     <input type="submit" value="Envoyer" class="btn btn-success w-100 py-2">
@@ -128,7 +133,6 @@
                 </div>
             </div>
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
-
 
         </form>
     </div>
