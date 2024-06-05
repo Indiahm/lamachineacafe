@@ -222,3 +222,14 @@ function checkAlreadyExistEmail(): mixed
 }
 
 
+function getProductss() {
+    global $db;
+    try {
+        $sql = 'SELECT * FROM produits';
+        $query = $db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+}

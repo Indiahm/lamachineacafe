@@ -29,7 +29,9 @@ $errorMessage = [
     'watts' => '',
     'dimensions' => '',
     'categorie_id' => '',
-    'marque_id' => ''
+    'marque_id' => '',
+    'image' => ''
+
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

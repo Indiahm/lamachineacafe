@@ -1,0 +1,79 @@
+/* styles.css */
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card {
+
+    max-width: 500px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #a47551;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #d0b49f;
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333; /* Couleur du texte */
+}
+
+/* Style pour la ligne */
+.ligne {
+    border-top: 2px solid #ccc; /* Couleur et épaisseur de la ligne */
+    margin: 20px 0; /* Marge au-dessus et en dessous de la ligne */
+}
+
+/* Style pour le paragraphe */
+.p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666; /* Couleur du texte */
+}

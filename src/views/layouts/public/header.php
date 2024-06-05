@@ -29,18 +29,19 @@
                     <div class="bouton-connexion" id="bouton-connexion-acceuil">
                         <a href="<?= $router->generate('login'); ?>">Se connecter</a>
                         <img src="../images/person-circle.svg" alt="se connecter">
-                    </div>
-
-                    <div class="panier">
                         <a href="<?= $router->generate('register'); ?>">Inscription</a>
                         <img src="../images/bag-fill.svg" alt="panier">
                     </div>
+
+                    <div class="panier">
+
+                    </div>
                 </div>
             </div>
-            
+
             <nav class="menu">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li> <a href="<?= $router->generate('accueil'); ?>">Accueil</a></li>
                     <li><a href="#">Machine à café à grain</a></li>
                     <li><a href="#">Machine à café à expresso</a></li>
                     <li class="dropdown">

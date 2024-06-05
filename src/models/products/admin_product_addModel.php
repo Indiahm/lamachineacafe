@@ -118,6 +118,11 @@ function checkCategoryExists($categoryId): bool
     }
 }
 
+function handleDatabaseError($e) {
+    echo '<div style="color: red;">';
+    echo 'Erreur : ' . htmlspecialchars($e->getMessage());
+    echo '</div>';
+}
 
 
 // Appel à la fonction pour récupérer les catégories

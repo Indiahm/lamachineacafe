@@ -119,6 +119,13 @@
                 <label for="categorie_id">Catégorie</label>
             </div>
 
+            <div class="form-floating mb-3">
+                <input type="file" name="image" id="image" class="form-control">
+                <label for="image">Image du produit</label>
+                <?= $errorMessage['image']; ?>
+            </div>
+
+
             <div class="row">
                 <div class="col-md-6">
                     <input type="submit" value="Envoyer" class="btn btn-success w-100 py-2">
