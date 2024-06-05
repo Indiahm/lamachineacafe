@@ -27,47 +27,6 @@ function updateUser()
     }
 }
 
-// Fonction pour récupérer les données de l'utilisateur depuis la base de données
-function getUser()
-{
-    global $db;
-
-    try {
-        $sql = 'SELECT email, role_id FROM users WHERE uuid = :uuid'; // Utilisez 'uuid' à la place de 'id'
-        $query = $db->prepare($sql);
-        $query->execute(['uuid' => $_GET['uuid']]); // Utilisez 'uuid' à la place de 'id'
-        return $query->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        if ($_ENV['DEBUG'] == 'true') {
-            dump($e->getMessage());
-            die;
-        } else {
-            alert('Une erreur est survenue. Merci de réessayer plus tard', 'danger');
-        }
-    }
-}
-
-function checkAlreadyExistEmail(): mixed
-{
-    global $db;
-
-    if (!empty($_GET['uuid'])) { // Utilisez 'uuid' à la place de 'id'
-        $userData = getUser();
-        if ($userData && $userData['email'] === $_POST['email']) {
-            return false; // L'email existe déjà pour cet utilisateur
-        }
-    }
-
-    $sql = 'SELECT COUNT(*) FROM users WHERE email = :email';
-    $query = $db->prepare($sql);
-    $query->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-    $query->execute();
-    $count = $query->fetchColumn();
-
-    return $count > 0; // Retourne vrai si l'email existe déjà dans la base de données
-}
-
-
 function addUser()
 {
     global $db;
