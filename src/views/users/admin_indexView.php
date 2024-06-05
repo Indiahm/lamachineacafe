@@ -54,7 +54,7 @@
                             <td class="text-center align-middle"><?= htmlspecialchars($user->first_name); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->last_name); ?></td>
                             <td class="table-light text-center align-middle">
-                                <a href="<?= $router->generate('editUser', ['id' =>  $user->id]); ?>" class="btn btn-primary btn-sm mr-2">Modifier</a>
+                            <a href="<?= $router->generate('editUser', ['uuid' => $user->uuid]); ?>" class="btn btn-primary btn-sm mr-2">Modifier</a>
                             </td>
                         </tr>
                     <?php } ?>

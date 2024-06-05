@@ -2,12 +2,6 @@
 
 // Vérification de la soumission du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérification si l'utilisateur a été déconnecté en raison d'une inactivité
-    checkSessionTimeout();
-
-
-// Vérification de la soumission du formulaire
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des données du formulaire
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -17,13 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user) {
         // Enregistrement de la dernière connexion de l'utilisateur
-        saveLastLogin($user['id']);
+        saveLastLogin($user['uuid']); // Modifier pour utiliser UUID
 
         // Récupération du rôle de l'utilisateur
-        $role = getUserRole($user['id']);
+        $role = getUserRole($user['uuid']); // Modifier pour utiliser UUID
 
         // Enregistrement des données dans la session
-        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_id'] = $user['uuid']; // Modifier pour utiliser UUID
         $_SESSION['role'] = $role;
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
@@ -45,7 +39,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         addMessage('error', $errorMessage);
     }
 }
-}
-
-
-

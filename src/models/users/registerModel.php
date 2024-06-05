@@ -1,8 +1,13 @@
 <?php
 
+use Ramsey\Uuid\Uuid;
+
 function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstName, $lastName)
 {
     global $db;
+
+    // Générer un UUID
+    $uuid = Uuid::uuid4()->toString();
 
     // Vérifier si l'email est déjà utilisé
     $sql = "SELECT COUNT(*) AS count FROM users WHERE email = :email";
@@ -17,8 +22,8 @@ function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstN
     // Hasher le mot de passe
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insérer l'utilisateur dans la base de données
-    $sql = "INSERT INTO users (email, pwd, shipping_address, phone_number, first_name, last_name) VALUES (:email, :pwd, :shipping_address, :phone_number, :first_name, :last_name)";
+    // Insérer l'utilisateur dans la base de données avec l'UUID généré
+    $sql = "INSERT INTO users (email, pwd, shipping_address, phone_number, first_name, last_name, uuid) VALUES (:email, :pwd, :shipping_address, :phone_number, :first_name, :last_name, :uuid)";
     $query = $db->prepare($sql);
     $success = $query->execute([
         'email' => $email,
@@ -26,11 +31,13 @@ function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstN
         'shipping_address' => $shippingAddress,
         'phone_number' => $phoneNumber,
         'first_name' => $firstName,
-        'last_name' => $lastName
+        'last_name' => $lastName,
+        'uuid' => $uuid
     ]);
 
     return $success;
 }
+
 
 function displayMessage($message, $type = 'success') {
     if ($type === 'success') {
@@ -40,42 +47,19 @@ function displayMessage($message, $type = 'success') {
     }
 }
 
-function checkExistingUserInfo($firstName, $lastName, $shippingAddress, $phoneNumber)
+function checkExistingPhoneNumber($phoneNumber)
 {
     global $db;
-    
-    // Vérifier si le prénom, le nom, l'adresse de livraison et le numéro de téléphone existent déjà dans la base de données
-    $sql = "SELECT * FROM users WHERE first_name = :first_name OR last_name = :last_name OR shipping_address = :shipping_address OR phone_number = :phone_number";
+
+    // Vérifier si le numéro de téléphone existe déjà dans la base de données
+    $sql = "SELECT COUNT(*) AS count FROM users WHERE phone_number = :phone_number";
     $query = $db->prepare($sql);
-    $query->execute([
-        'first_name' => $firstName,
-        'last_name' => $lastName,
-        'shipping_address' => $shippingAddress,
-        'phone_number' => $phoneNumber
-    ]);
+    $query->execute(['phone_number' => $phoneNumber]);
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
-    // Créer un tableau pour stocker les champs existants
-    $existingFields = [];
-
-    // Vérifier chaque champ pour déterminer lesquels existent déjà
-    if ($result) {
-        if ($result['first_name'] === $firstName) {
-            $existingFields[] = 'Prénom';
-        }
-        if ($result['last_name'] === $lastName) {
-            $existingFields[] = 'Nom';
-        }
-        if ($result['shipping_address'] === $shippingAddress) {
-            $existingFields[] = 'Adresse de livraison';
-        }
-        if ($result['phone_number'] === $phoneNumber) {
-            $existingFields[] = 'Numéro de téléphone';
-        }
-    }
-
-    return $existingFields;
+    return $result['count'] > 0;
 }
+
 
 
 

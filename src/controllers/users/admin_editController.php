@@ -14,31 +14,32 @@ if (!empty($_POST)) {
         }
     }
 
-    // Enregistrer l'utilisateur dans la base de données
-    if (!empty($_POST['email'])) {
-        if (!$errorMessage['email']) {
-            // Ajoutez la récupération du rôle à partir des données POST
-            $role_id = $_POST['role_id'];
+    // Enregistrer le rôle de l'utilisateur dans la base de données
+    if (!$errorMessage['email']) {
+        // Assurez-vous que l'UUID de l'utilisateur à éditer est présent
+        if (!empty($_GET['uuid'])) {
+            // Assurez-vous que le rôle est sélectionné
+            if (!empty($_POST['role_id'])) {
+                // Ajoutez la récupération du rôle à partir des données POST
+                $role_id = $_POST['role_id'];
+                
+                // Mettre à jour le rôle de l'utilisateur dans la base de données
+                updateUser($role_id, $_GET['uuid']);
 
-            if (!empty($_GET['id'])) {
-                // Ajoutez le champ role_id à $data pour la mise à jour de l'utilisateur
-                $_POST['role_id'] = $role_id;
-                updateUser();
+                // Rediriger vers la liste des utilisateurs ou afficher un message de succès
+                // header('Location:' . $router->generate('users'));
+                // die;
+                alert('Le rôle de l\'utilisateur a été mis à jour avec succès', 'success');
             } else {
-                // Ajoutez le champ role_id à $_POST pour l'ajout d'un nouvel utilisateur
-                $_POST['role_id'] = $role_id;
-                addUser();
+                alert('Le rôle de l\'utilisateur est obligatoire', 'danger');
             }
-            // Rediriger vers la liste des utilisateurs
-            // header('Location:' . $router->generate('users'));
-            // die;
         } else {
-            alert('Erreur lors de l\'ajout ou de la mise à jour de l\'utilisateur');
+            alert('UUID de l\'utilisateur manquant pour la mise à jour du rôle', 'danger');
         }
     } else {
-        alert('Merci de remplir tous les champs obligatoires');
+        alert('Erreur lors de la mise à jour du rôle de l\'utilisateur', 'danger');
     }
-} else if (!empty($_GET['id'])) {
+} else if (!empty($_GET['uuid'])) {
     // Récupérer les données de l'utilisateur à éditer
     $_POST = (array) getUser();
 }
@@ -47,4 +48,3 @@ $roles = getRoles();
 checkAdminAccess($router);
 
 ?>
-

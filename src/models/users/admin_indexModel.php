@@ -1,18 +1,17 @@
 <?php
 
-
 function getUsers()
 {
     global $db;
 
-    $sql = 'SELECT id, email, pwd AS pwd, role_id, modified, created, lastLogin, shipping_address, phone_number, first_name, last_name FROM users';
+    $sql = 'SELECT uuid, email, pwd AS pwd, role_id, modified, created, lastLogin, shipping_address, phone_number, first_name, last_name FROM users'; // Remplacez 'id' par 'uuid'
     $query = $db->prepare($sql);
     $query->execute();
 
     return $query->fetchAll();
 }
 
- function getRoleName($roleId)
+function getRoleName($roleId)
 {
     global $db;
     try {
@@ -20,14 +19,15 @@ function getUsers()
         $query = $db->prepare($sql);
         $query->execute(['id' => $roleId]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
-        return $result ? $result['name'] : 'N/A'; 
+        return $result ? $result['name'] : 'N/A';
     } catch (PDOException $e) {
         return 'N/A';
     }
 }
 
 // Fonction pour récupérer les utilisateurs avec pagination
-function getUsersWithPagination($offset, $limit) {
+function getUsersWithPagination($offset, $limit)
+{
     global $db;
 
     $sql = "SELECT * FROM users LIMIT :limit OFFSET :offset";
@@ -40,7 +40,8 @@ function getUsersWithPagination($offset, $limit) {
 }
 
 // Fonction pour obtenir le nombre total d'utilisateurs
-function getTotalUsersCount() {
+function getTotalUsersCount()
+{
     global $db;
 
     $sql = "SELECT COUNT(*) AS total FROM users";

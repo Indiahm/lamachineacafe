@@ -21,11 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!isValidPassword($password)) {
             $error_message = "Le mot de passe doit contenir au moins 8 caractères, avec au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
         } else {
-            // Vérifier si les informations existent déjà dans la base de données
-            if (checkExistingUserInfo($firstName, $lastName, $shippingAddress, $phoneNumber)) {
-                $existingFields = ['Prénom', 'Nom', 'Adresse de livraison', 'Numéro de téléphone'];
-                $existingFieldsStr = implode(', ', $existingFields);
-                $error_message = "Les informations suivantes existent déjà : $existingFieldsStr.";
+            // Vérifier si le numéro de téléphone existe déjà dans la base de données
+            if (checkExistingPhoneNumber($phoneNumber)) {
+                $error_message = "Le numéro de téléphone existe déjà.";
             } else {
                 // Appeler la fonction pour enregistrer l'utilisateur
                 $registrationSuccess = registerUser($email, $password, $shippingAddress, $phoneNumber, $firstName, $lastName);
@@ -45,5 +43,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
-?>

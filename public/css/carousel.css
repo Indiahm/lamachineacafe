@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fcf9f2;
+    margin: 0;
+    font-family: "League Spartan", sans-serif;
+}
+
+.carousel-items1 {
+    display: flex;
+    overflow-x: auto;
+    padding: 1rem 0;
+    list-style: none; /* Supprime les puces des listes */
+    margin: 0; /* Supprime la marge par défaut des <ul> */
+    scroll-snap-type: x mandatory; /* Pour un défilement plus fluide */
+}
+
+.carousel-item1 {
+    flex-direction: row;
+
+    margin-left: 1rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 450px;
+    scroll-snap-align: start; /* Pour aligner les articles correctement */
+    background-color: #fff; /* Pour une meilleure visualisation */
+    /* border: 1px solid #ddd; */
+    padding: 3rem;
+    text-align: center;
+}
+
+.carousel-item1:first-child {
+    margin-left: 0; /* Enlève la marge à gauche du premier élément */
+}
+
+.imageproduit {
+    height: 50px;
+    width: 50px;
+}
+
+.carousel{
+    display: flex;
+    overflow-x: scroll;
+
+}
+

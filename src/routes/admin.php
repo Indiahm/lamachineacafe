@@ -12,7 +12,7 @@ $router->map( 'GET|POST', $admin . '/connexion', 'users/login', 'login');
 $router->map( 'GET', $admin . '/deconnexion', 'users/admin_logout', 'logout');
 $router->map( 'GET', $admin . '/mot-de-passe-oublie', '', 'lostPassword'); 
 $router->map( 'GET', $admin . '/utilisateurs', 'users/admin_index', 'users'); 
-$router->map( 'GET|POST', $admin . '/utilisateurs/editer/[i:id]', 'users/admin_edit', 'editUser');
+$router->map('GET|POST', $admin . '/utilisateurs/editer/[uuid:uuid]', 'users/admin_edit', 'editUser');
 $router->map( 'GET|POST', $admin . '/utilisateurs/editer/', 'users/admin_edit', 'addUser'); 
 
 // Produits
