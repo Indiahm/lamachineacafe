@@ -7,6 +7,11 @@ $public = '';
 
 $router->map('GET', $public . '/accueil', 'accueil/public_accueil', 'accueil');
 
+$router->map('GET|POST', $public . '/grain', 'accueil/public_grain', 'grain');
+
+$router->map('GET|POST', $public . '/expresso', 'accueil/public_expresso', 'expresso');
+
+
 
 // Route pour l'inscription
 $router->map('GET|POST', $public . '/inscription', 'users/register', 'register');

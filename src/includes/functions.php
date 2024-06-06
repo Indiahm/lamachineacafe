@@ -233,3 +233,16 @@ function getProductss() {
         die('Erreur : ' . $e->getMessage());
     }
 }
+
+function getProductsByCategoryName($categoryName) {
+    global $db;
+    try {
+        $sql = 'SELECT p.* FROM produits p JOIN categories c ON p.categorie_id = c.id WHERE c.nom = :category_name';
+        $query = $db->prepare($sql);
+        $query->bindParam(':category_name', $categoryName, PDO::PARAM_STR);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+}

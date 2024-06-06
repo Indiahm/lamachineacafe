@@ -42,8 +42,8 @@
             <nav class="menu">
                 <ul>
                     <li> <a href="<?= $router->generate('accueil'); ?>">Accueil</a></li>
-                    <li><a href="#">Machine à café à grain</a></li>
-                    <li><a href="#">Machine à café à expresso</a></li>
+                    <li> <a href="<?= $router->generate('grain'); ?>">Machine à café à grain</a></li>
+                    <li> <a href="<?= $router->generate('expresso'); ?>">Machine à café à expresso</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropbtn">Cafetières</a>
                         <div class="dropdown-content">
