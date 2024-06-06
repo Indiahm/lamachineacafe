@@ -11,6 +11,9 @@ $router->map('GET|POST', $public . '/grain', 'accueil/public_grain', 'grain');
 
 $router->map('GET|POST', $public . '/expresso', 'accueil/public_expresso', 'expresso');
 
+$router->map('GET|POST', $public . '/cafetieres', 'accueil/public_cafetieres', 'cafetieres');
+
+
 
 
 // Route pour l'inscription

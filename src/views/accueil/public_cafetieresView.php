@@ -15,8 +15,8 @@
 <body>
 
 <div class="container">
-<h1 class="mb-4">Machine à Café Expresso</h1>
-<p class="p">Ici se trouve la liste des produits Expresso</p>
+<h1 class="mb-4">Toute nos Cafetières</h1>
+<p class="p">Ici se trouve la liste des Cafetières disponible.</p>
 <div class="ligne"></div>
 
 

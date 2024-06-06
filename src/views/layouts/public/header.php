@@ -13,7 +13,7 @@
     <header>
         <div class="bandeau">
             <div>
-                <h2>Livraison gratuite à partir de 50 euros</h2>
+                <h2 class="gratuit">Livraison gratuite à partir de 50 euros</h2>
             </div>
         </div>
 
@@ -44,15 +44,7 @@
                     <li> <a href="<?= $router->generate('accueil'); ?>">Accueil</a></li>
                     <li> <a href="<?= $router->generate('grain'); ?>">Machine à café à grain</a></li>
                     <li> <a href="<?= $router->generate('expresso'); ?>">Machine à café à expresso</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">Cafetières</a>
-                        <div class="dropdown-content">
-                            <a href="#">Catégorie 1</a>
-                            <a href="#">Catégorie 2</a>
-                            <a href="#">Catégorie 3</a>
-                            <a href="#">Catégorie 4</a>
-                        </div>
-                    </li>
+                    <li> <a href="<?= $router->generate('cafetieres'); ?>">Cafetières</a></li>
                     <li><a href="#">Nos cafés en grain</a></li>
                     <li><a href="#">Nos cafés moulus</a></li>
                     <li><a href="#">Nous découvrir</a></li>

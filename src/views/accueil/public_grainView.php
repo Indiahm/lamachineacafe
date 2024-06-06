@@ -15,8 +15,8 @@
 <body>
 
 <div class="container">
-<h1 class="mb-4">Liste des Produits Café</h1>
-<p class="p">Ici se trouve la liste des produits pour le café.</p>
+<h1 class="mb-4">Machine à Café à Grain</h1>
+<p class="p">Ici se trouve la liste des machines à café à grain.</p>
 <div class="ligne"></div>
 
 
