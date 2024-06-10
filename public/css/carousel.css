@@ -1,0 +1,43 @@
+#carouselExampleControls {
+    margin-bottom: 50px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.carousel-control-prev {
+    left: 20px;
+}
+
+.carousel-control-next {
+    right: 20px;
+}
+
+.carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Ajoute un fond semi-transparent */
+    padding: 20px;
+    /* Ajoute de l'espace autour du texte */
+    color: white;
+    /* Couleur du texte */
+}
+

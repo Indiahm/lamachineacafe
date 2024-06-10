@@ -1,0 +1,105 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    position: relative;
+    max-width: 500px;
+    height: 550px; 
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    overflow: hidden; /* Empêche le débordement du contenu */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 400px; /* Réglez la hauteur sur une valeur fixe pour toutes les images */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.card-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.details {
+    display: inline-block;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    text-decoration: none; 
+    color: #fff; 
+    background-color: #a47551; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.details:hover {
+    background-color: #d0b49f; 
+}
+
+
+.btn-primary {
+    background-color: #a47551;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #d0b49f;
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333; /* Couleur du texte */
+}
+
+/* Style pour la ligne */
+.ligne {
+    border-top: 2px solid #ccc; /* Couleur et épaisseur de la ligne */
+    margin: 20px 0; /* Marge au-dessus et en dessous de la ligne */
+}
+
+/* Style pour le paragraphe */
+.p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666; /* Couleur du texte */
+}
+
+
+.gratuit {
+    font-size: 20px;
+}
