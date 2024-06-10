@@ -10,7 +10,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/acceuil.css">
+    <link rel="stylesheet" href="../css/produit.css">
+
 </head>
 <body>
 
@@ -27,7 +28,6 @@
                     <img src="<?= htmlspecialchars($product['image']); ?>" class="card-img-top" alt="<?= htmlspecialchars($product['nom']); ?>">
                     <div class="card-body">
                         <h5 class="card-title"><?= htmlspecialchars($product['nom']); ?></h5>
-                        <p class="card-text"><?= htmlspecialchars($product['description']); ?></p>
                         <p class="card-text"><strong>Prix :</strong> <span style="font-weight: bold;"><?= htmlspecialchars($product['prix']); ?> €</span></p>
                         <a href="<?= $router->generate('detailsProducts', ['id' => $product['id']]); ?>" class="btn btn-primary">Voir les détails</a>
                     </div>

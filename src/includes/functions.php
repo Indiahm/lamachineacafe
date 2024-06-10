@@ -101,7 +101,6 @@ function searchItems($table, $column, $searchTerm)
     $query->execute();
 
     return $query->fetchAll(PDO::FETCH_OBJ);
-
 }
 
 
@@ -222,7 +221,8 @@ function checkAlreadyExistEmail(): mixed
 }
 
 
-function getProductss() {
+function getProductss()
+{
     global $db;
     try {
         $sql = 'SELECT * FROM produits';
@@ -234,13 +234,39 @@ function getProductss() {
     }
 }
 
-function getProductsByCategoryName($categoryName) {
+function getProductsByCategoryName($categoryName)
+{
     global $db;
     try {
         $sql = 'SELECT p.* FROM produits p JOIN categories c ON p.categorie_id = c.id WHERE c.nom = :category_name';
         $query = $db->prepare($sql);
         $query->bindParam(':category_name', $categoryName, PDO::PARAM_STR);
         $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+}
+
+function getProductsByModels($desiredModels)
+{
+    global $db;
+    try {
+        // Créer une liste de paramètres pour les modèles désirés
+        $modelPlaceholders = implode(', ', array_fill(0, count($desiredModels), '?'));
+
+        // Requête SQL pour sélectionner les produits avec des modèles spécifiques
+        $sql = 'SELECT * FROM produits WHERE modele IN (' . $modelPlaceholders . ')';
+
+        $query = $db->prepare($sql);
+
+        // Binder les valeurs des paramètres
+        foreach ($desiredModels as $index => $model) {
+            $query->bindValue($index + 1, $model, PDO::PARAM_STR);
+        }
+
+        $query->execute();
+
         return $query->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die('Erreur : ' . $e->getMessage());

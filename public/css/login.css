@@ -101,29 +101,3 @@
     text-decoration: underline;
 }
 
-.connexion {
-    display: inline-block;
-    margin: auto;
-    background-color: #a47551;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none; /* Supprime le soulignement par défaut pour les liens */
-}
-
-.connexion:hover {
-    background-color: #523a28;
-}
-
-/* Style du lien d'inscription */
-.inscription {
-    color: green;
-}
-
-.inscription:hover {
-    color: black; /* Couleur bleue foncée au survol */
-}

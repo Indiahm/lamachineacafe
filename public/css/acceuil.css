@@ -8,12 +8,14 @@ body {
 }
 
 .card {
-
+    position: relative;
     max-width: 500px;
+    height: 550px; 
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
+    overflow: hidden; /* Empêche le débordement du contenu */
 }
 
 .card:hover {
@@ -21,13 +23,21 @@ body {
 }
 
 .card-img-top {
+    width: 100%;
+    height: 400px; /* Réglez la hauteur sur une valeur fixe pour toutes les images */
+    object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    max-height: 200px;
-    object-fit: cover;
 }
 
+
 .card-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
 }
 
@@ -37,10 +47,23 @@ body {
     margin-bottom: 15px;
 }
 
-.card-text {
-    color: #6c757d;
-    margin-bottom: 15px;
+.details {
+    display: inline-block;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    text-decoration: none; 
+    color: #fff; 
+    background-color: #a47551; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
+
+.details:hover {
+    background-color: #d0b49f; 
+}
+
 
 .btn-primary {
     background-color: #a47551;
@@ -76,67 +99,6 @@ h1 {
     color: #666; /* Couleur du texte */
 }
 
-
-
-#carouselExampleControls {
-    margin-bottom: 50px;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #000;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.carousel-control-prev {
-    left: 20px;
-}
-
-.carousel-control-next {
-    right: 20px;
-}
-
-.carousel-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Ajoute un fond semi-transparent */
-    padding: 20px;
-    /* Ajoute de l'espace autour du texte */
-    color: white;
-    /* Couleur du texte */
-}
-
-.details {
-    display: inline-block;
-    padding: 10px 20px; 
-    font-size: 16px; 
-    text-decoration: none; 
-    color: #fff; 
-    background-color: #a47551; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
-}
-
-.details:hover {
-    background-color: #d0b49f; 
-}
 
 .gratuit {
     font-size: 20px;

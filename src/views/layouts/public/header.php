@@ -11,26 +11,19 @@
 
 <body>
     <header>
-        <div class="bandeau">
-            <div>
-                <h2 class="gratuit">Livraison gratuite à partir de 50 euros</h2>
-            </div>
-        </div>
+
 
         <div class="header">
-            <div class="menu">
+            <div class="connexion">
                 <div class="logo-bar">
                     <div>
                         <img src="../images/logo3.svg" width="300" height="200" alt="logo">
                     </div>
-
-
-
                     <div class="bouton-connexion" id="bouton-connexion-acceuil">
                         <a href="<?= $router->generate('login'); ?>">Se connecter</a>
-                        <img src="../images/person-circle.svg" alt="se connecter">
+                        <img class="imgggg" src="../images/person-circle.svg" alt="se connecter">
                         <a href="<?= $router->generate('register'); ?>">Inscription</a>
-                        <img src="../images/bag-fill.svg" alt="panier">
+                        <img class="imgggg" src="../images/bag-fill.svg" alt="panier">
                     </div>
 
                     <div class="panier">

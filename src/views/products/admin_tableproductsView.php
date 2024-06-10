@@ -22,7 +22,6 @@ foreach ($successes as $success) :
         <thead>
             <tr>
                 <th scope="col" class="text-center">Nom</th>
-                <th scope="col" class="text-center">Description</th>
                 <th scope="col" class="text-center">Prix</th>
                 <th scope="col" class="text-center">Modèle</th>
                 <th scope="col" class="text-center">Stock</th>
@@ -40,7 +39,6 @@ foreach ($successes as $success) :
             <?php foreach ($products as $product) { ?>
                 <tr>
                     <td class="table-light text-center align-middle"><?= htmlentities($product->nom); ?></td>
-                    <td class="table-light text-center align-middle"><?= htmlentities($product->description); ?></td>
                     <td class="table-light text-center align-middle"><?= htmlentities($product->prix); ?></td>
                     <td class="table-light text-center align-middle"><?= htmlentities($product->modele); ?></td>
                     <td class="table-light text-center align-middle"><?= htmlentities($product->stock); ?></td>
@@ -81,8 +79,8 @@ foreach ($successes as $success) :
 <?php get_footer('admin'); ?>
 
 <style>
-  .ligne {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-  }
+    .ligne {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
 </style>

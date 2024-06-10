@@ -13,7 +13,9 @@ $router->map('GET|POST', $public . '/expresso', 'accueil/public_expresso', 'expr
 
 $router->map('GET|POST', $public . '/cafetieres', 'accueil/public_cafetieres', 'cafetieres');
 
+$router->map('GET|POST', $public . '/machine', 'products/public_productmachine', 'machine');
 
+$router->map('GET|POST', $public . '/cafe', 'products/public_productcoffee', 'cafe');
 
 
 // Route pour l'inscription
