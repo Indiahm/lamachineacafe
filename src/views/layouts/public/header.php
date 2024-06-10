@@ -40,7 +40,7 @@
                     <li> <a href="<?= $router->generate('cafetieres'); ?>">Cafetières</a></li>
                     <li><a href="#">Nos cafés en grain</a></li>
                     <li><a href="#">Nos cafés moulus</a></li>
-                    <li><a href="#">Nous découvrir</a></li>
+                    <li><a href=<?= $router->generate('info'); ?>>Nous découvrir</a></li>
                 </ul>
             </nav>
         </div>

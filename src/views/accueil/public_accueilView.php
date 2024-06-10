@@ -1,4 +1,4 @@
-<?php get_header('public');
+<?php get_header('Accueil','public');
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Machine à Café en grain</h5>
                         <p>Découvrez notre sélection de machines à café en grain pour une expérience caféine exceptionnelle.</p>
-                        <a href="<?= $router->generate('detailsProducts', ['id' => $product['id']]); ?>" class="details">En savoir d'avantage</a>
+                        <a href="<?= $router->generate('grain'); ?>" class="details">En savoir d'avantage</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -36,7 +36,7 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Machine à expresso</h5>
                         <p>Explorez notre gamme de machines à expresso pour savourer des cafés riches et aromatiques à tout moment de la journée.</p>
-                        <a href="<?= $router->generate('detailsProducts', ['id' => $product['id']]); ?>" class="details">En savoir d'avantage</a>
+                        <a href="<?= $router->generate('expresso'); ?>" class="details">En savoir d'avantage</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -44,7 +44,7 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Cafetières</h5>
                         <p>Découvrez nos cafetières pour préparer des cafés filtre de qualité supérieure avec facilité et élégance.</p>
-                        <a href="<?= $router->generate('detailsProducts', ['id' => $product['id']]); ?>" class="details">En savoir d'avantage</a>
+                        <a href="<?= $router->generate('cafetieres'); ?>" class="details">En savoir d'avantage</a>
                     </div>
                 </div>
             </div>

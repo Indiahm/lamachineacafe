@@ -17,6 +17,9 @@ $router->map('GET|POST', $public . '/machine', 'products/public_productmachine',
 
 $router->map('GET|POST', $public . '/cafe', 'products/public_productcoffee', 'cafe');
 
+$router->map('GET', $public . '/nous-decouvrir', 'accueil/public_info', 'info');
+
+
 
 // Route pour l'inscription
 $router->map('GET|POST', $public . '/inscription', 'users/register', 'register');
