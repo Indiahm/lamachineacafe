@@ -75,7 +75,7 @@
                     <form action="/panier?action=add" method="post">
                         <input type="hidden" name="product_id" value="<?= $product_details['id'] ?>">
                         <input type="hidden" name="price" value="<?= $product_details['prix'] ?>">
-                        <input type="number" name="quantity" min="1" value="1">
+                        <p>Quantité :</p><input type="number" name="quantity" min="1" value="1">
                         <button type="submit" class="btn btn-primary">Ajouter au panier</button>
                     </form>
                 </div>

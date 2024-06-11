@@ -77,6 +77,15 @@ function checkAdminAccess($router)
     }
 }
 
+function checkUserAccess($router)
+{
+    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'utilisateur') {
+        header('Location: ' . $router->generate('login'));
+        exit();
+    }
+}
+
+
 
 function generateCsrfToken()
 {

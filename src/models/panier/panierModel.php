@@ -13,7 +13,7 @@ function ajouterProduitAuPanier($db, $userId, $produit_id, $quantite) {
         // Vérifier si le produit existe dans la table produits
         $query = $db->prepare("SELECT * FROM produits WHERE id = ?");
         $query->execute([$produit_id]);
-        $result = $query->fetch();
+        $result = $query->fetch(PDO::FETCH_ASSOC); // Utilisation de fetch(PDO::FETCH_ASSOC) pour obtenir un array associatif
         if (!$result) {
             // Le produit n'existe pas dans la table produits, afficher un message d'erreur
             echo "Le produit sélectionné n'existe pas.";
@@ -22,7 +22,7 @@ function ajouterProduitAuPanier($db, $userId, $produit_id, $quantite) {
         // Vérifier si le produit existe déjà dans le panier
         $query = $db->prepare("SELECT * FROM panier WHERE user_id = ? AND produit_id = ?");
         $query->execute([$userId, $produit_id]);
-        $result = $query->fetch();
+        $result = $query->fetch(PDO::FETCH_ASSOC); // Utilisation de fetch(PDO::FETCH_ASSOC) pour obtenir un array associatif
 
         if ($result) {
             // Mettre à jour la quantité du produit dans le panier
@@ -40,6 +40,7 @@ function ajouterProduitAuPanier($db, $userId, $produit_id, $quantite) {
         exit();
     }
 }
+
 
 function supprimerProduitDuPanier($db, $userId, $produitId) {
     $query = $db->prepare("DELETE FROM panier WHERE user_id = ? AND produit_id = ?");

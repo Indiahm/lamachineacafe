@@ -81,7 +81,7 @@
                 <div class="col-md-6 mb-3">
                     <div class="form-floating">
                         <?php $error = checkEmptyFields('watts'); ?>
-                        <input type="number" name="watts" id="watts" class="form-control <?= $error['class']; ?>" value="<?= getValue('watts'); ?>" placeholder="Watts">
+                        <input type="text" name="watts" id="watts" class="form-control <?= $error['class']; ?>" value="<?= getValue('watts'); ?>" placeholder="Watts">
                         <label for="watts">Watts</label>
                         <?= $errorMessage['watts']; ?>
                     </div>
@@ -97,9 +97,9 @@
             </div>
             <!-- Ajout de la sélection de la marque -->
             <div class="form-floating mb-3">
-                
+
                 <select name="marque_id" id="marque_id" class="form-select">
-                    <option value="" selected disabled>Sélectionner une marque</option> 
+                    <option value="" selected disabled>Sélectionner une marque</option>
                     <?php foreach ($marques as $marque) : ?>
                         <option value="<?= $marque['id']; ?>"><?= $marque['nom']; ?></option>
                     <?php endforeach; ?>

@@ -17,6 +17,15 @@ get_header($pageTitle, 'login');
 
 <body>
     <div class="container">
+        <?php if (isset($_SESSION['success_message'])) {
+            echo '<div class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
+            unset($_SESSION['success_message']); // Effacer le message de la session
+        } ?>
+        <?php if (isset($_SESSION['error_message'])) {
+            echo '<div class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
+            unset($_SESSION['error_message']); // Effacer le message de la session
+        }
+        ?>
         <h1>Votre Panier</h1>
         <table>
             <thead>
@@ -42,7 +51,8 @@ get_header($pageTitle, 'login');
                             </td>
                             <td><?= isset($item['nom']) ? htmlspecialchars($item['nom']) : '' ?></td>
                             <td><?= $item['prix'] ?> €</td>
-                            <td> <form action="/panier?action=update" method="POST">
+                            <td>
+                                <form action="/panier?action=update" method="POST">
                                     <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                     <input type="number" name="quantity" value="<?= $item['quantite'] ?>" min="1">
                                     <input type="submit" value="Mettre à jour">
