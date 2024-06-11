@@ -46,7 +46,6 @@ function ajouterProduitAuPanier($db, $userId, $produit_id, $quantite) {
             $query->execute([$userId, $produit_id, $quantite]);
         }
 
-        return "Produit ajouté au panier avec succès.";
     } catch (PDOException $e) {
         // Gérer l'erreur de requête
         error_log("Erreur lors de l'ajout du produit au panier : " . $e->getMessage());
@@ -58,7 +57,6 @@ function supprimerProduitDuPanier($db, $userId, $produitId) {
     try {
         $query = $db->prepare("DELETE FROM panier WHERE user_id = ? AND produit_id = ?");
         $query->execute([$userId, $produitId]);
-        return "Produit supprimé du panier avec succès.";
     } catch (PDOException $e) {
         // Gérer l'erreur de requête
         error_log("Erreur lors de la suppression du produit du panier : " . $e->getMessage());

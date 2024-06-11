@@ -21,29 +21,12 @@ $totalPrice = isset($_GET['total']) ? $_GET['total'] : 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paiement</title>
+    <!-- Ajout de Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/XVU3+4d6bN6djzG3XWmSitmZp3Sx1CiU6DGXw" crossorigin="anonymous">
     <style>
         /* Styles de base pour le formulaire */
         h1 {
             color: #343a40;
-        }
-
-        form {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .form-row {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #495057;
         }
 
         #card-element {
@@ -59,17 +42,21 @@ $totalPrice = isset($_GET['total']) ? $_GET['total'] : 0;
         }
 
         button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
             font-size: 16px;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        /* Ajout de styles personnalisés */
+        form {
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .form-row {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: 500;
         }
     </style>
     <script>
@@ -78,33 +65,35 @@ $totalPrice = isset($_GET['total']) ? $_GET['total'] : 0;
 </head>
 
 <body>
-    <h1>Paiement</h1>
-    <form action="process_payment.php" method="post" id="payment-form">
-        <div class="form-row">
-            <label for="card-element">
-                Carte de crédit ou de débit
-            </label>
-            <div id="card-element">
-                <!-- Un élément de carte sera inséré ici. -->
+    <div class="container">
+        <h1 class="text-center my-4">Paiement</h1>
+        <form action="process_payment.php" method="post" id="payment-form" class="p-4">
+            <div class="form-row">
+                <label for="card-element">
+                    Carte de crédit ou de débit
+                </label>
+                <div id="card-element" class="form-control">
+                    <!-- Un élément de carte sera inséré ici. -->
+                </div>
+                <!-- Utilisé pour afficher les erreurs -->
+                <div id="card-errors" role="alert"></div>
             </div>
-            <!-- Utilisé pour afficher les erreurs -->
-            <div id="card-errors" role="alert"></div>
-        </div>
-        <div class="form-row">
-            <label for="name">Nom complet</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-row">
-            <label for="email">Adresse e-mail</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-row">
-            <label for="address">Adresse de livraison</label>
-            <input type="text" id="address" name="address" required>
-        </div>
-        <!-- Ajoutez d'autres champs d'informations utilisateur si nécessaire -->
-        <button type="submit">Payer <?= htmlspecialchars($totalPrice, ENT_QUOTES, 'UTF-8') ?> €</button>
-    </form>
+            <div class="form-row">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" name="name" required class="form-control">
+            </div>
+            <div class="form-row">
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" required class="form-control">
+            </div>
+            <div class="form-row">
+                <label for="address">Adresse de livraison</label>
+                <input type="text" id="address" name="address" required class="form-control">
+            </div>
+            <!-- Ajoutez d'autres champs d'informations utilisateur si nécessaire -->
+            <button type="submit" class="btn btn-primary w-100">Payer <?= htmlspecialchars($totalPrice, ENT_QUOTES, 'UTF-8') ?> €</button>
+        </form>
+    </div>
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
@@ -167,4 +156,5 @@ $totalPrice = isset($_GET['total']) ? $_GET['total'] : 0;
         }
     </script>
 </body>
+
 </html>
