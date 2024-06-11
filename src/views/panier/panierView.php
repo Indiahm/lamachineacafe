@@ -1,6 +1,7 @@
 <?php
 // Définir le titre de la page
 $pageTitle = "Panier";
+
 // Inclure l'en-tête
 get_header($pageTitle, 'login');
 ?>
@@ -11,21 +12,22 @@ get_header($pageTitle, 'login');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $pageTitle ?></title>
+    <title><?= htmlspecialchars($pageTitle) ?></title>
     <link rel="stylesheet" href="../css/panier.css">
 </head>
 
 <body>
     <div class="container">
-        <?php if (isset($_SESSION['success_message'])) {
-            echo '<div class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
-            unset($_SESSION['success_message']); // Effacer le message de la session
-        } ?>
-        <?php if (isset($_SESSION['error_message'])) {
-            echo '<div class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
-            unset($_SESSION['error_message']); // Effacer le message de la session
-        }
-        ?>
+        <?php if (isset($_SESSION['success_message'])) : ?>
+            <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success_message']) ?></div>
+            <?php unset($_SESSION['success_message']); ?>
+        <?php endif; ?>
+        
+        <?php if (isset($_SESSION['error_message'])) : ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['error_message']) ?></div>
+            <?php unset($_SESSION['error_message']); ?>
+        <?php endif; ?>
+        
         <h1>Votre Panier</h1>
         <table>
             <thead>
@@ -43,25 +45,25 @@ get_header($pageTitle, 'login');
                     <?php foreach ($panier as $item) : ?>
                         <tr>
                             <td>
-                                <?php if (isset($item['image']) && !empty($item['image'])) : ?>
+                                <?php if (!empty($item['image'])) : ?>
                                     <img src="<?= htmlspecialchars($item['image']) ?>" alt="Image du produit" style="width: 100px;">
                                 <?php else : ?>
                                     <span>Aucune image disponible</span>
                                 <?php endif; ?>
                             </td>
-                            <td><?= isset($item['nom']) ? htmlspecialchars($item['nom']) : '' ?></td>
-                            <td><?= $item['prix'] ?> €</td>
+                            <td><?= htmlspecialchars($item['nom'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($item['prix']) ?> €</td>
                             <td>
                                 <form action="/panier?action=update" method="POST">
-                                    <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
-                                    <input type="number" name="quantity" value="<?= $item['quantite'] ?>" min="1">
+                                    <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['id']) ?>">
+                                    <input type="number" name="quantity" value="<?= htmlspecialchars($item['quantite']) ?>" min="1">
                                     <input type="submit" value="Mettre à jour">
                                 </form>
                             </td>
-                            <td><?= $item['prix'] * $item['quantite'] ?> €</td>
+                            <td><?= htmlspecialchars($item['prix'] * $item['quantite']) ?> €</td>
                             <td>
                                 <form action="/panier?action=delete" method="POST">
-                                    <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
+                                    <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['id']) ?>">
                                     <input type="submit" value="Supprimer">
                                 </form>
                             </td>
@@ -74,7 +76,9 @@ get_header($pageTitle, 'login');
                 <?php endif; ?>
             </tbody>
         </table>
-        <h3 class="total">Total à payer: <?= $totalPrice ?> €</h3>
+        <h3 class="total">Total à payer: <?= htmlspecialchars($totalPrice) ?> €</h3>
+        <a href="/paiement?total=<?= $totalPrice ?>" class="btn btn-primary">Passer au paiement</a>
+
     </div>
 </body>
 

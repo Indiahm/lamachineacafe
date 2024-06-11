@@ -3,7 +3,7 @@
         'name' => 'vadel/movies',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'daceeab3204a465cef8ec02589b08e23f66d05f0',
+        'reference' => '99dc32526f6f3e3a6a77b2b760b3dbb24c961265',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -88,6 +88,15 @@
                 0 => '4.7.6',
             ),
         ),
+        'stripe/stripe-php' => array(
+            'pretty_version' => 'v14.9.0',
+            'version' => '14.9.0.0',
+            'reference' => '7165f64ec1b19cb0ce288d553909cd68d8e6a3b1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stripe/stripe-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/deprecation-contracts' => array(
             'pretty_version' => 'v3.4.0',
             'version' => '3.4.0.0',
@@ -145,7 +154,7 @@
         'vadel/movies' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'daceeab3204a465cef8ec02589b08e23f66d05f0',
+            'reference' => '99dc32526f6f3e3a6a77b2b760b3dbb24c961265',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

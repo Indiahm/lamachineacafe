@@ -32,3 +32,6 @@ $router->map('GET|POST', $public . '/panier', 'panier/panier', 'panier');
 // Produit
 $router->map('GET|POST', $public . '/details-produits/[i:id]', 'products/public_productdetails', 'detailsProducts');
 
+
+// Paiement
+$router->map('GET|POST', $public . '/paiement', 'paiement/checkout', 'paiement');

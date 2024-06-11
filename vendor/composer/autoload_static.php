@@ -30,6 +30,7 @@ class ComposerStaticInit14b259b952ff223e46f158e45513084a
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
+            'Stripe\\' => 7,
         ),
         'R' => 
         array (
@@ -79,6 +80,10 @@ class ComposerStaticInit14b259b952ff223e46f158e45513084a
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
         'Ramsey\\Uuid\\' => 
         array (

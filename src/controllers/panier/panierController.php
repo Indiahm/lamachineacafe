@@ -1,9 +1,17 @@
 <?php
-
-
+// Assurez-vous que la session est démarrée
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Récupérer l'ID de l'utilisateur connecté
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'] ?? null;
+
+// Vérifiez que l'utilisateur est connecté
+if (!$userId) {
+    header('Location: /connexion');
+    exit();
+}
 
 // Initialiser la variable $totalPrice
 $totalPrice = 0;
@@ -16,32 +24,39 @@ if (isset($_GET['action'])) {
         case 'add':
             // Vérifier si les données du formulaire ont été envoyées
             if (isset($_POST['product_id'], $_POST['quantity'])) {
-                // Récupérer les données du formulaire
-                $productId = $_POST['product_id'];
-                $quantity = $_POST['quantity'];
-
-                // Ajouter le produit au panier
-                $_SESSION['success_message'] = "Le produit a été ajouté au panier avec succès.";
-                ajouterProduitAuPanier($db, $userId, $productId, $quantity);
+                // Récupérer les données du formulaire et les valider
+                $productId = intval($_POST['product_id']);
+                $quantity = intval($_POST['quantity']);
+                
+                if ($productId > 0 && $quantity > 0) {
+                    // Ajouter le produit au panier
+                    $_SESSION['success_message'] = "Le produit a été ajouté au panier avec succès.";
+                    $message = ajouterProduitAuPanier($db, $userId, $productId, $quantity);
+                    if ($message !== true) {
+                        $_SESSION['error_message'] = $message;
+                    }
+                } else {
+                    $_SESSION['error_message'] = "Données de produit invalides.";
+                }
             }
             break;
 
         case 'update':
             // Vérifier si les données du formulaire ont été envoyées
             if (isset($_POST['product_id'], $_POST['quantity'])) {
-                // Récupérer les données du formulaire
-                $productId = $_POST['product_id'];
-                $quantity = $_POST['quantity'];
+                // Récupérer les données du formulaire et les valider
+                $productId = intval($_POST['product_id']);
+                $quantity = intval($_POST['quantity']);
 
-                // Vérifier si les données du formulaire ont été envoyées
-                if (isset($_POST['product_id'], $_POST['quantity'])) {
-                    // Récupérer les données du formulaire
-                    $productId = $_POST['product_id'];
-                    $quantity = intval($_POST['quantity']); // Convertir en entier
-
+                if ($productId > 0 && $quantity > 0) {
                     // Mettre à jour la quantité du produit dans le panier
-                    $_SESSION['success_message'] = "Le panier à été modifié avec succès";
-                    mettreAJourQuantiteProduit($db, $userId, $productId, $quantity);
+                    $_SESSION['success_message'] = "Le panier a été modifié avec succès.";
+                    $message = mettreAJourQuantiteProduit($db, $userId, $productId, $quantity);
+                    if ($message !== true) {
+                        $_SESSION['error_message'] = $message;
+                    }
+                } else {
+                    $_SESSION['error_message'] = "Données de produit invalides.";
                 }
             }
             break;
@@ -49,12 +64,19 @@ if (isset($_GET['action'])) {
         case 'delete':
             // Vérifier si l'ID du produit à supprimer a été envoyé
             if (isset($_POST['product_id'])) {
-                // Récupérer l'ID du produit à supprimer
-                $productId = $_POST['product_id'];
+                // Récupérer l'ID du produit à supprimer et le valider
+                $productId = intval($_POST['product_id']);
 
-                // Supprimer le produit du panier
-                $_SESSION['error_message'] = "Le produit a été supprimé du panier avec succès.";
-                supprimerProduitDuPanier($db, $userId, $productId);
+                if ($productId > 0) {
+                    // Supprimer le produit du panier
+                    $_SESSION['success_message'] = "Le produit a été supprimé du panier avec succès.";
+                    $message = supprimerProduitDuPanier($db, $userId, $productId);
+                    if ($message !== true) {
+                        $_SESSION['error_message'] = $message;
+                    }
+                } else {
+                    $_SESSION['error_message'] = "Données de produit invalides.";
+                }
             }
             break;
 
@@ -82,14 +104,6 @@ if ($panier === null) {
 // Calculer le prix total du panier
 $totalPrice = 0;
 foreach ($panier as $item) {
-    if (isset($item['price']) && isset($item['quantity'])) {
-        $totalPrice += $item['price'] * $item['quantity'];
-    }
-}
-
-// Définir la variable $totalPrice
-$totalPrice = 0;
-foreach ($panier as $item) {
     if (isset($item['prix']) && isset($item['quantite'])) {
         $totalPrice += $item['prix'] * $item['quantite'];
     }
@@ -98,3 +112,4 @@ foreach ($panier as $item) {
 // Afficher la page du panier
 
 checkUserAccess($router);
+?>
