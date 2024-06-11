@@ -24,12 +24,24 @@
                         <span class="admin-name">Utilisateur | </span> <span class="name"> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></span>
                     </div>
 
+                    <div class="panier-logo">
+                        <a href="<?= $router->generate('panier'); ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                            </svg>
+                            <span>Mon Panier</span>
+                        </a>
+                    </div>
+
+
                     <div class="logout">
                         <a id="logout" class="nav-link logout-btn" href="<?= $router->generate('logout') ?>">
                             <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
                         </a>
                     </div>
                 </div>
+
+
             </div>
 
             <nav class="menu">

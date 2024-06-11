@@ -72,8 +72,12 @@
                     </tr>
                 </table>
                 <div class="product-buttons mt-4">
-                    <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    <a href="#" class="btn btn-secondary">Voir les avis</a>
+                    <form action="/panier?action=add" method="post">
+                        <input type="hidden" name="product_id" value="<?= $product_details['id'] ?>">
+                        <input type="hidden" name="price" value="<?= $product_details['prix'] ?>">
+                        <input type="number" name="quantity" min="1" value="1">
+                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                    </form>
                 </div>
             </div>
         </div>

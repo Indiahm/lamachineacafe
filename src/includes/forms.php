@@ -1,8 +1,5 @@
 <?php
 
-session_start();
-
-
 /**
  * Check if a field is empty
  * @param string $field

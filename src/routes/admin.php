@@ -8,7 +8,6 @@ $router->addMatchTypes(['uuid' => '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-
 
 
 // Routes administratives
-$router->map( 'GET|POST', $admin . '/connexion', 'users/login', 'login');
 $router->map( 'GET', $admin . '/deconnexion', 'users/admin_logout', 'logout');
 $router->map( 'GET', $admin . '/mot-de-passe-oublie', '', 'lostPassword'); 
 $router->map( 'GET', $admin . '/utilisateurs', 'users/admin_index', 'users'); 

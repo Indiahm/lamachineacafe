@@ -19,10 +19,13 @@ $router->map('GET|POST', $public . '/cafe', 'products/public_productcoffee', 'ca
 
 $router->map('GET', $public . '/nous-decouvrir', 'accueil/public_info', 'info');
 
+$router->map( 'GET|POST', $public . '/connexion', 'users/login', 'login');
 
 
 // Route pour l'inscription
 $router->map('GET|POST', $public . '/inscription', 'users/register', 'register');
+
+
 
 $router->map('GET|POST', $public . '/panier', 'panier/panier', 'panier');
 

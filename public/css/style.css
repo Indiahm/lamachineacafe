@@ -353,3 +353,14 @@ body {
   outline: none;
   box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.4);
 }
+
+.panier-logo {
+  display: flex;
+  align-items: center;
+}
+
+.panier-logo span {
+  margin-left: 10px;
+  font-size: 1em;
+  text-decoration: none;
+}
