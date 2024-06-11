@@ -1,4 +1,3 @@
 src/config/*.env
 vendor
 composer.lock
-src/config/.env
