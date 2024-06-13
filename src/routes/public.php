@@ -25,6 +25,9 @@ $router->map( 'GET|POST', $public . '/connexion', 'users/login', 'login');
 // Route pour l'inscription
 $router->map('GET|POST', $public . '/inscription', 'users/register', 'register');
 
+// Route pour le Mot de passe Oublié 
+$router->map('GET|POST', $public . '/mdp-oublie', 'users/mdpoublie', 'mdpoublie');
+
 
 
 $router->map('GET|POST', $public . '/panier', 'panier/panier', 'panier');

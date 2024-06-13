@@ -9,7 +9,7 @@
     <title>Connexion</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login.css">
-    
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -23,41 +23,6 @@
             </div>
 
             <div class="form-body">
-                <?php
-                // Récupération et affichage des messages d'erreur
-                $errors = getAndClearMessages('error');
-                foreach ($errors as $error) :
-                ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?= htmlspecialchars($error) ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endforeach; ?>
-
-                <?php
-                // Récupération et affichage des messages de succès
-                $successes = getAndClearMessages('success');
-                foreach ($successes as $success) :
-                ?>
-                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                        <?= htmlspecialchars($success) ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endforeach; ?>
-
-                <?php
-                // Affichage du message de succès d'inscription s'il est présent dans la session
-                if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'] === true) :
-                ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Inscription réussie ! Connectez-vous avec vos identifiants.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php
-                    // Supprimer la session après l'avoir affichée pour qu'elle ne soit plus affichée lors des rechargements de la page
-                    unset($_SESSION['registration_success']);
-                    ?>
-                <?php endif; ?>
 
                 <form method="POST" action="<?= $router->generate('login'); ?>">
                     <div class="form-group">
@@ -73,13 +38,25 @@
                     <div class="form-footer">
                         <button type="submit" class="connexion">Se connecter</button>
                         <div>
+                        <?php
+                    // Récupération et affichage des messages d'erreur'
+                    $errors = getAndClearMessages('error');
+                    displayErrorMessages($errors);
+
+                    // Récupération et affichage des messages de succès
+                    $successes = getAndClearMessages('success');
+                    displaySuccessMessages($successes);
+
+                    // Inscription RéussieWR
+                    displayRegistrationSuccessMessage();
+                    ?>
                 </form>
             </div>
             <div class="form-footer">
                 <a class="inscription" href="<?= $router->generate('register'); ?>">Pas encore inscrit ? Créer un compte ici</a>
             </div>
             <div>
-                <p class="mdp">Mot de passe oublié ? <a href="#">Réinitialiser</a></p>
+                <p class="mdp">Mot de passe oublié ? <a href=<?= $router->generate('mdpoublie'); ?>>Réinitialiser</a></p>
             </div>
         </div>
     </div>

@@ -281,3 +281,36 @@ function getProductsByModels($desiredModels)
         die('Erreur : ' . $e->getMessage());
     }
 }
+
+
+function displaySuccessMessages($successes)
+{
+    foreach ($successes as $success) {
+        echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">';
+        echo htmlspecialchars($success);
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+        echo '</div>';
+    }
+}
+
+function displayErrorMessages($errors) {
+    foreach ($errors as $error) {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+        echo htmlspecialchars($error);
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+        echo '</div>';
+    }
+}
+
+function displayRegistrationSuccessMessage()
+{
+    if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'] === true) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+        echo 'Inscription réussie ! Connectez-vous avec vos identifiants.';
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+        echo '</div>';
+        
+        // Supprimer la session après l'avoir affichée pour qu'elle ne soit plus affichée lors des rechargements de la page
+        unset($_SESSION['registration_success']);
+    }
+}

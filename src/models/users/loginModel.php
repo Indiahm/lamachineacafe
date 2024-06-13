@@ -3,7 +3,7 @@
 function getUserRole($userId)
 {
     global $db;
-    $sql = 'SELECT roles.name FROM roles INNER JOIN users ON roles.id = users.role_id WHERE users.uuid = :userId'; // Modifier la clause WHERE pour rechercher par UUID
+    $sql = 'SELECT roles.name FROM roles INNER JOIN users ON roles.id = users.role_id WHERE users.uuid = :userId'; 
     $query = $db->prepare($sql);
     $query->execute(['userId' => $userId]);
     $role = $query->fetchColumn();
@@ -32,10 +32,10 @@ function checkUserCredentials($email, $password)
 function saveLastLogin($userId)
 {
     global $db;
-    $sql = 'UPDATE users SET lastLogin = NOW() WHERE uuid = :id'; // Modifier la clause WHERE pour rechercher par UUID
+    $sql = 'UPDATE users SET lastLogin = NOW() WHERE uuid = :id'; 
     $query = $db->prepare($sql);
     $query->execute(['id' => $userId]);
 }
 
 
-
+?>

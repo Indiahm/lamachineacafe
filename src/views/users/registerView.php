@@ -18,11 +18,13 @@
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                     <div class="wrapper">
                         <div class="row">
+
                             <?php if (isset($error_message) && !empty($error_message)) : ?>
                                 <div class="alert alert-danger" role="alert">
                                     <?= $error_message ?>
                                 </div>
                             <?php endif; ?>
+
                             <div class="col text-center">
                                 <h1>Inscription</h1>
                             </div>

@@ -1,5 +1,9 @@
 <?php
 
+$errors = getAndClearMessages('error');
+$successes = getAndClearMessages('success');
+
+
 // Vérification de la soumission du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des données du formulaire
@@ -31,7 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         addMessage('success', $welcomeMessage);
 
         // Redirection vers la page de connexion
-        header('Location: ' . $router->generate('products'));
+        if ($role === 'admin') {
+            header('Location: ' . $router->generate('products'));
+        } else {
+            header('Location: ' . $router->generate('accueil'));
+        }
         exit();
     } else {
         // Ajout d'un message d'erreur si les informations d'identification sont incorrectes
