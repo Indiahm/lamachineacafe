@@ -65,13 +65,10 @@ if (isset($_GET['action'])) {
             break;
 
         case 'delete':
-            // Vérifier si l'ID du produit à supprimer a été envoyé
             if (isset($_POST['product_id'])) {
-                // Récupérer l'ID du produit à supprimer et le valider
                 $productId = intval($_POST['product_id']);
 
                 if ($productId > 0) {
-                    // Supprimer le produit du panier
                     $_SESSION['success_message'] = "Le produit a été supprimé du panier avec succès.";
                     $message = supprimerProduitDuPanier($db, $userId, $productId);
                     if ($message !== true) {
@@ -84,22 +81,17 @@ if (isset($_GET['action'])) {
             break;
 
         default:
-            // Autre action non définie, ne rien faire
             break;
     }
 
-    // Rediriger vers la page du panier
     header('Location: /panier');
     exit();
 }
 
-// Récupérer les produits dans le panier de l'utilisateur
 $panier = getPanier($db, $userId);
 
 // Vérifier si $panier est nul
 if ($panier === null) {
-    // Gérer l'erreur
-    // Par exemple, vous pouvez rediriger l'utilisateur vers une page d'erreur
     header('Location: /erreur');
     exit();
 }
@@ -111,8 +103,6 @@ foreach ($panier as $item) {
         $totalPrice += $item['prix'] * $item['quantite'];
     }
 }
-
-// Afficher la page du panier
 
 checkUserAccess($router);
 ?>

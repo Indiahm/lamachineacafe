@@ -39,23 +39,20 @@
                         <button type="submit" class="connexion">Se connecter</button>
                         <div>
 
-                            <?php // Vérifiez si un message d'erreur est défini
+                            <?php 
                             if (isset($_SESSION['error_message'])) {
                                 echo '<p style="color: red;">' . $_SESSION['error_message'] . '</p>';
-                                unset($_SESSION['error_message']); // Efface le message après l'avoir affiché une fois
+                                unset($_SESSION['error_message']); 
                             }
                             ?>
 
                             <?php
-                            // Récupération et affichage des messages d'erreur'
                             $errors = getAndClearMessages('error');
                             displayErrorMessages($errors);
 
-                            // Récupération et affichage des messages de succès
                             $successes = getAndClearMessages('success');
                             displaySuccessMessages($successes);
 
-                            // Inscription RéussieWR
                             displayRegistrationSuccessMessage();
                             ?>
                 </form>
@@ -70,14 +67,12 @@
     </div>
 
     <script>
-        // Sélectionne tous les messages d'erreur avec la classe alert-dismissible
         const errorMessages = document.querySelectorAll('.alert-dismissible');
 
-        // Pour chaque message d'erreur, ajoute une temporisation pour le cacher après 10 secondes
         errorMessages.forEach(message => {
             setTimeout(() => {
                 message.style.display = 'none';
-            }, 10000); // 10000 millisecondes = 10 secondes
+            }, 10000); 
         });
     </script>
 </body>

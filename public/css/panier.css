@@ -1,4 +1,3 @@
-/* Réinitialisation des styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +10,6 @@
     background-color: #f3f3f3;
   }
   
-  /* Styles généraux */
   .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -64,10 +62,6 @@
     border-radius: 4px;  
   }
   
-  img:hover {
-  }
-  
-  /* Styles des formulaires */
   .form-inline {
     display: flex;
     align-items: center;
@@ -101,7 +95,6 @@
     background-color: #000000;
   }
   
-  /* Styles pour les écrans de petite taille */
   @media (max-width: 768px) {
     .container {
       padding: 20px;

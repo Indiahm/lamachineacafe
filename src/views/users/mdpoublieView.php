@@ -32,7 +32,6 @@
                         <button type="submit" class="connexion">Réinitialiser</button>
                         <div>
                             <?php
-                            // Récupération et affichage des messages d'erreur
                             if (isset($_SESSION['messages']['error'])) {
                                 foreach ($_SESSION['messages']['error'] as $error) {
                                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
@@ -40,7 +39,7 @@
                                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                                     echo '</div>';
                                 }
-                                unset($_SESSION['messages']['error']); // Effacer les messages d'erreur après les avoir affichés
+                                unset($_SESSION['messages']['error']); 
                             }
                             ?>
                 </form>
@@ -50,14 +49,12 @@
     </div>
 
     <script>
-        // Sélectionne tous les messages d'erreur avec la classe alert-dismissible
         const errorMessages = document.querySelectorAll('.alert-dismissible');
 
-        // Pour chaque message d'erreur, ajoute une temporisation pour le cacher après 10 secondes
         errorMessages.forEach(message => {
             setTimeout(() => {
                 message.style.display = 'none';
-            }, (5000)); // 10000 millisecondes = 10 secondes
+            }, (5000)); 
         });
     </script>
 </body>

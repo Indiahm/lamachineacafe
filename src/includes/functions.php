@@ -195,9 +195,9 @@ function getUser()
     global $db;
 
     try {
-        $sql = 'SELECT email, role_id FROM users WHERE uuid = :uuid'; // Utilisez 'uuid' à la place de 'id'
+        $sql = 'SELECT email, role_id FROM users WHERE uuid = :uuid'; 
         $query = $db->prepare($sql);
-        $query->execute(['uuid' => $_GET['uuid']]); // Utilisez 'uuid' à la place de 'id'
+        $query->execute(['uuid' => $_GET['uuid']]); 
         return $query->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {
@@ -261,10 +261,8 @@ function getProductsByModels($desiredModels)
 {
     global $db;
     try {
-        // Créer une liste de paramètres pour les modèles désirés
         $modelPlaceholders = implode(', ', array_fill(0, count($desiredModels), '?'));
 
-        // Requête SQL pour sélectionner les produits avec des modèles spécifiques
         $sql = 'SELECT * FROM produits WHERE modele IN (' . $modelPlaceholders . ')';
 
         $query = $db->prepare($sql);
@@ -310,7 +308,6 @@ function displayRegistrationSuccessMessage()
         echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
         echo '</div>';
         
-        // Supprimer la session après l'avoir affichée pour qu'elle ne soit plus affichée lors des rechargements de la page
         unset($_SESSION['registration_success']);
     }
 }

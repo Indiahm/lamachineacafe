@@ -125,11 +125,6 @@ nav ul li a {
   background-color: #fff6e0;
 }
 
-/* .bouton-connexion {
-      text-decoration: none;
-  
-  } */
-
 .form-control {
   border-radius: 100px;
 }
@@ -184,7 +179,6 @@ a:hover {
   font-size: 14px;
 }
 
-/* PAGE ACCUEIL  */
 
 #titre1 {
   color: #0000ff;
@@ -193,24 +187,18 @@ a:hover {
 
 .page {
   margin-left: 40px;
-  /* Marge à gauche */
   margin-right: 40px;
-  /* Marge à droite */
   font-family: "League Spartan", sans-serif;
 }
 
-/*1er slide*/
 .imagesSlider {
   display: flex;
-  /* Utiliser Flexbox */
   justify-content: center;
-  /* Centrer le contenu horizontalement */
   background-color: #fcf9f2;
   margin-top: 20px;
 
 }
 
-/* SLIDER SWIPER */
 
 #app {
   height: 100%;
@@ -249,13 +237,6 @@ body {
   width: 100%;
 }
 
-
-
-/* FOOTER */
-
-
-
-/* Ajoutez ces styles pour les sous-menus */
 .menu ul {
   list-style: none;
   padding: 0;

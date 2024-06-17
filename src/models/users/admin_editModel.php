@@ -4,25 +4,21 @@ function updateUser()
 {
     global $db;
 
-    // Vérifier si les données nécessaires sont présentes
     if (isset($_POST['role_id'], $_POST['email']) && isset($_GET['uuid'])) {
         $role_id = $_POST['role_id'];
         $email = $_POST['email'];
         $uuid = $_GET['uuid'];
 
         try {
-            // Mettre à jour à la fois l'email et le champ role_id pour l'utilisateur correspondant à l'UUID spécifié
             $sql = 'UPDATE users SET email = :email, role_id = :role_id WHERE uuid = :uuid';
             $query = $db->prepare($sql);
             $query->execute(['email' => $email, 'role_id' => $role_id, 'uuid' => $uuid]);
 
             alert('Les informations de l\'utilisateur ont été modifiées avec succès', 'success');
         } catch (PDOException $e) {
-            // Afficher un message d'erreur générique
             alert('Une erreur est survenue lors de la mise à jour des informations de l\'utilisateur', 'danger');
         }
     } else {
-        // Afficher un message d'erreur si des données sont manquantes
         alert('Des données nécessaires sont manquantes pour la mise à jour des informations de l\'utilisateur', 'danger');
     }
 }
@@ -59,7 +55,6 @@ function getRoles()
         $query = $db->query($sql);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        // Gérer les erreurs de la requête SQL
         return [];
     }
 }

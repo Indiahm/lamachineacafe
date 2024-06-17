@@ -1,7 +1,6 @@
 <?php get_header('Liste des produits', 'admin'); ?>
 
 <?php
-// Récupération et affichage des messages de succès
 $successes = getAndClearMessages('success');
 foreach ($successes as $success) :
 ?>

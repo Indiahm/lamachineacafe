@@ -1,6 +1,5 @@
 <?php
 
-// Ajouter une catégorie à la base de données
 function addCategory(): bool
 {
     global $db;
@@ -8,7 +7,6 @@ function addCategory(): bool
         'nom' => $_POST['nom'],
     ];
 
-    // Utilisation de parenthèses pour entourer le nom du paramètre dans la clause VALUES
     $sql = 'INSERT INTO categories (nom) VALUES (:nom)';
     $query = $db->prepare($sql);
     $query->execute($data);
@@ -16,7 +14,6 @@ function addCategory(): bool
     return true;
 }
 
-// Modifier les données d'une catégorie dans la base de données
 function updateCategory() 
 {
     global $db;
@@ -32,7 +29,6 @@ function updateCategory()
     return true;
 }
 
-// Obtenir les informations d'une catégorie
 function getCategory()
 {
     global $db;

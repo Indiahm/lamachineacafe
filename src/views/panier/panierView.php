@@ -1,8 +1,6 @@
 <?php
-// Définir le titre de la page
 $pageTitle = "Panier";
 
-// Inclure l'en-tête
 get_header($pageTitle, 'login');
 ?>
 

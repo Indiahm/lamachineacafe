@@ -1,4 +1,3 @@
-/* Styles pour le formulaire d'inscription */
 
 body {
     font-family: Arial, sans-serif;
@@ -57,7 +56,6 @@ button[type="submit"]:hover {
     margin-top: 5px;
 }
 
-/* Styles pour les messages d'erreur */
 .alert {
     color: #721c24;
     background-color: #f8d7da;

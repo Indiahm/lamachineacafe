@@ -6,23 +6,19 @@ function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstN
 {
     global $db;
 
-    // Générer un UUID
     $uuid = Uuid::uuid4()->toString();
 
-    // Vérifier si l'email est déjà utilisé
     $sql = "SELECT COUNT(*) AS count FROM users WHERE email = :email";
     $query = $db->prepare($sql);
     $query->execute(['email' => $email]);
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
     if ($result['count'] > 0) {
-        return false; // L'email est déjà utilisé
+        return false; 
     }
 
-    // Hasher le mot de passe
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insérer l'utilisateur dans la base de données avec l'UUID généré
     $sql = "INSERT INTO users (email, pwd, shipping_address, phone_number, first_name, last_name, uuid) VALUES (:email, :pwd, :shipping_address, :phone_number, :first_name, :last_name, :uuid)";
     $query = $db->prepare($sql);
     $success = $query->execute([
@@ -51,7 +47,6 @@ function checkExistingPhoneNumber($phoneNumber)
 {
     global $db;
 
-    // Vérifier si le numéro de téléphone existe déjà dans la base de données
     $sql = "SELECT COUNT(*) AS count FROM users WHERE phone_number = :phone_number";
     $query = $db->prepare($sql);
     $query->execute(['phone_number' => $phoneNumber]);

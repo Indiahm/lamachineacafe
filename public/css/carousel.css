@@ -34,10 +34,8 @@
     bottom: 0;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Ajoute un fond semi-transparent */
     padding: 20px;
-    /* Ajoute de l'espace autour du texte */
-    color: white;
-    /* Couleur du texte */
+    color: white
+    
 }
 

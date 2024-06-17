@@ -14,40 +14,33 @@ function getPanier($db, $userId) {
 
 function ajouterProduitAuPanier($db, $userId, $produit_id, $quantite) {
     if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0) {
-        // L'utilisateur n'est pas connecté, rediriger vers la page de connexion
         header('Location: /connexion');
         exit();
     }
 
     try {
-        // Vérifier si le produit existe dans la table produits
         $query = $db->prepare("SELECT * FROM produits WHERE id = ?");
         $query->execute([$produit_id]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
         
         if (!$result) {
-            // Le produit n'existe pas dans la table produits
             return "Le produit sélectionné n'existe pas.";
         }
 
-        // Vérifier si le produit existe déjà dans le panier
         $query = $db->prepare("SELECT * FROM panier WHERE user_id = ? AND produit_id = ?");
         $query->execute([$userId, $produit_id]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
         if ($result) {
-            // Mettre à jour la quantité du produit dans le panier
             $new_quantite = $result['quantite'] + $quantite;
             $query = $db->prepare("UPDATE panier SET quantite = ? WHERE user_id = ? AND produit_id = ?");
             $query->execute([$new_quantite, $userId, $produit_id]);
         } else {
-            // Ajouter le produit au panier
             $query = $db->prepare("INSERT INTO panier (user_id, produit_id, quantite) VALUES (?, ?, ?)");
             $query->execute([$userId, $produit_id, $quantite]);
         }
 
     } catch (PDOException $e) {
-        // Gérer l'erreur de requête
         error_log("Erreur lors de l'ajout du produit au panier : " . $e->getMessage());
         return "Erreur lors de l'ajout du produit au panier.";
     }

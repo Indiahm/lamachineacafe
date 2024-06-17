@@ -9,7 +9,6 @@ get_header('public');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des produits</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/carousel.css">
@@ -27,7 +26,6 @@ get_header('public');
         <p class="p">Ici se trouve la liste de tous nos cafés disponibles en vente.</p>
         <div class="ligne"></div>
 
-        <!-- Slider -->
         <div id="productCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -61,11 +59,9 @@ get_header('public');
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <!-- Fin Slider -->
 
         <div class="row">
             <?php
-            // Assurez-vous que $products contient les produits avec le modèle "Café"
             foreach ($products as $product) : ?>
                 <div class="col-md-4 mb-4">
                     <div class="card">
@@ -81,7 +77,6 @@ get_header('public');
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

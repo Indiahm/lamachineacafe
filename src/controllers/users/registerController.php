@@ -1,10 +1,9 @@
 <?php
 
-$error_message = ""; // Initialisez la variable $error_message à une chaîne vide
+$error_message = ""; 
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
@@ -30,13 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 // Vérifier si l'inscription a réussi
                 if ($registrationSuccess) {
-                    // Définir une session pour indiquer que l'inscription a été réussie
                     $_SESSION['registration_success'] = true;
-                    // Rediriger vers la page de connexion
                     header('Location: ' . $router->generate('login'));
                     exit();
                 } else {
-                    // Affecter un message d'erreur si l'inscription a échoué
                     $error_message = "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.";
                 }
             }

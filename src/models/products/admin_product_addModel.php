@@ -8,35 +8,29 @@ function addProduct()
     try {
         $db->beginTransaction();
 
-        // Vérification de l'existence de la catégorie et de la marque
         $categoryId = $_POST['categorie_id'];
         $categoryExists = checkCategoryExists($categoryId);
         $marqueId = $_POST['marque_id'];
         $marqueExists = checkMarqueExists($marqueId);
 
         if (!$categoryExists || !$marqueExists) {
-            // Afficher un message d'erreur si la catégorie ou la marque n'existe pas
             $errorMessage = (!$categoryExists) ? "La catégorie sélectionnée n'existe pas." : "La marque sélectionnée n'existe pas.";
             handleDatabaseError(new PDOException($errorMessage));
             return false;
         }
 
-        // Vérification de l'existence de l'image
         if (!isset($_FILES['image'])) {
             $errorMessage = "Aucune image n'a été sélectionnée.";
             handleDatabaseError(new PDOException($errorMessage));
             return false;
         }
 
-        // Traitement de l'image téléchargée
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         $image_file_type = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-        // Vérifiez si le fichier est une image valide
         $check = getimagesize($_FILES["image"]["tmp_name"]);
         if($check !== false) {
-            // Déplacez le fichier téléchargé vers l'emplacement cible
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                 $image_path = $target_file;
             } else {
@@ -50,7 +44,6 @@ function addProduct()
             return false;
         }
 
-        // Préparation des données du produit à ajouter
         $data = [
             'nom' => $_POST['nom'],
             'description' => $_POST['description'],
@@ -62,7 +55,7 @@ function addProduct()
             'poids' => $_POST['poids'],
             'watts' => $_POST['watts'],
             'dimensions' => $_POST['dimensions'],
-            'image' => $image_path, // Ajouter cette ligne
+            'image' => $image_path, 
             'categorie_id' => $categoryId,
             'marque_id' => $marqueId,
         ];

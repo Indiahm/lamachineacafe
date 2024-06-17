@@ -95,7 +95,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Ajout de la sélection de la marque -->
             <div class="form-floating mb-3">
 
                 <select name="marque_id" id="marque_id" class="form-select">
@@ -109,7 +108,6 @@
 
             </div>
 
-            <!-- Champ de sélection pour la catégorie -->
             <div class="form-floating mb-3">
                 <select name="categorie_id" id="categorie_id" class="form-select">
                     <option value="" selected disabled>Sélectionner une catégorie</option>
@@ -121,7 +119,6 @@
                 <?= $errorMessage['categorie_id']; ?>
             </div>
 
-            <!-- Ajout du champ pour l'image -->
             <div class="form-floating mb-3">
                 <input type="file" name="image" id="image" class="form-control">
                 <label for="image">Image du produit</label>

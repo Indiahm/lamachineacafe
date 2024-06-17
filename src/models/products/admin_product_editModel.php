@@ -35,9 +35,9 @@ function updateProduct()
         'poids' => $_POST['poids'],
         'watts' => $_POST['watts'],
         'dimensions' => $_POST['dimensions'],
-        'categorie_id' => $_POST['categorie_id'], // Ajout de la catégorie
-        'marque_id' => $_POST['marque_id'], // Ajout de la marque
-        'id' => $_GET['id'] // Ajout de l'ID du produit
+        'categorie_id' => $_POST['categorie_id'],
+        'marque_id' => $_POST['marque_id'], 
+        'id' => $_GET['id'] 
     ];
 
     $sql = 'UPDATE produits SET nom = :nom, description = :description, prix = :prix, modele = :modele, stock = :stock, code_ean = :code_ean, origine = :origine, poids = :poids, watts = :watts, dimensions = :dimensions, categorie_id = :categorie_id, marque_id = :marque_id WHERE id = :id';
