@@ -38,3 +38,6 @@ $router->map('GET|POST', $public . '/details-produits/[i:id]', 'products/public_
 
 // Paiement
 $router->map('GET|POST', $public . '/paiement', 'paiement/checkout', 'paiement');
+
+// Profil
+$router->map('GET|POST', $public . '/profil', 'users/profile', 'profile');

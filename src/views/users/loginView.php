@@ -38,18 +38,26 @@
                     <div class="form-footer">
                         <button type="submit" class="connexion">Se connecter</button>
                         <div>
-                        <?php
-                    // Récupération et affichage des messages d'erreur'
-                    $errors = getAndClearMessages('error');
-                    displayErrorMessages($errors);
 
-                    // Récupération et affichage des messages de succès
-                    $successes = getAndClearMessages('success');
-                    displaySuccessMessages($successes);
+                            <?php // Vérifiez si un message d'erreur est défini
+                            if (isset($_SESSION['error_message'])) {
+                                echo '<p style="color: red;">' . $_SESSION['error_message'] . '</p>';
+                                unset($_SESSION['error_message']); // Efface le message après l'avoir affiché une fois
+                            }
+                            ?>
 
-                    // Inscription RéussieWR
-                    displayRegistrationSuccessMessage();
-                    ?>
+                            <?php
+                            // Récupération et affichage des messages d'erreur'
+                            $errors = getAndClearMessages('error');
+                            displayErrorMessages($errors);
+
+                            // Récupération et affichage des messages de succès
+                            $successes = getAndClearMessages('success');
+                            displaySuccessMessages($successes);
+
+                            // Inscription RéussieWR
+                            displayRegistrationSuccessMessage();
+                            ?>
                 </form>
             </div>
             <div class="form-footer">
