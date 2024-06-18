@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/info.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -18,7 +20,7 @@
         <div class="para">
             <div class="paracentrer">
             </div>
-            <div class="ligne"></div>
+            <div class="ligne "></div>
             <p>Chez Kafe Etxea, nous portons une attention particulière dans la sélection de nos cafés. Nous proposons des cafés de spécialité, issus de culture respectueuse de l’environnement et de celui du travail des producteurs et agriculteurs. A travers nos cafés, nous cherchons avant tout à transmettre l’histoire derrière ce petit grain et faire découvrir des produits d’exceptions.</p>
             <img src="public/images/cropped-My-project-1-2-300x300.png" alt="Logo Kafe Etxea" class="logo">
             <div class="ligne"></div>

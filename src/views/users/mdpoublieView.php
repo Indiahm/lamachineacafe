@@ -21,7 +21,7 @@
         <div class="form-container">
             <div class="form-header">
                 <h1>Réinitialiser son Mot de Passe</h1>
-                <p>Vous avez perdu votre mot de passe ? Récupérez-le à tout moment.</p>
+                <p class="one">Vous avez perdu votre mot de passe ? Récupérez-le à tout moment.</p>
             </div>
 
             <div class="form-body">

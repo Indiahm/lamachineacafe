@@ -77,6 +77,7 @@ function checkAdminAccess($router)
     }
 }
 
+
 function checkUserAccess($router)
 {
     if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'utilisateur') {
@@ -85,6 +86,20 @@ function checkUserAccess($router)
     }
 }
 
+function verifyCsrfToken() {
+    // Check if the CSRF token is set in the POST data and in the session
+    if (!isset($_POST['csrf_token']) || !isset($_SESSION['csrf_token'])) {
+        throw new Exception('CSRF token not found');
+    }
+
+    // Compare the CSRF token from the POST data with the one in the session
+    if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        throw new Exception('CSRF token verification failed');
+    }
+
+    // If we reach this point, the tokens match, so we return true
+    return true;
+}
 
 function generateCsrfToken()
 {

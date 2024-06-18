@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="../css/carousel.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
 </head>
 
@@ -96,7 +95,7 @@
                     <img src="../images/Professionel.jpg" class="card-img-top" alt="Image 3">
                     <div class="card-body">
                         <h5 class="card-title">Professionels</h5>
-                        <a href="#" class="details">Voir les détails</a>
+                        <a href="<?= $router->generate('info') ?>" class="details">Voir les détails</a>
                     </div>
                 </div>
             </div>

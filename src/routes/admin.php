@@ -8,19 +8,19 @@ $router->addMatchTypes(['uuid' => '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-
 
 
 // Routes administratives
-$router->map( 'GET', $admin . '/deconnexion', 'users/admin_logout', 'logout');
+$router->map( 'GET', $admin . '/deconnexion', 'users_admin/admin_logout', 'logout');
 $router->map( 'GET', $admin . '/mot-de-passe-oublie', '', 'lostPassword'); 
-$router->map( 'GET', $admin . '/utilisateurs', 'users/admin_index', 'users'); 
-$router->map('GET|POST', $admin . '/utilisateurs/editer/[uuid:uuid]', 'users/admin_edit', 'editUser');
-$router->map('GET|POST', $admin . '/utilisateurs/editermdp/[uuid:uuid]', 'users/admin_mdp', 'editUserMdp');
-$router->map( 'GET|POST', $admin . '/utilisateurs/editer/', 'users/admin_edit', 'addUser'); 
+$router->map( 'GET', $admin . '/utilisateurs', 'users_admin/admin_index', 'users'); 
+$router->map('GET|POST', $admin . '/utilisateurs/editer/[uuid:uuid]', 'users_admin/admin_edit', 'editUser');
+$router->map('GET|POST', $admin . '/utilisateurs/editermdp/[uuid:uuid]', 'users_admin/admin_mdp', 'editUserMdp');
+$router->map( 'GET|POST', $admin . '/utilisateurs/editer/', 'users_admin/admin_edit', 'addUser'); 
 
 // Produits
 
-$router->map('GET', $admin . '/produits', 'products/admin_tableproducts', 'products');
-$router->map('GET|POST', $admin . '/produits/editer/[i:id]', 'products/admin_product_edit', 'editProduct'); 
-$router->map('GET|POST', $admin . '/produits/add', 'products/admin_product_add', 'addProduct');
-$router->map( 'GET', $admin . '/produits/supprimer/[i:id]', 'products/admin_deleteproducts', 'deleteProduct');
+$router->map('GET', $admin . '/produits', 'products_admin/admin_tableproducts', 'products');
+$router->map('GET|POST', $admin . '/produits/editer/[i:id]', 'products_admin/admin_product_edit', 'editProduct'); 
+$router->map('GET|POST', $admin . '/produits/add', 'products_admin/admin_product_add', 'addProduct');
+$router->map( 'GET', $admin . '/produits/supprimer/[i:id]', 'products_admin/admin_deleteproducts', 'deleteProduct');
 
 // Categories   
 

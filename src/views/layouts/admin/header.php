@@ -151,7 +151,7 @@
                 }
 
                 .sidebar {
-                    position: fixed;
+                    /* position: fixed; */
                     top: 98px;
                     bottom: 0;
                     left: 0;

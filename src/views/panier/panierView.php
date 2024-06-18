@@ -1,7 +1,6 @@
 <?php
-$pageTitle = "Panier";
-
-get_header($pageTitle, 'login');
+$title = "Panier";
+get_header($title, 'login');
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +9,7 @@ get_header($pageTitle, 'login');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle) ?></title>
+    <title><?= htmlspecialchars($title) ?></title>
     <link rel="stylesheet" href="../css/panier.css">
 </head>
 

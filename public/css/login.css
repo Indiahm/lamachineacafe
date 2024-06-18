@@ -37,6 +37,7 @@ body {
     font-size: 16px;
     color: #666;
     text-align: center;
+    line-height: 25px;
 
 }
 
@@ -95,6 +96,8 @@ button[type="submit"]:hover {
     font-size: 16px;
     order: 1;
     margin-left: auto;
+    margin-bottom: 15px;
+    margin-left: 15px;
 }
 
 .inscription:hover {
@@ -147,5 +150,9 @@ button[type="submit"]:hover {
 }
 
 .mdp {
-text-align: center;
+ margin-left: 15px;
+}
+
+.one {
+    line-height: 30px;
 }
