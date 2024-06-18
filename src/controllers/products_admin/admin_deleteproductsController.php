@@ -16,4 +16,3 @@ if (!empty($_GET['id'])) {
 header('Location: ' . $router->generate('products'));
 die;
 
-checkAdminAccess($router);

@@ -28,8 +28,7 @@ $errorMessage = [
     'dimensions' => '',
     'image' => '', 
     'categorie_id' => '',
-    'marque_id' => '',
-    'image' => ''
+    'marque_id' => ''
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
