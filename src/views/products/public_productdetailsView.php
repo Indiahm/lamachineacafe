@@ -1,7 +1,7 @@
 <?php get_header('public'); ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -72,9 +72,12 @@
                     </tr>
                 </table>
                 <div class="product-buttons mt-4">
+                    <!-- Formulaire avec jeton CSRF -->
                     <form action="/panier?action=add" method="post">
                         <input type="hidden" name="product_id" value="<?= $product_details['id'] ?>">
                         <input type="hidden" name="price" value="<?= $product_details['prix'] ?>">
+                        <!-- Champ pour le jeton CSRF -->
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
                         <p>Quantité :</p><input type="number" name="quantity" min="1" value="1">
                         <button type="submit" class="btn btn-primary">Ajouter au panier</button>
                     </form>

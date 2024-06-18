@@ -9,12 +9,10 @@
     <title>Connexion</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login.css">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-
     <div class="container">
         <div class="form-container">
             <div class="form-header">
@@ -23,8 +21,9 @@
             </div>
 
             <div class="form-body">
-
                 <form method="POST" action="<?= $router->generate('login'); ?>">
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
                     <div class="form-group">
                         <label for="email">Adresse email</label>
                         <input type="email" id="email" name="email" required>
@@ -38,7 +37,6 @@
                     <div class="form-footer">
                         <button type="submit" class="connexion">Se connecter</button>
                         <div>
-
                             <?php 
                             if (isset($_SESSION['error_message'])) {
                                 echo '<p style="color: red;">' . $_SESSION['error_message'] . '</p>';
@@ -47,34 +45,22 @@
                             ?>
 
                             <?php
-                            $errors = getAndClearMessages('error');
                             displayErrorMessages($errors);
-
-                            $successes = getAndClearMessages('success');
                             displaySuccessMessages($successes);
-
-                            displayRegistrationSuccessMessage();
                             ?>
+                        </div>
+                    </div>
                 </form>
             </div>
+
             <div class="form-footer">
                 <a class="inscription" href="<?= $router->generate('register'); ?>">Pas encore inscrit ? Créer un compte ici</a>
             </div>
             <div>
-                <p class="mdp">Mot de passe oublié ? <a href=<?= $router->generate('mdpoublie'); ?>>Réinitialiser</a></p>
+                <p class="mdp">Mot de passe oublié ? <a href="<?= $router->generate('mdpoublie'); ?>">Réinitialiser</a></p>
             </div>
         </div>
     </div>
-
-    <script>
-        const errorMessages = document.querySelectorAll('.alert-dismissible');
-
-        errorMessages.forEach(message => {
-            setTimeout(() => {
-                message.style.display = 'none';
-            }, 10000); 
-        });
-    </script>
 </body>
 
 </html>

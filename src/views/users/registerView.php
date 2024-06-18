@@ -30,6 +30,9 @@
                             </div>
                         </div>
                         <form method="post">
+                            <!-- Inclusion du jeton CSRF -->
+                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
                             <div class="row align-items-center">
                                 <div class="col mt-4">
                                     <label for="email">Email :</label>
