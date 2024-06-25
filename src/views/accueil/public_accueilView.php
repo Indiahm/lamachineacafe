@@ -103,6 +103,6 @@
     </div>
 </body>
 </html>
-
 <?php get_footer('public'); ?>
+<?php checkSessionTimeout(); ?>
 

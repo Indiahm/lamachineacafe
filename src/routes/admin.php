@@ -24,14 +24,14 @@ $router->map( 'GET', $admin . '/produits/supprimer/[i:id]', 'products_admin/admi
 
 // Categories   
 
-$router->map( 'GET|POST', $admin . '/categories', 'categories/admin_categories', 'categories');
+$router->map( 'GET', $admin . '/categories', 'categories/admin_categories', 'categories');
 $router->map( 'GET', $admin . '/categories', '', '');
 $router->map( 'GET|POST', $admin . '/categories/editer/[i:id]', 'categories/admin_categories_edit', 'editCategories'); 
 $router->map( 'GET|POST', $admin . '/categories/editer', 'categories/admin_categories_edit', 'addCategories');
 $router->map( 'GET', $admin . '/categories/supprimer/[i:id]', 'categories/admin_deletecategories', 'deleteCategories');
 
 // Marques
-$router->map('GET|POST', $admin . '/marques', 'marques/admin_marques', 'marques');
+$router->map('GET', $admin . '/marques', 'marques/admin_marques', 'marques');
 $router->map('GET', $admin . '/marques', '', '');
 $router->map('GET|POST', $admin . '/marques/editer/[i:id]', 'marques/admin_marques_edit', 'editMarque');
 $router->map('GET|POST', $admin . '/marques/editer', 'marques/admin_marques_edit', 'addMarque');

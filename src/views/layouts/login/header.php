@@ -33,6 +33,16 @@
                         </a>
                     </div>
 
+                    <div class="panier-logo">
+    <a href="<?= $router->generate('profil', ['uuid' => $_SESSION['user_id']]); ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H3zm5-6a3 3 0 1 0-3-3 3 3 0 0 0 3 3z"/>
+        </svg>
+        <span>Mon Profil</span>
+    </a>
+</div>
+
+
 
                     <div class="logout">
                         <a id="logout" class="nav-link logout-btn" href="<?= $router->generate('logout') ?>">

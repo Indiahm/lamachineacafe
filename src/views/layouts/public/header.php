@@ -44,6 +44,3 @@
             </nav>
         </div>
     </header>
-</body>
-
-</html>

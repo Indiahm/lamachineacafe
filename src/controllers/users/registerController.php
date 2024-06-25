@@ -29,6 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Vérifier si le numéro de téléphone existe déjà dans la base de données
                 if (checkExistingPhoneNumber($phoneNumber)) {
                     $error_message = "Le numéro de téléphone existe déjà.";
+
+                  } else {
+                        if (checkAlreadyExistEmail()) {
+                            $error_message = "L'email existe déja.";
                 } else {
                     // Appeler la fonction pour enregistrer l'utilisateur
                     $registrationSuccess = registerUser($email, $password, $shippingAddress, $phoneNumber, $firstName, $lastName);
@@ -45,5 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
+}
 }
 ?>

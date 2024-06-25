@@ -41,4 +41,10 @@ $router->map('GET|POST', $public . '/details-produits/[i:id]', 'products/public_
 $router->map('GET|POST', $public . '/paiement', 'paiement/checkout', 'paiement');
 
 // Profil
-$router->map('GET|POST', $public . '/profil', 'users/profile', 'profile');
+$router->map('GET', $public . '/profil', 'users/profile', 'profil');
+$router->map('POST', $public . '/supprimer-compte', 'users/profile', 'delete_account');
+
+// src/routes/public.php
+
+$router->map('GET', $public . '/modifier-profil', 'users/updateProfile', 'edit_profile');
+$router->map('POST', $public . '/modifier-profil', 'users/updateProfile', 'update_profile');

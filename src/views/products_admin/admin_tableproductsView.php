@@ -10,6 +10,8 @@ foreach ($successes as $success) :
     </div>
 <?php endforeach; ?>
 
+<div class="wrapper">
+
 <h2 class="mb-4">Liste des produits</h2>
 
 <div class="ligne"></div>
@@ -73,7 +75,7 @@ foreach ($successes as $success) :
     </ul>
 </nav>
 </div>
-
+</div>
 
 <?php get_footer('admin'); ?>
 
@@ -82,4 +84,5 @@ foreach ($successes as $success) :
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         margin: 20px 0;
     }
+
 </style>

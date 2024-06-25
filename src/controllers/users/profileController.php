@@ -1,54 +1,40 @@
 <?php
 
-// Fonction pour gérer le profil utilisateur
-function profileController($router) {
-    // Vérifier si l'utilisateur est connecté
-    if (!isLoggedIn()) {
-        // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
-        header('Location: /login');
-        exit;
-    }
+checkUserAccess($router);
 
-    // Messages de notification
-    $error_message = '';
-    $success_message = '';
+if (!isset($_SESSION['user_id'])) {
+    // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
+    header('Location: ' . $router->generate('login'));
+    exit();
+}
 
-    // Traitement du formulaire de mise à jour du profil
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $userId = $_SESSION['user_id']; 
-        $email = $_POST['email'];
-        $shippingAddress = $_POST['shipping_address'];
-        $phoneNumber = $_POST['phone_number'];
-        $firstName = $_POST['first_name'];
-        $lastName = $_POST['last_name'];
-        $password = $_POST['password']; 
+$userId = $_SESSION['user_id'];
 
-        $result = updateUserProfile($userId, $email, $shippingAddress, $phoneNumber, $firstName, $lastName, $password);
+// Charger les détails de l'utilisateur à partir de la base de données
+$user = getUserById($userId);
 
-        // Vérifier le résultat de la mise à jour
-        if (strpos($result, 'Erreur') === 0) {
-            $error_message = $result;
+// Vérifier si l'utilisateur existe dans la base de données
+if (!$user) {
+    die('Utilisateur non trouvé.');
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Vérifiez que l'action est bien la suppression de compte
+    if (isset($_POST['action']) && $_POST['action'] === 'delete_account') {
+        // Suppression du compte de l'utilisateur
+        if (deleteAccount($userId)) {
+            $_SESSION['account_deleted'] = 'Votre compte a bien été supprimé.';            
+            // Déconnexion de l'utilisateur
+            session_destroy();
+
+            // Redirection vers la page d'accueil ou une autre page appropriée après la suppression du compte
+            header('Location: ' . $router->generate('accueil'));
+            exit();
         } else {
-            $success_message = $result;
+            echo 'Échec de la suppression du compte. Vérifiez les logs pour plus d\'informations.';
         }
     }
-
-    // Récupérer les informations actuelles de l'utilisateur pour afficher dans le formulaire
-    $userId = $_SESSION['user_id']; 
-    $user = getUserById($userId);
-
-    // Vérifier si l'utilisateur existe
-    if (!$user) {
-        header('Location: /error'); // Rediriger vers une page d'erreur
-        exit;
-    }
-
-    require 'views/profile.php';
 }
 
-// Fonction pour vérifier si l'utilisateur est connecté (exemple)
-function isLoggedIn() {
-    return isset($_SESSION['user_id']); // Modifier selon votre méthode d'authentification
-}
-
+// Inclure la vue correspondante pour afficher le formulaire de suppression de compte
 ?>

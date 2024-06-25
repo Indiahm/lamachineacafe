@@ -43,11 +43,5 @@ function handlePasswordResetRequest()
     }
 }
 
-function setAndRedirectWithMessage($type, $message)
-{
-    $_SESSION['messages'][$type][] = $message;
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit();
-}
 
 handlePasswordResetRequest();

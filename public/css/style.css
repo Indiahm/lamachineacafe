@@ -5,7 +5,6 @@
 header {
   background-color: #fff6e0;
   color: #fff;
-  padding: 0px;
 }
 
 .header {
@@ -23,6 +22,7 @@ img {
 body {
   background-color: #fcf9f2;
 }
+
 
 .menu {
   text-align: center;
@@ -93,19 +93,6 @@ nav ul li a {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.bandeau {
-  background-color: #000000;
-  color: #ffffff;
-  font-family: "League Spartan", sans-serif;
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
 }
 
 .logo-bar {
@@ -305,7 +292,7 @@ body {
   margin: 10px 0;
   font-size: 16px;
   font-weight: bold;
-  color: #ffffff;
+  color: #000000;
   background-color: #f44336;
   border: none;
   border-radius: 5px;

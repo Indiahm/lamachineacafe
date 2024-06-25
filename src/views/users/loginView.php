@@ -26,28 +26,29 @@
 
                     <div class="form-group">
                         <label for="email">Adresse email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
+                        <input type="email" id="email" name="email" required autocomplete ="username">
+                        </div>
 
                     <div class="form-group">
                         <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
+                        <input type="password" id="password" name="password" required autocomplete="off">
+                        </div>
 
                     <div class="form-footer">
                         <button type="submit" class="connexion">Se connecter</button>
                         <div>
-                            <?php 
-                            if (isset($_SESSION['error_message'])) {
-                                echo '<p style="color: red;">' . $_SESSION['error_message'] . '</p>';
-                                unset($_SESSION['error_message']); 
-                            }
-                            ?>
-
                             <?php
-                            displayErrorMessages($errors);
-                            displaySuccessMessages($successes);
+                            displayErrorMessages($errors);?>
+                            <?php displaySuccessMessages($successes);
                             ?>
+                            <?php displayRegistrationSuccessMessage() ?>
+
+
+        <?php if (isset($_SESSION['error_message'])): ?>
+                <p style="color: red;"><?= $_SESSION['error_message'] ?></p>
+                <?php unset($_SESSION['error_message']); ?>
+            <?php endif; ?>
+
                         </div>
                     </div>
                 </form>
@@ -64,3 +65,4 @@
 </body>
 
 </html>
+
