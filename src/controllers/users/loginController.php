@@ -30,20 +30,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté.";
             }
-            addMessage('success', $welcomeMessage);
+            addMessage('successlogin', $welcomeMessage);
 
             // Redirection vers la page de profil de l'utilisateur
             header('Location: ' . $router->generate('accueil'));
             exit();
         } else {
             $errorMessage = "Identifiants incorrects. Veuillez réessayer.";
-            addMessage('error', $errorMessage);
+            addMessage('errorlogin', $errorMessage);
         }
     }
 }
 
-$errors = getAndClearMessages('error');
-$successes = getAndClearMessages('success');
+
+
 
 // Afficher la vue de connexion
 // Ici, vous devriez inclure le code pour charger la vue de connexion ou rediriger vers celle-ci si nécessaire

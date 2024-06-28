@@ -9,12 +9,11 @@ $userId = $_SESSION['user_id'] ?? null;
 
 // Vérifiez que l'utilisateur est connecté
 if (!$userId) {
-    // Utilisateur non connecté, définir un message d'erreur et rediriger
-    $_SESSION['error_message'] = "Vous devez être connecté pour accéder au panier.";
+    $errorMessage = "Vous devez être connecté pour accéder au panier.";
+    addMessage('errorpanier', $errorMessage);
     header('Location: /connexion'); // Redirige vers la page de connexion
     exit();
 }
-
 
 // Initialiser la variable $totalPrice
 $totalPrice = 0;

@@ -14,9 +14,6 @@
         <?php if (isset($_SESSION['messages']) && count($_SESSION['messages']) > 0): ?>
     <div class="messages">
         <?php foreach ($_SESSION['messages'] as $message): ?>
-            <div class="message <?= htmlspecialchars($message['type']) ?>">
-                <?= htmlspecialchars($message['message']) ?>
-            </div>
         <?php endforeach; ?>
     </div>
     <?php unset($_SESSION['messages']); // Supprimer les messages après les avoir affichés ?>

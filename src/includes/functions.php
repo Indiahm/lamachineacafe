@@ -132,22 +132,7 @@ function getTotalPagesCount($limit)
     return ceil($totalBrands / $limit);
 }
 
-function addMessage($type, $message)
-{
-    $_SESSION[$type][] = $message;
-}
 
-function getAndClearMessages($type)
-{
-    $messages = [];
-
-    if (isset($_SESSION[$type]) && is_array($_SESSION[$type])) {
-        $messages = $_SESSION[$type];
-        unset($_SESSION[$type]);
-    }
-
-    return $messages;
-}
 
 function checkSessionTimeout()
 {
@@ -292,6 +277,23 @@ function getProductsByModels($desiredModels)
     }
 }
 
+
+function addMessage($type, $message)
+{
+    $_SESSION[$type][] = $message;
+}
+
+function getAndClearMessages($type)
+{
+    $messages = [];
+
+    if (isset($_SESSION[$type]) && is_array($_SESSION[$type])) {
+        $messages = $_SESSION[$type];
+        unset($_SESSION[$type]);
+    }
+
+    return $messages;
+}
 
 function displaySuccessMessages($successes)
 {

@@ -23,10 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (updateUserProfile($userId, $firstName, $lastName, $email, $shippingAddress, $phoneNumber, $password)) {
             $successMessage = "Profil mis à jour avec succès.";
-            addMessage('success', $successMessage);
+            addMessage('successprofil', $successMessage);
         } else {
             $errorMessage = "Échec de la mise à jour du profil.";
-            addMessage('error', $errorMessage);
+            addMessage('errorr', $errorMessage);
         }
     }
 

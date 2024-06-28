@@ -21,7 +21,6 @@
     <div class="container">
 
         <?php
-        $successes = getAndClearMessages('success');
         displaySuccessMessages($successes);
         ?>
 

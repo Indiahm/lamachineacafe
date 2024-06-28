@@ -12,6 +12,11 @@
     
     <div class="container">
         
+        <?php
+        $successes = getAndClearMessages('successprofil');
+        displaySuccessMessages($successes);
+        ?>
+    
         <h1>Mon Profil</h1>
         <p>Nom : <?= htmlspecialchars($user['first_name']) . ' ' . htmlspecialchars($user['last_name']); ?></p>
         <p>Email : <?= htmlspecialchars($user['email']); ?></p>

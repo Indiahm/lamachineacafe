@@ -21,48 +21,43 @@
             </div>
 
             <div class="form-body">
-                <form method="POST" action="<?= $router->generate('login'); ?>">
-                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                <form method="POST" action="<?php echo $router->generate('login'); ?>">
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
 
                     <div class="form-group">
                         <label for="email">Adresse email</label>
-                        <input type="email" id="email" name="email" required autocomplete ="username">
-                        </div>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
                     <div class="form-group">
                         <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password" required autocomplete="off">
-                        </div>
+                        <input type="password" id="password" name="password" required>
+                    </div>
 
                     <div class="form-footer">
                         <button type="submit" class="connexion">Se connecter</button>
                         <div>
                             <?php
-                            displayErrorMessages($errors);?>
-                            <?php displaySuccessMessages($successes);
+                            $errors = getAndClearMessages('errorlogin');
+                            displayErrorMessages($errors);
                             ?>
-                            <?php displayRegistrationSuccessMessage() ?>
-
-
-        <?php if (isset($_SESSION['error_message'])): ?>
-                <p style="color: red;"><?= $_SESSION['error_message'] ?></p>
-                <?php unset($_SESSION['error_message']); ?>
-            <?php endif; ?>
-
+                            <?php
+                            $errors = getAndClearMessages('errorpanier');
+                            displayErrorMessages($errors);
+                            ?>
                         </div>
                     </div>
                 </form>
             </div>
 
             <div class="form-footer">
-                <a class="inscription" href="<?= $router->generate('register'); ?>">Pas encore inscrit ? Créer un compte ici</a>
+                <a class="inscription" href="<?php echo $router->generate('register'); ?>">Pas encore inscrit ? Créer un compte ici</a>
             </div>
             <div>
-                <p class="mdp">Mot de passe oublié ? <a href="<?= $router->generate('mdpoublie'); ?>">Réinitialiser</a></p>
+                <p class="mdp">Mot de passe oublié ? <a href="<?php echo $router->generate('mdpoublie'); ?>">Réinitialiser</a></p>
             </div>
         </div>
     </div>
 </body>
 
 </html>
-
