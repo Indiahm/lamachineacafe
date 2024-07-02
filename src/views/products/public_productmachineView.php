@@ -18,14 +18,12 @@ get_header('public');
 <body>
 
     <div class="container">
-        <h1 class="mb-4">Toute les Machines Disponible</h1>
-        <p class="p">Ici se trouve la liste de toutes nos machines disponible en vente.</p>
+        <h1 class="mb-4">Toutes les Machines Disponibles</h1>
+        <p class="p">Ici se trouve la liste de toutes nos machines disponibles en vente.</p>
         <div class="ligne"></div>
 
         <div class="row">
-            <?php
-
-            foreach ($products as $product) : ?>
+            <?php foreach ($products as $product) : ?>
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <img src="<?= htmlspecialchars($product['image']); ?>" class="card-img-top" alt="<?= htmlspecialchars($product['nom']); ?>">

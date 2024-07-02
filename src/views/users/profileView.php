@@ -1,4 +1,4 @@
-<?php get_header('Inscription', 'public'); ?>
+<?php get_header('Mon Profil', 'public'); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,14 +23,17 @@
         <p>Adresse de livraison : <?= htmlspecialchars($user['shipping_address']); ?></p>
         <p>Téléphone : <?= htmlspecialchars($user['phone_number']); ?></p>
 
-        <!-- Bouton pour modifier le profil -->
         <a class="edit-profile" href="<?= $router->generate('update_profile'); ?>">Modifier mon profil</a>
 
         <form action="<?= $router->generate('delete_account'); ?>" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.');">
             <input type="hidden" name="action" value="delete_account">
             <button class="delete" type="submit">Supprimer mon compte</button>
         </form>
+
         <a class="retour" href="<?= $router->generate('accueil'); ?>">Retour à l'accueil</a>
     </div>
 </body>
 </html>
+
+<?php get_footer('public'); ?>
+<?php checkSessionTimeout(); ?>

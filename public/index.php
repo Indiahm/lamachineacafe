@@ -1,13 +1,12 @@
 <?php
-ob_start(); 
+ob_start();
 
 require '../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
+// Configuration des paramètres de session
 ini_set('session.cookie_httponly', 1);
-
-// Définition des paramètres du cookie de session
 $cookieParams = session_get_cookie_params();
 session_set_cookie_params(
     $cookieParams["lifetime"],
@@ -17,8 +16,10 @@ session_set_cookie_params(
     true   // httponly: true pour empêcher l'accès via JavaScript
 );
 
+// Démarrage de la session
 session_start();
 
+// Initialisation du panier s'il n'existe pas encore
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
@@ -27,25 +28,25 @@ if (!isset($_SESSION['cart'])) {
 header("Content-Security-Policy: frame-ancestors 'self';");
 header("X-Frame-Options: DENY");
 
-// Constants
+// Définition des constantes et chargement des fichiers nécessaires
 define('SRC', '../src/');
-
 $dotenv = Dotenv::createImmutable(SRC . 'config');
 $dotenv->load();
-
 require SRC . 'config/database.php';
 require SRC . 'includes/forms.php';
 
+// Initialisation du routeur AltoRouter
 $router = new AltoRouter();
-
 require SRC . 'routes/public.php';
 require SRC . 'routes/admin.php';
 
+// Vérification de la correspondance des routes
 $match = $router->match();
 
 require SRC . 'includes/functions.php';
 
 if (!empty($match['target'])) {
+    // Fusion des paramètres de la route dans $_GET
     $_GET = array_merge($_GET, $match['params']);
     
     // Inclusion du modèle, du contrôleur et de la vue correspondants
@@ -54,14 +55,24 @@ if (!empty($match['target'])) {
     require SRC . 'views/' . $match['target'] . 'View.php';
 }
 
-setcookie('nomDuCookie', 'valeurDuCookie', [
+// Assurez-vous que $lastViewedProduct est défini et non vide avant de l'utiliser
+$lastViewedProduct = ''; // Exemple de valeur par défaut
+
+// Remplacez '.votre-domaine.com' par votre nom de domaine réel
+$cookieDomain = 'lamachineacafe.test';
+
+$cookieName = 'lastViewedProduct';
+$cookieValue = $lastViewedProduct;
+
+// Définition du cookie avec les options de sécurité
+setcookie($cookieName, $cookieValue, [
     'expires' => time() + 3600,
     'path' => '/',
-    'domain' => '.votre-domaine.com',
-    'secure' => true, // Envoyer le cookie uniquement sur HTTPS
-    'httponly' => true, // Empêcher l'accès via JavaScript
-    'samesite' => 'Strict' // Définition de l'attribut SameSite
+    'domain' => $cookieDomain,
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
 ]);
 
-ob_end_flush(); // Envoie la mise en mémoire tampon au navigateur
+ob_end_flush();
 ?>

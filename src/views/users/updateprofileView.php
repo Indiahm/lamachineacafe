@@ -11,45 +11,47 @@
 <body>
     <div class="container">
         <h1>Modifier Profil</h1>
+
         <?php if (isset($_SESSION['messages']) && count($_SESSION['messages']) > 0): ?>
-    <div class="messages">
-        <?php foreach ($_SESSION['messages'] as $message): ?>
-        <?php endforeach; ?>
-    </div>
-    <?php unset($_SESSION['messages']); // Supprimer les messages après les avoir affichés ?>
-<?php endif; ?>
+            <div class="messages">
+                <?php foreach ($_SESSION['messages'] as $message): ?>
+                    <div class="alert alert-info"><?= htmlspecialchars($message) ?></div>
+                <?php endforeach; ?>
+            </div>
+            <?php unset($_SESSION['messages']); // Supprimer les messages après les avoir affichés ?>
+        <?php endif; ?>
 
         <form action="<?= $router->generate('update_profile'); ?>" method="post">
-            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
 
             <div class="form-group">
                 <label for="first_name">Prénom :</label>
-                <input type="text" id="first_name" name="first_name" value="<?= htmlspecialchars($user['first_name']); ?>" required>
+                <input type="text" id="first_name" name="first_name" value="<?= htmlspecialchars($user['first_name']) ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="last_name">Nom :</label>
-                <input type="text" id="last_name" name="last_name" value="<?= htmlspecialchars($user['last_name']); ?>" required>
+                <input type="text" id="last_name" name="last_name" value="<?= htmlspecialchars($user['last_name']) ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Adresse email :</label>
-                <input type="email" id="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="shipping_address">Adresse de livraison :</label>
-                <input type="text" id="shipping_address" name="shipping_address" value="<?= htmlspecialchars($user['shipping_address']); ?>" required>
+                <input type="text" id="shipping_address" name="shipping_address" value="<?= htmlspecialchars($user['shipping_address']) ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="phone_number">Téléphone :</label>
-                <input type="text" id="phone_number" name="phone_number" value="<?= htmlspecialchars($user['phone_number']); ?>" required>
-            </div>
+                <input type="text" id="phone_number" name="phone_number" value="<?= htmlspecialchars($user['phone_number']) ?>" required autocomplete="tel">
+                </div>
 
             <div class="form-group">
                 <label for="password">Nouveau mot de passe :</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" autocomplete="current-password">
             </div>
 
             <button type="submit">Mettre à jour</button>
@@ -58,6 +60,7 @@
     </div>
 </body>
 </html>
+
 
 <style>
     /* ../css/profil.css */

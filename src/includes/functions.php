@@ -131,9 +131,6 @@ function getTotalPagesCount($limit)
     $totalBrands = getTotalBrandsCount();
     return ceil($totalBrands / $limit);
 }
-
-
-
 function checkSessionTimeout()
 {
     $inactiveTimeout = 600;
@@ -171,7 +168,6 @@ function getCategories()
     }
 }
 
-// Récupérer les marques depuis la base de données
 function getMarques()
 {
     global $db;
@@ -186,7 +182,6 @@ function getMarques()
     }
 }
 
-// Fonction pour récupérer les données de l'utilisateur depuis la base de données
 function getUser()
 {
     global $db;
@@ -278,6 +273,38 @@ function getProductsByModels($desiredModels)
 }
 
 
+function displaySuccessMessages($successes)
+{
+    foreach ($successes as $success) {
+        echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">';
+        echo htmlspecialchars($success);
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+        echo '</div>';
+    }
+}
+
+    function displayErrorMessages($errors) {
+        foreach ($errors as $error) {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+            echo htmlspecialchars($error);
+            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+        }
+    }
+
+function displayRegistrationSuccessMessage()
+{
+    if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'] === true) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+        echo 'Inscription réussie ! Connectez-vous avec vos identifiants.';
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+        echo '</div>';
+        
+        unset($_SESSION['registration_success']);
+    }
+}
+
+
 function addMessage($type, $message)
 {
     $_SESSION[$type][] = $message;
@@ -293,35 +320,4 @@ function getAndClearMessages($type)
     }
 
     return $messages;
-}
-
-function displaySuccessMessages($successes)
-{
-    foreach ($successes as $success) {
-        echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">';
-        echo htmlspecialchars($success);
-        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-        echo '</div>';
-    }
-}
-
-function displayErrorMessages($errors) {
-    foreach ($errors as $error) {
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-        echo htmlspecialchars($error);
-        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-        echo '</div>';
-    }
-}
-
-function displayRegistrationSuccessMessage()
-{
-    if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'] === true) {
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
-        echo 'Inscription réussie ! Connectez-vous avec vos identifiants.';
-        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-        echo '</div>';
-        
-        unset($_SESSION['registration_success']);
-    }
 }

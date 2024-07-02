@@ -30,23 +30,22 @@
                             </div>
                         </div>
                         <form method="post">
-                            <!-- Inclusion du jeton CSRF -->
                             <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
                             <div class="row align-items-center">
                                 <div class="col mt-4">
                                     <label for="email">Email :</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">
                                 <div class="col">
                                     <label for="password">Mot de passe :</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <input type="password" class="form-control" id="password" name="password" required autocomplete="new-password">
                                 </div>
                                 <div class="col">
                                     <label for="confirm_password">Confirmer le mot de passe :</label>
-                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">

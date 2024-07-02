@@ -1,3 +1,7 @@
+<?php
+get_header('Liste des Marques', 'admin');
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -19,10 +23,7 @@
 
         <div class="ligne"></div>
 
-
         <a href="<?= $router->generate('addMarque'); ?>" class="btn btn-success mb-4">+ Ajouter une Marque</a>
-
-
 
         <form class="form-inline my-2 my-lg-0" method="POST" action="">
             <div class="input-group">
@@ -30,7 +31,6 @@
                 <input class="form-control mr-sm-2 mb-4 custom-search-input" type="search" placeholder="Rechercher une marque" aria-label="Rechercher" name="search">
             </div>
         </form>
-
 
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -50,7 +50,11 @@
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->updated_at); ?></td>
                             <td class="table-light text-center align-middle">
                                 <a href="<?= $router->generate('editMarque', ['id' =>  $marque->id]); ?>" class="btn btn-primary btn-sm mr-2">Modifier</a>
-                                <a href="<?= $router->generate('deleteMarque', ['id' =>  $marque->id]); ?>" class="btn btn-danger btn-sm">Supprimer</a>
+                                <!-- Utilisation d'un formulaire pour la suppression -->
+                                <form action="<?= $router->generate('deleteMarque', ['id' =>  $marque->id]); ?>" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette marque ?');">
+                                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
+                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                </form>
                             </td>
                         </tr>
                     <?php } ?>
@@ -79,3 +83,5 @@
     margin: 20px 0;
   }
 </style>
+
+<?php get_footer(); ?>
