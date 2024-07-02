@@ -1,9 +1,9 @@
 <?php
-generateCsrfToken(); // Générer un jeton CSRF
+generateCsrfToken();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!validateCsrfToken($_POST['csrf_token'])) {
-        $errorMessage = "Invalid CSRF token.";
+    if (!verifyCsrfToken($_POST['csrf_token'])) {
+        $errorMessage = "Jeton CSRF invalide.";
         addMessage('error', $errorMessage);
     } else {
         $email = $_POST['email'];
@@ -12,19 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = checkUserCredentials($email, $password);
 
         if ($user) {
-            // Enregistrement de la dernière connexion de l'utilisateur
             saveLastLogin($user['uuid']);
 
-            // Récupération du rôle de l'utilisateur
             $role = getUserRole($user['uuid']);
 
-            // Enregistrement des données dans la session
             $_SESSION['user_id'] = $user['uuid'];
             $_SESSION['role'] = $role;
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name'] = $user['last_name'];
 
-            // Message de bienvenue en fonction du rôle
+            setcookie('user_id', $user['uuid'], time() + 3600, '/'); 
+
             if ($role === 'admin') {
                 $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté en tant qu'administrateur.";
             } else {
@@ -32,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             addMessage('successlogin', $welcomeMessage);
 
-            // Redirection vers la page de profil de l'utilisateur
             header('Location: ' . $router->generate('accueil'));
             exit();
         } else {
@@ -41,10 +38,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
-
-
-
-// Afficher la vue de connexion
-// Ici, vous devriez inclure le code pour charger la vue de connexion ou rediriger vers celle-ci si nécessaire
 ?>

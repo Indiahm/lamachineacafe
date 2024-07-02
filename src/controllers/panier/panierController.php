@@ -1,37 +1,29 @@
 <?php
-// Assurez-vous que la session est démarrée
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Récupérer l'ID de l'utilisateur connecté
 $userId = $_SESSION['user_id'] ?? null;
 
-// Vérifiez que l'utilisateur est connecté
 if (!$userId) {
     $errorMessage = "Vous devez être connecté pour accéder au panier.";
     addMessage('errorpanier', $errorMessage);
-    header('Location: /connexion'); // Redirige vers la page de connexion
+    header('Location: /connexion'); 
     exit();
 }
 
-// Initialiser la variable $totalPrice
 $totalPrice = 0;
 
-// Vérifier si une action est définie dans l'URL
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 
     switch ($action) {
         case 'add':
-            // Vérifier si les données du formulaire ont été envoyées
             if (isset($_POST['product_id'], $_POST['quantity'])) {
-                // Récupérer les données du formulaire et les valider
                 $productId = intval($_POST['product_id']);
                 $quantity = intval($_POST['quantity']);
                 
                 if ($productId > 0 && $quantity > 0) {
-                    // Ajouter le produit au panier
                     $_SESSION['success_message'] = "Le produit a été ajouté au panier avec succès.";
                     $message = ajouterProduitAuPanier($db, $userId, $productId, $quantity);
                     if ($message !== true) {
@@ -44,14 +36,11 @@ if (isset($_GET['action'])) {
             break;
 
         case 'update':
-            // Vérifier si les données du formulaire ont été envoyées
             if (isset($_POST['product_id'], $_POST['quantity'])) {
-                // Récupérer les données du formulaire et les valider
                 $productId = intval($_POST['product_id']);
                 $quantity = intval($_POST['quantity']);
 
                 if ($productId > 0 && $quantity > 0) {
-                    // Mettre à jour la quantité du produit dans le panier
                     $_SESSION['success_message'] = "Le panier a été modifié avec succès.";
                     $message = mettreAJourQuantiteProduit($db, $userId, $productId, $quantity);
                     if ($message !== true) {
@@ -89,13 +78,11 @@ if (isset($_GET['action'])) {
 
 $panier = getPanier($db, $userId);
 
-// Vérifier si $panier est nul
 if ($panier === null) {
     header('Location: /erreur');
     exit();
 }
 
-// Calculer le prix total du panier
 $totalPrice = 0;
 foreach ($panier as $item) {
     if (isset($item['prix']) && isset($item['quantite'])) {

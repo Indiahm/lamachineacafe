@@ -1,14 +1,12 @@
 <?php
 
-// Générer le jeton CSRF pour cette page
 generateCsrfToken();
 
 function handlePasswordResetRequest()
 {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Vérification du jeton CSRF
-        if (!validateCsrfToken($_POST['csrf_token'])) {
+        if (!verifyCsrfToken($_POST['csrf_token'])) {
             setAndRedirectWithMessage('error', 'Erreur CSRF : Le jeton CSRF est invalide.');
             return;
         }
@@ -25,7 +23,6 @@ function handlePasswordResetRequest()
         if ($user) {
             $newPassword = generateRandomPassword();
             if (resetPassword($email, $newPassword)) {
-                // Envoyer un email avec le nouveau mot de passe à l'utilisateur
                 $subject = "Réinitialisation de votre mot de passe";
                 $message = "Votre nouveau mot de passe est : $newPassword";
                 $headers = "From: webmaster@example.com" . "\r\n" .

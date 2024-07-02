@@ -1,13 +1,13 @@
 <?php
-
-
-// Destruction de toutes les données de session
 $_SESSION = [];
 
-// Destruction de la session
 session_destroy();
 
-// Redirection vers la page de connexion ou autre page appropriée
+if (isset($_COOKIE['user_id'])) {
+    unset($_COOKIE['user_id']);
+    setcookie('user_id', '', time() - 3600, '/'); 
+}
+
 header('Location: ' . $router->generate('login'));
 exit();
 ?>

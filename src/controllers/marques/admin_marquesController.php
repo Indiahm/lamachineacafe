@@ -1,11 +1,9 @@
 <?php 
 
-// Vérification si des données de recherche ont été soumises
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
     $marques = searchItems('marques', 'nom', $searchTerm);
 } else {
-    // Si aucune donnée de recherche n'a été soumise, conservez toutes les marques
     $marques = getMarques();
 }
 

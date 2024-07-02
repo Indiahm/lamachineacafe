@@ -18,10 +18,10 @@
                     <div class="alert alert-info"><?= htmlspecialchars($message) ?></div>
                 <?php endforeach; ?>
             </div>
-            <?php unset($_SESSION['messages']); // Supprimer les messages après les avoir affichés ?>
+            <?php unset($_SESSION['messages']); ?>
         <?php endif; ?>
 
-        <form action="<?= $router->generate('update_profile'); ?>" method="post">
+        <form action="<?= htmlspecialchars($router->generate('update_profile')) ?>" method="post">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
 
             <div class="form-group">
@@ -46,17 +46,17 @@
 
             <div class="form-group">
                 <label for="phone_number">Téléphone :</label>
-                <input type="text" id="phone_number" name="phone_number" value="<?= htmlspecialchars($user['phone_number']) ?>" required autocomplete="tel">
-                </div>
+                <input type="tel" id="phone_number" name="phone_number" value="<?= htmlspecialchars($user['phone_number']) ?>" required autocomplete="tel">
+            </div>
 
             <div class="form-group">
                 <label for="password">Nouveau mot de passe :</label>
-                <input type="password" id="password" name="password" autocomplete="current-password">
+                <input type="password" id="password" name="password" autocomplete="new-password">
             </div>
 
             <button type="submit">Mettre à jour</button>
         </form>
-        <a class="retour" href="<?= $router->generate('profil'); ?>">Retour au profil</a>
+        <a class="retour" href="<?= htmlspecialchars($router->generate('profil')) ?>">Retour au profil</a>
     </div>
 </body>
 </html>

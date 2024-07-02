@@ -68,6 +68,23 @@ function displayAlert(): void
     }
 }
 
+function generateCsrfToken() {
+    if (!isset($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+}
+
+function verifyCsrfToken($csrfToken) {
+    if (!isset($_SESSION['csrf_token'])) {
+        throw new Exception('CSRF token not found');
+    }
+
+    if (!hash_equals($_SESSION['csrf_token'], $csrfToken)) {
+        throw new Exception('CSRF token verification failed');
+    }
+
+    return true;
+}
 
 function checkAdminAccess($router)
 {
@@ -85,33 +102,6 @@ function checkUserAccess($router)
         exit();
     }
 }
-
-function verifyCsrfToken($csrfToken) {
-    // Check if the CSRF token is set in the session
-    if (!isset($_SESSION['csrf_token'])) {
-        throw new Exception('CSRF token not found');
-    }
-
-    // Compare the CSRF token from the POST data with the one in the session
-    if ($csrfToken !== $_SESSION['csrf_token']) {
-        throw new Exception('CSRF token verification failed');
-    }
-
-    // If we reach this point, the tokens match, so we return true
-    return true;
-}
-
-function generateCsrfToken()
-{
-    if (!isset($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-}
-
-function validateCsrfToken($token) {
-    return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
-}
-
 
 function searchItems($table, $column, $searchTerm)
 {

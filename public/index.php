@@ -1,20 +1,8 @@
 <?php
-ob_start();
 
 require '../vendor/autoload.php';
 
 use Dotenv\Dotenv;
-
-// Configuration des paramètres de session
-ini_set('session.cookie_httponly', 1);
-$cookieParams = session_get_cookie_params();
-session_set_cookie_params(
-    $cookieParams["lifetime"],
-    $cookieParams["path"],
-    $cookieParams["domain"],
-    true,  // secure: true pour envoyer le cookie uniquement sur HTTPS
-    true   // httponly: true pour empêcher l'accès via JavaScript
-);
 
 // Démarrage de la session
 session_start();
@@ -55,24 +43,7 @@ if (!empty($match['target'])) {
     require SRC . 'views/' . $match['target'] . 'View.php';
 }
 
-// Assurez-vous que $lastViewedProduct est défini et non vide avant de l'utiliser
-$lastViewedProduct = ''; // Exemple de valeur par défaut
+// Générer le jeton CSRF pour la session
+generateCsrfToken();
 
-// Remplacez '.votre-domaine.com' par votre nom de domaine réel
-$cookieDomain = 'lamachineacafe.test';
-
-$cookieName = 'lastViewedProduct';
-$cookieValue = $lastViewedProduct;
-
-// Définition du cookie avec les options de sécurité
-setcookie($cookieName, $cookieValue, [
-    'expires' => time() + 3600,
-    'path' => '/',
-    'domain' => $cookieDomain,
-    'secure' => true,
-    'httponly' => true,
-    'samesite' => 'Strict'
-]);
-
-ob_end_flush();
 ?>
