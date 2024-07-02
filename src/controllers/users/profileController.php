@@ -23,18 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['action']) && $_POST['action'] === 'delete_account') {
         // Suppression du compte de l'utilisateur
         if (deleteAccount($userId)) {
-            $_SESSION['account_deleted'] = 'Votre compte a bien été supprimé.';            
-            // Déconnexion de l'utilisateur
+            $errorMessage = "Votre compte a bien été supprimé.";
+            addMessage('errordelete', $errorMessage); // Ajouter le message d'erreur
+            
+            // Redirection vers la page de connexion
+            header('Location: /connexion');
+            
+            // Détruire la session après la redirection
             session_destroy();
-
-            // Redirection vers la page d'accueil ou une autre page appropriée après la suppression du compte
-            header('Location: ' . $router->generate('accueil'));
             exit();
         } else {
             echo 'Échec de la suppression du compte. Vérifiez les logs pour plus d\'informations.';
         }
     }
 }
+
 
 // Inclure la vue correspondante pour afficher le formulaire de suppression de compte
 ?>

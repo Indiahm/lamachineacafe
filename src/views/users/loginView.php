@@ -21,8 +21,8 @@
             </div>
 
             <div class="form-body">
-                <form method="POST" action="<?php echo $router->generate('login'); ?>">
-                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                <form method="POST" action="<?= htmlspecialchars($router->generate('login')); ?>">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
 
                     <div class="form-group">
                         <label for="email">Adresse email</label>
@@ -45,16 +45,24 @@
                             $errors = getAndClearMessages('errorpanier');
                             displayErrorMessages($errors);
                             ?>
+                            <?php
+                            $errors = getAndClearMessages('errordelete');
+                            displayErrorMessages($errors);
+                            ?>
+                            <?php
+                            // Afficher le message d'inscription réussie s'il existe
+                            displayRegistrationSuccessMessage();
+                            ?>
                         </div>
                     </div>
                 </form>
             </div>
 
             <div class="form-footer">
-                <a class="inscription" href="<?php echo $router->generate('register'); ?>">Pas encore inscrit ? Créer un compte ici</a>
+                <a class="inscription" href="<?= htmlspecialchars($router->generate('register')); ?>">Pas encore inscrit ? Créer un compte ici</a>
             </div>
             <div>
-                <p class="mdp">Mot de passe oublié ? <a href="<?php echo $router->generate('mdpoublie'); ?>">Réinitialiser</a></p>
+                <p class="mdp">Mot de passe oublié ? <a href="<?= htmlspecialchars($router->generate('mdpoublie')); ?>">Réinitialiser</a></p>
             </div>
         </div>
     </div>

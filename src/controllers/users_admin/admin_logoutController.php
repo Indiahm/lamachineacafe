@@ -1,10 +1,13 @@
 <?php
 
 
+// Destruction de toutes les données de session
+$_SESSION = [];
+
+// Destruction de la session
 session_destroy();
 
-$_SESSION['logout_success_message'] = "Déconnexion réussie";
-
+// Redirection vers la page de connexion ou autre page appropriée
 header('Location: ' . $router->generate('login'));
 exit();
 ?>

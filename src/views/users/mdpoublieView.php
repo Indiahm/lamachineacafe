@@ -7,11 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réinitialiser son Mot de Passe</title>
-    <!-- Assurez-vous que les chemins vers vos fichiers CSS sont corrects et accessibles -->
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login.css">
-
-    <!-- Autoriser le chargement de Font Awesome depuis le CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
