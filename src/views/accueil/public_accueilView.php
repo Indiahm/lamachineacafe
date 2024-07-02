@@ -22,7 +22,9 @@
 
         <?php
         displaySuccessMessages($successes);
+        var_dump($successes);
         ?>
+        
 
         <div id="carouselExampleControls" class="carousel slide animate__animated animate__fadeIn" data-bs-ride="carousel">
             <div class="carousel-inner">

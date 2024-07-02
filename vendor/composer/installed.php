@@ -3,7 +3,7 @@
         'name' => 'vadel/movies',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '99dc32526f6f3e3a6a77b2b760b3dbb24c961265',
+        'reference' => '8ead394c1ed4a2148ac259c0c8fd2260fe4a0d57',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -154,7 +154,7 @@
         'vadel/movies' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '99dc32526f6f3e3a6a77b2b760b3dbb24c961265',
+            'reference' => '8ead394c1ed4a2148ac259c0c8fd2260fe4a0d57',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
