@@ -21,7 +21,7 @@
 
                             <?php if (isset($error_message) && !empty($error_message)) : ?>
                                 <div class="alert alert-danger" role="alert">
-                                    <?= $error_message ?>
+                                    <?= htmlspecialchars($error_message); ?>
                                 </div>
                             <?php endif; ?>
 
@@ -30,12 +30,12 @@
                             </div>
                         </div>
                         <form method="post">
-                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
 
                             <div class="row align-items-center">
                                 <div class="col mt-4">
                                     <label for="email">Email :</label>
-                                    <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
+                                    <input type="email" class="form-control" id="email" name="email" required autocomplete="email" value="<?= htmlspecialchars($email ?? ''); ?>">
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">
@@ -51,23 +51,23 @@
                             <div class="row align-items-center mt-4">
                                 <div class="col">
                                     <label for="shipping_address">Adresse de livraison :</label>
-                                    <input type="text" class="form-control" id="shipping_address" name="shipping_address" required>
+                                    <input type="text" class="form-control" id="shipping_address" name="shipping_address" required value="<?= htmlspecialchars($shipping_address ?? ''); ?>">
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">
                                 <div class="col">
                                     <label for="phone_number">Numéro de téléphone :</label>
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number">
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" value="<?= htmlspecialchars($phone_number ?? ''); ?>">
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">
                                 <div class="col">
                                     <label for="first_name">Prénom :</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name">
+                                    <input type="text" class="form-control" id="first_name" name="first_name" value="<?= htmlspecialchars($first_name ?? ''); ?>">
                                 </div>
                                 <div class="col">
                                     <label for="last_name">Nom :</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" value="<?= htmlspecialchars($last_name ?? ''); ?>">
                                 </div>
                             </div>
                             <div class="row justify-content-start mt-4 center-button">

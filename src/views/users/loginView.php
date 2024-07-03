@@ -1,4 +1,3 @@
-
 <?php get_header('public'); ?>
 
 <!DOCTYPE html>
@@ -70,3 +69,5 @@
 </body>
 
 </html>
+
+<?php get_footer('public'); ?>

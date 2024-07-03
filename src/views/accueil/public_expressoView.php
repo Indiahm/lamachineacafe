@@ -1,5 +1,4 @@
-<?php get_header('public');
-?>
+<?php get_header('public'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,19 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des produits</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/produit.css">
-
 </head>
 <body>
 
 <div class="container">
-<h1 class="mb-4">Machine à Café Expresso</h1>
-<p class="p">Ici se trouve la liste des produits Expresso</p>
-<div class="ligne"></div>
-
+    <h1 class="mb-4">Machine à Café Expresso</h1>
+    <p class="p">Ici se trouve la liste des produits Expresso</p>
+    <div class="ligne"></div>
 
     <div class="row">
         <?php foreach ($products as $product): ?>

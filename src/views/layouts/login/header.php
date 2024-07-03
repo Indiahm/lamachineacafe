@@ -21,11 +21,14 @@
                     </div>
                     <div class="bouton-connexion" id="bouton-connexion-acceuil">
                         <img class="imgggg" src="../images/person-circle.svg" alt="se connecter">
-                        <span class="admin-name">Utilisateur | </span> <span class="name"> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></span>
+                        <span class="admin-name">Utilisateur | </span> 
+                        <span class="name"> 
+                            <?= htmlspecialchars($_SESSION['first_name']) . ' ' . htmlspecialchars($_SESSION['last_name']); ?>
+                        </span>
                     </div>
 
                     <div class="panier-logo">
-                        <a href="<?= $router->generate('panier'); ?>">
+                        <a href="<?= htmlspecialchars($router->generate('panier')); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
                             </svg>
@@ -34,35 +37,31 @@
                     </div>
 
                     <div class="panier-logo">
-    <a href="<?= $router->generate('profil', ['uuid' => $_SESSION['user_id']]); ?>">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-            <path d="M3 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H3zm5-6a3 3 0 1 0-3-3 3 3 0 0 0 3 3z"/>
-        </svg>
-        <span>Mon Profil</span>
-    </a>
-</div>
-
-
+                        <a href="<?= htmlspecialchars($router->generate('profil', ['uuid' => $_SESSION['user_id']])); ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H3zm5-6a3 3 0 1 0-3-3 3 3 0 0 0 3 3z"/>
+                            </svg>
+                            <span>Mon Profil</span>
+                        </a>
+                    </div>
 
                     <div class="logout">
-                        <a id="logout" class="nav-link logout-btn" href="<?= $router->generate('logout') ?>">
+                        <a id="logout" class="nav-link logout-btn" href="<?= htmlspecialchars($router->generate('logout')); ?>">
                             <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
                         </a>
                     </div>
                 </div>
-
-
             </div>
 
             <nav class="menu">
                 <ul>
-                    <li><a href="<?= $router->generate('accueil'); ?>">Accueil</a></li>
-                    <li><a href="<?= $router->generate('grain'); ?>">Machine à café à grain</a></li>
-                    <li><a href="<?= $router->generate('expresso'); ?>">Machine à café à expresso</a></li>
-                    <li><a href="<?= $router->generate('cafetieres'); ?>">Cafetières</a></li>
+                    <li><a href="<?= htmlspecialchars($router->generate('accueil')); ?>">Accueil</a></li>
+                    <li><a href="<?= htmlspecialchars($router->generate('grain')); ?>">Machine à café à grain</a></li>
+                    <li><a href="<?= htmlspecialchars($router->generate('expresso')); ?>">Machine à café à expresso</a></li>
+                    <li><a href="<?= htmlspecialchars($router->generate('cafetieres')); ?>">Cafetières</a></li>
                     <li><a href="#">Nos cafés en grain</a></li>
                     <li><a href="#">Nos cafés moulus</a></li>
-                    <li><a href="<?= $router->generate('info'); ?>">Nous découvrir</a></li>
+                    <li><a href="<?= htmlspecialchars($router->generate('info')); ?>">Nous découvrir</a></li>
                 </ul>
             </nav>
         </div>

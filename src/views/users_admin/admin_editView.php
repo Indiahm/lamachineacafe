@@ -19,16 +19,16 @@
                     <?php $error = checkEmptyFields('email'); ?>
                     <label for="email" class="form-label">Adresse email : *</label>
                     <input type="email" name="email" id="email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" class="form-control <?= $error['class']; ?>">
-                    <div class="invalid-feedback"><?= $error['message']; ?></div>
-                    <div class="text-danger"><?= $errorMessage['email']; ?></div>
+                    <div class="invalid-feedback"><?= htmlspecialchars($error['message']); ?></div>
+                    <div class="text-danger"><?= htmlspecialchars($errorMessage['email']); ?></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="role_id" class="form-label">Rôle de l'utilisateur :</label>
                     <select name="role_id" id="role_id" class="form-select">
                         <?php foreach ($roles as $role) : ?>
-                            <option value="<?= $role['id'] ?>" <?= isset($_POST['role_id']) && $_POST['role_id'] == $role['id'] ? 'selected' : '' ?>>
-                                <?= $role['name'] ?>
+                            <option value="<?= htmlspecialchars($role['id']); ?>" <?= isset($_POST['role_id']) && $_POST['role_id'] == $role['id'] ? 'selected' : ''; ?>>
+                                <?= htmlspecialchars($role['name']); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -47,6 +47,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 <?php get_footer('login'); ?>
 

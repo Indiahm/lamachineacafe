@@ -1,5 +1,5 @@
 <?php
-$admin = '/' . $_ENV['ADMIN_FOLDER'];
+$admin = '/' . htmlspecialchars($_ENV['ADMIN_FOLDER'], ENT_QUOTES, 'UTF-8');
 
 $router->addMatchTypes(['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*']);
 $router->addMatchTypes(['uuid' => '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}']);

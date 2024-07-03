@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= $title; ?> | La Machine a Cafe </title>
+        <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?> | La Machine a Cafe </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     </head>
@@ -38,7 +38,7 @@
 
         <div class="sidebar">
 
-            <span class="admin-name">Admin | </span> <span class="name"> <?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></span>
+        <span class="name"><?= htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name'], ENT_QUOTES, 'UTF-8'); ?></span>
 
             <h1>
                 <i class="fas fa-bars mr-2"></i>
@@ -65,8 +65,8 @@
                 </a>
 
 
-                <a id="logout" class="nav-link" href="<?= $router->generate('logout') ?>">
-                    <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
+                <a id="logout" class="nav-link" href="<?= htmlspecialchars($router->generate('logout'), ENT_QUOTES, 'UTF-8'); ?>">
+                <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
                 </a>
             </nav>
         </div>

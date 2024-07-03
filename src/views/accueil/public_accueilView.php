@@ -29,28 +29,28 @@
         <div id="carouselExampleControls" class="carousel slide animate__animated animate__fadeIn" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="public/images/1.jpg" class="d-block w-100" alt="Slide 1">
-                    <div class="carousel-caption d-none d-md-block">
+                <img src="<?= htmlspecialchars('public/images/1.jpg'); ?>" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
                         <h5 class="">Machine à Café en grain</h5>
                         <p class="animate__animated animate__fadeIn">Découvrez notre sélection de machines à café en grain pour une expérience caféine exceptionnelle.</p>
-                        <a href="<?= $router->generate('grain'); ?>" class="details animate__animated animate__fadeInUp">En savoir d'avantage</a>
-                    </div>
+                        <a href="<?= htmlspecialchars($router->generate('grain')); ?>" class="details animate__animated animate__fadeInUp">En savoir d'avantage</a>
+                        </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="public/images/2.jpg" class="d-block w-100" alt="Slide 2">
-                    <div class="carousel-caption d-none d-md-block">
+                <img src="<?= htmlspecialchars('public/images/2.jpg'); ?>" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
                         <h5 class="">Machine à expresso</h5>
                         <p class="animate__animated animate__fadeIn">Explorez notre gamme de machines à expresso pour savourer des cafés riches et aromatiques à tout moment de la journée.</p>
-                        <a href="<?= $router->generate('expresso'); ?>" class="details animate__animated animate__fadeInUp">En savoir d'avantage</a>
-                    </div>
+                        <a href="<?= htmlspecialchars($router->generate('expresso')); ?>" class="details animate__animated animate__fadeInUp">En savoir d'avantage</a>
+                        </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="public/images/3.webp" class="d-block w-100" alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block">
+                <img src="<?= htmlspecialchars('public/images/3.webp'); ?>" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption d-none d-md-block">
                         <h5 class="">Cafetières</h5>
                         <p class="animate__animated animate__fadeIn">Découvrez nos cafetières pour préparer des cafés filtre de qualité supérieure avec facilité et élégance.</p>
-                        <a href="<?= $router->generate('cafetieres'); ?>" class="details animate__animated animate__fadeInUp">En savoir d'avantage</a>
-                    </div>
+                        <a href="<?= htmlspecialchars($router->generate('cafetieres')); ?>" class="details animate__animated animate__fadeInUp">En savoir d'avantage</a>
+                        </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -73,31 +73,31 @@
         <div class="row animate__animated animate__fadeIn">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="../public/images/cafés.jpg" class="card-img-top" alt="Image 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Nos Cafés</h5>
-                        <a href="<?= $router->generate('cafe') ?>" class="details">En savoir d'avantage</a>
-                    </div>
+                <img src="<?= htmlspecialchars('../public/images/cafés.jpg'); ?>" class="card-img-top" alt="Image 1">
+                <div class="card-body">
+                <h5 class="card-title"><?= htmlspecialchars('Nos Cafés'); ?></h5>
+                <a href="<?= htmlspecialchars($router->generate('cafe')); ?>" class="details">En savoir d'avantage</a>
+                        </div>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img src="../public/images/Matériels.png" class="card-img-top" alt="Image 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Nos Machines</h5>
-                        <a href="<?= $router->generate('machine') ?>" class="details">En savoir d'avantage</a>
-                    </div>
+                <img src="<?= htmlspecialchars('../public/images/Matériels.png'); ?>" class="card-img-top" alt="Image 2">
+                <div class="card-body">
+                <h5 class="card-title"><?= htmlspecialchars('Nos Machines'); ?></h5>
+                <a href="<?= htmlspecialchars($router->generate('machine')); ?>" class="details">En savoir d'avantage</a>
+                        </div>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img src="../images/Professionel.jpg" class="card-img-top" alt="Image 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Professionels</h5>
-                        <a href="<?= $router->generate('info') ?>" class="details">Voir les détails</a>
-                    </div>
+                <img src="<?= htmlspecialchars('../images/Professionel.jpg'); ?>" class="card-img-top" alt="Image 3">
+                <div class="card-body">
+                <h5 class="card-title"><?= htmlspecialchars('Professionels'); ?></h5>
+                <a href="<?= htmlspecialchars($router->generate('info')); ?>" class="details">Voir les détails</a>
+                        </div>
                 </div>
             </div>
         </div>

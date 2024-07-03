@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des utilisateurs</title>
     <link rel="stylesheet" href="styles.css"> 
 </head>
-
 <body>
     <header>
         <?php get_header('Liste des utilisateurs', 'admin'); ?>
@@ -15,9 +13,7 @@
 
     <div class="container">
         <h2 class="my-4">Liste des utilisateurs</h2>
-
         <div class="ligne"></div>
-
 
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -37,25 +33,17 @@
                     <?php foreach ($users as $user) { ?>
                         <tr>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->email); ?></td>
-                            <td class="text-center align-middle"><?php
-                                                                    $roleName = getRoleName($user->role_id);
-                                                                    if ($roleName == "admin") {
-                                                                        echo '<span style="color: red; font-weight: bold;">' . $roleName . '</span>';
-                                                                    } elseif ($roleName == "utilisateur") {
-                                                                        echo '<span style="color: blue; font-weight: bold;">' . $roleName . '</span>';
-                                                                    } else {
-                                                                        echo $roleName;
-                                                                    }
-                                                                    ?></td>
-
+                            <td class="text-center align-middle <?= getRoleName($user->role_id); ?>">
+                                <?= htmlspecialchars(getRoleName($user->role_id)); ?>
+                            </td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->created); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->shipping_address); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->phone_number); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->first_name); ?></td>
                             <td class="text-center align-middle"><?= htmlspecialchars($user->last_name); ?></td>
                             <td class="table-light text-center align-middle">
-                            <a href="<?= $router->generate('editUser', ['uuid' => $user->uuid]); ?>" class="btn btn-dark btn-sm mr-2">Roles</a>
-                            <a href="<?= $router->generate('editUserMdp', ['uuid' => $user->uuid]); ?>" class="btn btn-dark btn-sm mr-2">Mot de passe</a>
+                                <a href="<?= $router->generate('editUser', ['uuid' => $user->uuid]); ?>" class="btn btn-dark btn-sm mr-2">Roles</a>
+                                <a href="<?= $router->generate('editUserMdp', ['uuid' => $user->uuid]); ?>" class="btn btn-dark btn-sm mr-2">Mot de passe</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -74,6 +62,10 @@
         </nav>
     </div>
 
+    <?php checkSessionTimeout(); ?>
+</body>
+</html>
+
 
     <?php checkSessionTimeout(); ?>
 </body>
@@ -82,8 +74,8 @@
 
 
 <style>
-  .ligne {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-  }
+    .ligne {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
 </style>
