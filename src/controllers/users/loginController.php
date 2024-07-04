@@ -16,20 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $_SESSION['user_id'] = $user['uuid'];
             $_SESSION['role'] = $role;
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['last_name'] = $user['last_name'];
+            $_SESSION['first_name'] = htmlspecialchars($user['first_name']);
+            $_SESSION['last_name'] = htmlspecialchars($user['last_name']);
 
             setcookie('user_id', $user['uuid'], time() + 3600, '/'); 
 
             if ($role === 'admin') {
-                $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté en tant qu'administrateur.";
+                $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté en admin.";
+                header('Location: ' . $router->generate('products'));
+                exit();
             } else {
                 $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté.";
+                addMessage('successlogin', $welcomeMessage);
+                header('Location: ' . $router->generate('accueil'));
+                exit();
             }
-            addMessage('successlogin', $welcomeMessage);
-
-            header('Location: ' . $router->generate('accueil'));
-            exit();
         } else {
             $errorMessage = "Identifiants incorrects. Veuillez réessayer.";
             addMessage('errorlogin', $errorMessage);

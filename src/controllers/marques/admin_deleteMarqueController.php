@@ -9,4 +9,3 @@ if (!empty($_GET['id']) && !empty(getAlreadyIddd()->id)) {
 header('Location: ' . $router->generate('marques'));
 die;
 
-checkAdminAccess($router);

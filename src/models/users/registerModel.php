@@ -9,7 +9,7 @@ function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstN
     $uuid = Uuid::uuid4()->toString();
 
     $sql = "SELECT COUNT(*) AS count FROM users WHERE email = :email";
-    $query = $db->prepare($sql);
+    $query = $db->prepare($sql);    
     $query->execute(['email' => $email]);
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -55,8 +55,9 @@ function checkExistingPhoneNumber($phoneNumber)
     return $result['count'] > 0;
 }
 
-
-
+function isValidName($name) {
+    return ctype_alpha($name);
+}
 
 function isValidPassword($password) {
     return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/', $password);

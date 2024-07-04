@@ -56,7 +56,7 @@
             <nav class="menu">
                 <ul>
                     <li><a href="<?= htmlspecialchars($router->generate('accueil')); ?>">Accueil</a></li>
-                    *                    <li><a href="<?= htmlspecialchars($router->generate('cafe')); ?>">Cafés en grain</a></li>
+                    <li><a href="<?= htmlspecialchars($router->generate('cafe')); ?>">Cafés en grain</a></li>
                     <li><a href="<?= htmlspecialchars($router->generate('grain')); ?>">Machine à café à grain</a></li>
                     <li><a href="<?= htmlspecialchars($router->generate('expresso')); ?>">Machine à café à expresso</a></li>
                     <li><a href="<?= htmlspecialchars($router->generate('cafetieres')); ?>">Cafetières</a></li>

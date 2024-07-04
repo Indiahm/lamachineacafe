@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $last_name = htmlspecialchars($_POST['last_name']);
         $consent = isset($_POST['consent']) ? true : false;
 
-        // Validation des données
         if (!$email) {
             $error_message = "Email invalide.";
         } elseif ($password !== $confirmPassword) {
@@ -27,11 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error_message = "Le numéro de téléphone existe déjà.";
         } elseif (checkAlreadyExistEmail($email)) {
             $error_message = "L'email existe déjà.";
+        } elseif (!isValidName($first_name)) {
+            $error_message = "Le prénom ne doit contenir que des lettres.";
+        } elseif (!isValidName($last_name)) {
+            $error_message = "Le nom ne doit contenir que des lettres";
+
         } else {
-            // Hachage du mot de passe
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            // Enregistrement des données (assurez-vous de bien valider et assainir avant l'insertion dans la base de données)
             $registrationSuccess = registerUser($email, $hashed_password, $shipping_address, $phone_number, $first_name, $last_name);
             
             if ($registrationSuccess) {
