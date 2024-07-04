@@ -4,10 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Vérifiez le jeton CSRF lors du traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
-        // Le jeton CSRF est invalide, gérer l'erreur
         die("Erreur détectée. Veuillez réessayer à nouveau.");
     }
 }
@@ -36,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Vérification de l'existence de l'image
     if (!isset($_FILES['image'])) {
         $errorMessage['image'] = 'Veuillez sélectionner une image';
     }

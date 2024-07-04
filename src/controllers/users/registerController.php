@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $consent = isset($_POST['consent']) ? true : false;
 
         if (!$email) {
-            $error_message = "L\'email invalide.";
+            $error_message = "Email invalide.";
         } elseif ($password !== $confirmPassword) {
             $error_message = "Les mots de passe ne correspondent pas.";
         } elseif (!isValidPassword($password)) {

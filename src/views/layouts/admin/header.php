@@ -15,7 +15,6 @@
         <nav class="navbar navbar-expand-lg bg-beige mb-4" data-bs-theme="light">
             <div class="container">
                 <a class="navbar-brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30px" height="30px">
-                        <!-- SVG code here -->
                     </svg> Menu Admin | La Machine a Cafe </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -61,8 +60,15 @@
         <main class="container mb-4">
 
             <?php displayAlert(); ?>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    </body>
+    </html>
 
-            <style>
+
+
+
+    <style>
                 .bg-beige {
                     background-color: #d0b49f;
                 }
@@ -177,10 +183,3 @@
          
                 
             </style>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-
-    </body>
-
-    </html>

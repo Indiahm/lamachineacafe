@@ -15,7 +15,6 @@
 
     <div class="container">
         <h2 class="mb-4">Liste des Catégories</h2>
-        <?php displayAlert(); ?>
 
 
         <div class="ligne"></div>

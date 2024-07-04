@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errorMessage['nom'])) {
     } else {
         addMarque();
     }
-    header('Location: ' . $router->generate('marques'));
     alert('La marque a été ajoutée ou mise à jour avec succès', 'success');
 }
 
