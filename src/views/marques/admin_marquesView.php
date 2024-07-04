@@ -13,7 +13,6 @@ get_header('Liste des Marques', 'admin');
 </head>
 
 <body>
-
     <header>
         <?php get_header('Liste des Marques', 'admin'); ?>
     </header>
@@ -51,7 +50,7 @@ get_header('Liste des Marques', 'admin');
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->updated_at); ?></td>
                             <td class="table-light text-center align-middle">
                                 <a href="<?= $router->generate('editMarque', ['id' =>  $marque->id]); ?>" class="btn btn-primary btn-sm mr-2">Modifier</a>
-                                <a href="<?= $router->generate('deleteMarque', ['id' =>  $marque->id]); ?>" class="btn btn-danger btn-sm">Supprimer</a>                                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
+                                <a href="<?= $router->generate('deleteMarque', ['id' =>  $marque->id]); ?>" class="btn btn-danger btn-sm">Supprimer</a> <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
                                 </form>
                             </td>
                         </tr>
@@ -76,10 +75,10 @@ get_header('Liste des Marques', 'admin');
 
 
 <style>
-  .ligne {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-  }
+    .ligne {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
 </style>
 
 <?php get_footer(); ?>

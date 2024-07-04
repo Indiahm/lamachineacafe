@@ -87,6 +87,7 @@ foreach ($successes as $success) :
 <?php get_footer('admin'); ?>
 
 <style>
+    
     .ligne {
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         margin: 20px 0;

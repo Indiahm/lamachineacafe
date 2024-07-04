@@ -3,30 +3,32 @@
 function addCategory(): bool
 {
     global $db;
-    $data = [
-        'nom' => $_POST['nom'],
-    ];
+
+    $nom = $_POST['nom'];
 
     $sql = 'INSERT INTO categories (nom) VALUES (:nom)';
     $query = $db->prepare($sql);
-    $query->execute($data);
+    $query->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $success = $query->execute();
 
-    return true;
+    return $success;
 }
+
 
 function updateCategory() 
 {
     global $db;
-    $data = [
-        'nom' => $_POST['nom'],
-        'id' => $_GET['id']
-    ];
+
+    $nom = $_POST['nom'];
+    $id = $_GET['id'];
 
     $sql = 'UPDATE categories SET nom = :nom WHERE id = :id';
     $query = $db->prepare($sql);
-    $query->execute($data);
+    $query->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $query->bindParam(':id', $id, PDO::PARAM_INT);
+    $success = $query->execute();
 
-    return true;
+    return $success;
 }
 
 function getCategory()

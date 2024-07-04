@@ -10,7 +10,8 @@ function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstN
 
     $sql = "SELECT COUNT(*) AS count FROM users WHERE email = :email";
     $query = $db->prepare($sql);    
-    $query->execute(['email' => $email]);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->execute();
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
     if ($result['count'] > 0) {
@@ -21,19 +22,17 @@ function registerUser($email, $password, $shippingAddress, $phoneNumber, $firstN
 
     $sql = "INSERT INTO users (email, pwd, shipping_address, phone_number, first_name, last_name, uuid) VALUES (:email, :pwd, :shipping_address, :phone_number, :first_name, :last_name, :uuid)";
     $query = $db->prepare($sql);
-    $success = $query->execute([
-        'email' => $email,
-        'pwd' => $hashedPassword,
-        'shipping_address' => $shippingAddress,
-        'phone_number' => $phoneNumber,
-        'first_name' => $firstName,
-        'last_name' => $lastName,
-        'uuid' => $uuid
-    ]);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->bindParam(':pwd', $hashedPassword, PDO::PARAM_STR);
+    $query->bindParam(':shipping_address', $shippingAddress, PDO::PARAM_STR);
+    $query->bindParam(':phone_number', $phoneNumber, PDO::PARAM_STR);
+    $query->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+    $query->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+    $query->bindParam(':uuid', $uuid, PDO::PARAM_STR);
+    $success = $query->execute();
 
     return $success;
 }
-
 
 function displayMessage($message, $type = 'success') {
     if ($type === 'success') {
@@ -49,7 +48,8 @@ function checkExistingPhoneNumber($phoneNumber)
 
     $sql = "SELECT COUNT(*) AS count FROM users WHERE phone_number = :phone_number";
     $query = $db->prepare($sql);
-    $query->execute(['phone_number' => $phoneNumber]);
+    $query->bindParam(':phone_number', $phoneNumber, PDO::PARAM_STR);
+    $query->execute();
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
     return $result['count'] > 0;

@@ -15,6 +15,16 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+.center-button {
+    text-align: center;
+    margin-top: 25px;
+}
+
+button[type="submit"]:hover {
+    background-color: #523a28;
+}
+
+
 h1 {
     text-align: center;
     color: #333;
@@ -66,10 +76,7 @@ button[type="submit"]:hover {
     border-radius: .25rem;
 }
 
-.center-button {
-    text-align: center;
-    margin-top: 25px;
-}
+
 
 .consent-container {
     display: flex;

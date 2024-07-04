@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/register.css">
 </head>
+
 <body>
     <section>
         <div class="container">
@@ -27,7 +29,7 @@
                             </div>
                         </div>
                         <form method="post">
-                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(getCsrfToken()); ?>">
+                            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(getCsrfToken()); ?>">
 
                             <div class="row align-items-center">
                                 <div class="col mt-4">
@@ -38,11 +40,11 @@
                             <div class="row align-items-center mt-4">
                                 <div class="col">
                                     <label for="password">Mot de passe :</label>
-                                    <input type="password" class="form-control" id="password" name="password" required autocomplete="new-password">
+                                    <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                                 <div class="col">
                                     <label for="confirm_password">Confirmer le mot de passe :</label>
-                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required autocomplete="new-password">
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">
@@ -68,10 +70,10 @@
                                 </div>
                             </div>
                             <div class="row mt-4">
-                            <div class="consent-container">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label class="message" for="consent">J'accepte que mes données personnelles soient traitées conformément à votre  <a href="<?= $router->generate('rgpd') ?>">Politique de Confidentialité</a></label>
-                            </div>
+                                <div class="consent-container">
+                                    <input type="checkbox" id="consent" name="consent" required>
+                                    <label class="message" for="consent">J'accepte que mes données personnelles soient traitées conformément à votre <a href="<?= $router->generate('rgpd') ?>">Politique de Confidentialité</a></label>
+                                </div>
                             </div>
                             <div class="row justify-content-start mt-4 center-button">
                                 <div class="col">
@@ -85,6 +87,7 @@
         </div>
     </section>
 </body>
+
 </html>
 
 <?php
