@@ -7,15 +7,6 @@ header("X-Frame-Options: DENY");
 
 use Dotenv\Dotenv;
 
-session_set_cookie_params([
-    'lifetime' => 0, 
-    'path' => '/', 
-    'domain' => 'votre-domaine.com', 
-    'secure' => true, 
-    'httponly' => true, 
-    'samesite' => 'Strict' 
-]);
-
 session_start();
 
 define('SRC', '../src/');

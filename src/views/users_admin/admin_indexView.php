@@ -13,6 +13,7 @@
 
     <div class="container">
         <h2 class="my-4">Liste des utilisateurs</h2>
+        <?php displayAlert(); ?>
         <div class="ligne"></div>
 
         <div class="table-responsive">

@@ -20,6 +20,7 @@ get_header('Liste des Marques', 'admin');
 
     <div class="container">
         <h2 class="mb-4">Liste des Marques</h2>
+        <?php displayAlert(); ?>
 
         <div class="ligne"></div>
 
@@ -50,10 +51,7 @@ get_header('Liste des Marques', 'admin');
                             <td class="table-light text-center align-middle"><?= htmlspecialchars($marque->updated_at); ?></td>
                             <td class="table-light text-center align-middle">
                                 <a href="<?= $router->generate('editMarque', ['id' =>  $marque->id]); ?>" class="btn btn-primary btn-sm mr-2">Modifier</a>
-                                <!-- Utilisation d'un formulaire pour la suppression -->
-                                <form action="<?= $router->generate('deleteMarque', ['id' =>  $marque->id]); ?>" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette marque ?');">
-                                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
-                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                <a href="<?= $router->generate('deleteMarque', ['id' =>  $marque->id]); ?>" class="btn btn-danger btn-sm">Supprimer</a>                                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
                                 </form>
                             </td>
                         </tr>

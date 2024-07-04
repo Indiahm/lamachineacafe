@@ -13,6 +13,8 @@ foreach ($successes as $success) :
 <div class="wrapper">
 
 <h2 class="mb-4">Liste des produits</h2>
+<?php displayAlert(); ?>
+
 
 <div class="ligne"></div>
 
@@ -88,6 +90,12 @@ foreach ($successes as $success) :
     .ligne {
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         margin: 20px 0;
+    }
+
+    .wrapper {
+        max-width: 1200px;
+        margin-right: auto;
+        margin-left: auto;
     }
 
 </style>

@@ -45,9 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($_GET['id'])) {
             updateProduct();
             alert('Le produit a été mis à jour avec succès', 'success');
+            header('Location: ' . $router->generate('products'));
         } else {
             addProduct();
             alert('Le produit a été ajouté avec succès', 'success');
+            header('Location: ' . $router->generate('products'));
         }
     }
 }

@@ -21,14 +21,19 @@ if (!empty($_POST)) {
                 updateUser($role_id, $_GET['uuid']);
 
                 alert('Le rôle de l\'utilisateur a été mis à jour avec succès', 'success');
+                header('Location: ' . $router->generate('users'));
+
             } else {
                 alert('Le rôle de l\'utilisateur est obligatoire', 'danger');
+                header('Location: ' . $router->generate('users'));
             }
         } else {
             alert('UUID de l\'utilisateur manquant pour la mise à jour du rôle', 'danger');
+            header('Location: ' . $router->generate('users'));
         }
     } else {
         alert('Erreur lors de la mise à jour du rôle de l\'utilisateur', 'danger');
+        header('Location: ' . $router->generate('users'));
     }
 } else if (!empty($_GET['uuid'])) {
     $_POST = (array) getUser();

@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errorMessage['nom'])) {
     } else {
         addCategory();
     }
+    header('Location: ' . $router->generate('categories'));
     alert('La catégorie a été ajoutée ou mise à jour avec succès', 'success');
 }
 
