@@ -1,8 +1,5 @@
 <?php
 
-
-generateCsrfToken();
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
         die('Erreur CSRF : Le jeton CSRF est invalide.');

@@ -1,15 +1,10 @@
 <?php
-
-// Génération du jeton CSRF pour le formulaire
-generateCsrfToken();
-
 $error_message = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         verifyCsrfToken($_POST['csrf_token']);
 
-        // Récupération et validation des données utilisateur
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirm_password'];
@@ -52,6 +47,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
-

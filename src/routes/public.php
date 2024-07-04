@@ -6,7 +6,7 @@ $router->addMatchTypes(['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*']);
 
 // Accueil 
 
-$router->map('GET', $public . '/accueil', 'accueil/public_accueil', 'accueil');
+$router->map('GET', $public . '/', 'accueil/public_accueil', 'accueil');
 
 $router->map('GET', $public . '/grain', 'accueil/public_grain', 'grain');
 
@@ -51,3 +51,7 @@ $router->map('POST', $public . '/supprimer-compte', 'users/profile', 'delete_acc
 
 $router->map('GET', $public . '/modifier-profil', 'users/updateProfile', 'edit_profile');
 $router->map('POST', $public . '/modifier-profil', 'users/updateProfile', 'update_profile');
+
+// Erreur 404
+$router->map('GET', $public . '/erreur-404', 'error/page_error', 'error');
+

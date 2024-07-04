@@ -1,6 +1,5 @@
 <?php
 
-checkUserAccess($router);
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: ' . $router->generate('login'));
@@ -31,5 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+checkUserAccess($router);
 
 ?>

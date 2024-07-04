@@ -50,7 +50,6 @@
                             displayErrorMessages($errors);
                             ?>
                             <?php
-                            // Afficher le message d'inscription réussie s'il existe
                             displayRegistrationSuccessMessage();
                             ?>
                         </div>

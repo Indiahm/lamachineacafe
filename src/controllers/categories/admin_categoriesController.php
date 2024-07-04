@@ -1,6 +1,5 @@
 <?php
  
-// Vérification si des données de recherche ont été soumises
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
     $categories = searchItems('categories', 'nom', $searchTerm);
@@ -8,17 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
     $categories = getCategories();
 }
 
-$categoriesPerPage = 5; // Nombre d'éléments par page
+$categoriesPerPage = 5; 
 
-$currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1; // Page actuelle, par défaut 1
+$currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1; 
 
-$offset = ($currentPage - 1) * $categoriesPerPage; // Calcul de l'offset
+$offset = ($currentPage - 1) * $categoriesPerPage; 
 
-$categories = getCategoryWithPagination($offset, $categoriesPerPage); // Récupération des catégories pour la page actuelle
+$categories = getCategoryWithPagination($offset, $categoriesPerPage); 
 
-$totalCategories = getTotalCategoriesCount(); // Nombre total de catégories
+$totalCategories = getTotalCategoriesCount(); 
 
-$totalPages = ceil($totalCategories / $categoriesPerPage); // Calcul du nombre total de pages
+$totalPages = ceil($totalCategories / $categoriesPerPage);
 
 
 checkAdminAccess($router);

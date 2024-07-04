@@ -132,6 +132,8 @@ function getTotalPagesCount($limit)
     $totalBrands = getTotalBrandsCount();
     return ceil($totalBrands / $limit);
 }
+
+
 function checkSessionTimeout()
 {
     $inactiveTimeout = 600;
@@ -143,18 +145,17 @@ function checkSessionTimeout()
             if ($inactiveTime > $inactiveTimeout) {
                 $_SESSION['logout_message'] = "Vous avez été déconnecté en raison d'une inactivité.";
 
-                session_unset();    // Unset all session values
-                session_destroy();  // Destroy the session
+                session_unset();    
+                session_destroy();  
                 exit();
             }
         }
 
-        // Met à jour le temps de dernière activité
         $_SESSION['last_activity'] = time();
     }
 }
 
-// Récupérer les catégories depuis la base de données
+
 function getCategories()
 {
     global $db;
@@ -206,10 +207,10 @@ function checkAlreadyExistEmail(): mixed
 {
     global $db;
 
-    if (!empty($_GET['uuid'])) { // Utilisez 'uuid' à la place de 'id'
+    if (!empty($_GET['uuid'])) {
         $userData = getUser();
         if ($userData && $userData['email'] === $_POST['email']) {
-            return false; // L'email existe déjà pour cet utilisateur
+            return false; 
         }
     }
 

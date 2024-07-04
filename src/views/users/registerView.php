@@ -70,7 +70,7 @@
                             <div class="row mt-4">
                             <div class="consent-container">
                             <input type="checkbox" id="consent" name="consent" required>
-                            <label class="message" for="consent">J'accepte la <a href="<?= $router->generate('rgpd') ?>">Politique de Confidentialité</a></label>
+                            <label class="message" for="consent">J'accepte que mes données personnelles soient traitées conformément à votre  <a href="<?= $router->generate('rgpd') ?>">Politique de Confidentialité</a></label>
                             </div>
                             </div>
                             <div class="row justify-content-start mt-4 center-button">

@@ -1,13 +1,10 @@
 <?php
-
-generateCsrfToken();
-
 function handlePasswordResetRequest()
 {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!verifyCsrfToken($_POST['csrf_token'])) {
-            setAndRedirectWithMessage('error', 'Erreur CSRF : Le jeton CSRF est invalide.');
+            setAndRedirectWithMessage('error', 'Erreur détectée. Veuillez réessayer à nouveau.');
             return;
         }
 

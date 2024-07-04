@@ -1,9 +1,7 @@
 <?php
-generateCsrfToken();
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
-        $errorMessage = "Jeton CSRF invalide.";
+        $errorMessage = "Erreur détectée. Veuillez réessayer à nouveau.";
         addMessage('error', $errorMessage);
     } else {
         $email = $_POST['email'];

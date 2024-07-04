@@ -1,23 +1,22 @@
 <?php
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: ' . $router->generate('login'));
     exit();
 }
 
-generateCsrfToken();
-
 $userId = $_SESSION['user_id'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
-        $errorMessage = "Jeton CSRF invalide.";
+        $errorMessage = "Erreur détectée. Veuillez réessayer à nouveau.";
         addMessage('error', $errorMessage);
     } else {
-        $firstName = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
-        $lastName = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
+        $firstName = filter_var($_POST['first_name']);
+        $lastName = filter_var($_POST['last_name']);
         $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-        $shippingAddress = filter_var($_POST['shipping_address'], FILTER_SANITIZE_STRING);
-        $phoneNumber = filter_var($_POST['phone_number'], FILTER_SANITIZE_STRING);
+        $shippingAddress = filter_var($_POST['shipping_address']);
+        $phoneNumber = filter_var($_POST['phone_number']);
         $password = $_POST['password']; 
 
 
