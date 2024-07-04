@@ -1,6 +1,5 @@
 <?php
 
-// Ajouter une marque à la base de données
 function addMarque(): bool
 {
     global $db;
@@ -15,7 +14,6 @@ function addMarque(): bool
     return true;
 }
 
-// Modifier les données d'une marque dans la base de données
 function updateMarque() 
 {
     global $db;
@@ -31,7 +29,6 @@ function updateMarque()
     return true;
 }
 
-// Obtenir les informations d'une marque
 function getMarque()
 {
     global $db;

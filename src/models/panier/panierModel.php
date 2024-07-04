@@ -12,7 +12,7 @@ function getPanier($db, $userId) {
     }
 }
 
-function ajouterProduitAuPanier($db, $userId, $produit_id, $quantite) {
+function addProductToCart($db, $userId, $produit_id, $quantite) {
     if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0) {
         header('Location: /connexion');
         exit();
@@ -46,7 +46,7 @@ function ajouterProduitAuPanier($db, $userId, $produit_id, $quantite) {
     }
 }
 
-function supprimerProduitDuPanier($db, $userId, $produitId) {
+function removeProductCart($db, $userId, $produitId) {
     try {
         $query = $db->prepare("DELETE FROM panier WHERE user_id = ? AND produit_id = ?");
         $query->execute([$userId, $produitId]);
@@ -57,7 +57,7 @@ function supprimerProduitDuPanier($db, $userId, $produitId) {
     }
 }
 
-function mettreAJourQuantiteProduit($db, $userId, $produitId, $quantite) {
+function updateProductQuantity($db, $userId, $produitId, $quantite) {
     try {
         $query = $db->prepare("UPDATE panier SET quantite = ? WHERE user_id = ? AND produit_id = ?");
         $query->execute([$quantite, $userId, $produitId]);

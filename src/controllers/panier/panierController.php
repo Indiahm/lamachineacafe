@@ -24,13 +24,13 @@ if (isset($_GET['action'])) {
                 $quantity = intval($_POST['quantity']);
                 
                 if ($productId > 0 && $quantity > 0) {
-                    $_SESSION['success_message'] = "Le produit a été ajouté au panier avec succès.";
-                    $message = ajouterProduitAuPanier($db, $userId, $productId, $quantity);
+                    $_SESSION['success_message'] = "Produit ajouté au panier";
+                    $message = addProductToCart($db, $userId, $productId, $quantity);
                     if ($message !== true) {
                         $_SESSION['error_message'] = $message;
                     }
                 } else {
-                    $_SESSION['error_message'] = "Données de produit invalides.";
+                    $_SESSION['error_message'] = "Erreur, veuillez réessayer";
                 }
             }
             break;
@@ -41,13 +41,13 @@ if (isset($_GET['action'])) {
                 $quantity = intval($_POST['quantity']);
 
                 if ($productId > 0 && $quantity > 0) {
-                    $_SESSION['success_message'] = "Le panier a été modifié avec succès.";
-                    $message = mettreAJourQuantiteProduit($db, $userId, $productId, $quantity);
+                    $_SESSION['success_message'] = "Panier modifié.";
+                    $message = updateProductQuantity($db, $userId, $productId, $quantity);
                     if ($message !== true) {
                         $_SESSION['error_message'] = $message;
                     }
                 } else {
-                    $_SESSION['error_message'] = "Données de produit invalides.";
+                    $_SESSION['error_message'] = "Erreur, veuillez réessayer";
                 }
             }
             break;
@@ -57,13 +57,13 @@ if (isset($_GET['action'])) {
                 $productId = intval($_POST['product_id']);
 
                 if ($productId > 0) {
-                    $_SESSION['success_message'] = "Le produit a été supprimé du panier avec succès.";
-                    $message = supprimerProduitDuPanier($db, $userId, $productId);
+                    $_SESSION['success_message'] = "Produit supprimé";
+                    $message = removeProductCart($db, $userId, $productId);
                     if ($message !== true) {
                         $_SESSION['error_message'] = $message;
                     }
                 } else {
-                    $_SESSION['error_message'] = "Données de produit invalides.";
+                    $_SESSION['error_message'] = "Erreur, veuillez réessayer";
                 }
             }
             break;

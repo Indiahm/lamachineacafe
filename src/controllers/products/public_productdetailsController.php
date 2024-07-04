@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
-        die('Erreur CSRF : Le jeton CSRF est invalide.');
+        die('Erreur détectée. Veuillez réessayer à nouveau.');
     } else {
         $product_id = $_POST['product_id'];
         $price = $_POST['price'];

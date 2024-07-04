@@ -1,6 +1,6 @@
 <?php
 
-function updateMdp()
+function updatePassword()
 {
     global $db;
 

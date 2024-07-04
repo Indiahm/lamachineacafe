@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $user = checkUserCredentials($email, $password);
+        $user = userVerification($email, $password);
 
         if ($user) {
             saveLastLogin($user['uuid']);
@@ -23,10 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($role === 'admin') {
                 $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté en admin.";
+                addMessage('successlogin', $welcomeMessage);
                 header('Location: ' . $router->generate('products'));
                 exit();
             } else {
-                $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Vous êtes connecté.";
+                $welcomeMessage = "Bienvenue {$user['first_name']} {$user['last_name']}. Connexion réussie, ";
                 addMessage('successlogin', $welcomeMessage);
                 header('Location: ' . $router->generate('accueil'));
                 exit();

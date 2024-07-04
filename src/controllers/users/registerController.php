@@ -15,26 +15,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $consent = isset($_POST['consent']) ? true : false;
 
         if (!$email) {
-            $error_message = "Email invalide.";
+            $error_message = "L\'email invalide.";
         } elseif ($password !== $confirmPassword) {
             $error_message = "Les mots de passe ne correspondent pas.";
         } elseif (!isValidPassword($password)) {
             $error_message = "Le mot de passe doit contenir au moins 8 caractères, avec au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
         } elseif (!$consent) {
-            $error_message = "Vous devez accepter notre politique de confidentialité.";
+            $error_message = "Merci d'accepter nos politiques de confidientalité avant de continuer.";
         } elseif (checkExistingPhoneNumber($phone_number)) {
-            $error_message = "Le numéro de téléphone existe déjà.";
+            $error_message = "Numéro de téléphone  déjà utilisé";
         } elseif (checkAlreadyExistEmail($email)) {
-            $error_message = "L'email existe déjà.";
+            $error_message = "Email  déjà utilisé";
         } elseif (!isValidName($first_name)) {
             $error_message = "Le prénom ne doit contenir que des lettres.";
         } elseif (!isValidName($last_name)) {
             $error_message = "Le nom ne doit contenir que des lettres";
 
         } else {
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            $registrationSuccess = registerUser($email, $hashed_password, $shipping_address, $phone_number, $first_name, $last_name);
+            $registrationSuccess = registerUser($email, $password, $shipping_address, $phone_number, $first_name, $last_name);
             
             if ($registrationSuccess) {
                 $_SESSION['registration_success'] = true;

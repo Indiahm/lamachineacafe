@@ -4,18 +4,18 @@ function handlePasswordResetRequest()
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!verifyCsrfToken($_POST['csrf_token'])) {
-            setAndRedirectWithMessage('error', 'Erreur détectée. Veuillez réessayer à nouveau.');
+            setMessage('error', 'Erreur détectée. Veuillez réessayer à nouveau.');
             return;
         }
 
         $email = $_POST['email'] ?? '';
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            setAndRedirectWithMessage('error', 'Adresse email invalide.');
+            setMessage('error', 'L\'adresse email ne respecte pas le bon format.');
             return;
         }
 
-        $user = getUserByEmail($email);
+        $user = getUserEmail($email);
 
         if ($user) {
             $newPassword = generateRandomPassword();
@@ -27,12 +27,12 @@ function handlePasswordResetRequest()
                     "X-Mailer: PHP/" . phpversion();
 
                 mail($email, $subject, $message, $headers);
-                setAndRedirectWithMessage('success', 'Un email avec votre nouveau mot de passe a été envoyé.');
+                setMessage('success', 'Un email avec votre nouveau mot de passe a été envoyé.');
             } else {
-                setAndRedirectWithMessage('error', 'Erreur lors de la réinitialisation du mot de passe.');
+                setMessage('error', 'Erreur lors de la réinitialisation du mot de passe.');
             }
         } else {
-            setAndRedirectWithMessage('error', 'Aucun utilisateur trouvé avec cette adresse email.');
+            setMessage('error', 'Aucun utilisateur ne correspond à l\'email indiqué');
         }
     }
 }

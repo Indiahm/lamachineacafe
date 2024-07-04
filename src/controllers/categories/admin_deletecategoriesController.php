@@ -4,7 +4,7 @@ if (!empty($_GET['id']) && !empty(getAlreadyIddd ()->id)) {
 deleteCategories();
 
  }  else {
-    alert ('Impossible de supprimer cette catégorie.', 'danger');
+    alert ('Erreur lors de la suppresion de la catégorie', 'danger');
 }
 
 header('Location:' . $router->generate('categories'));

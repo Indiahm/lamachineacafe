@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
         // Le jeton CSRF est invalide, gérer l'erreur
-        die("Erreur CSRF : Le jeton CSRF est invalide.");
+        die("Erreur détectée. Veuillez réessayer à nouveau.");
     }
 }
 

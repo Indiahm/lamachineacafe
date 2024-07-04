@@ -1,6 +1,6 @@
 <?php
 
-function getUserByEmail($email)
+function getUserEmail($email)
 {
     global $db;
     $sql = 'SELECT * FROM users WHERE email = :email';
@@ -23,7 +23,7 @@ function generateRandomPassword($length = 10)
     return substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, $length);
 }
 
-function setAndRedirectWithMessage($type, $message)
+function setMessage($type, $message)
 {
     $_SESSION['messages'][$type][] = $message;
     header('Location: ' . $_SERVER['HTTP_REFERER']);

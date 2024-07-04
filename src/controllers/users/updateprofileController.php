@@ -20,11 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST['password']; 
 
 
-        if (updateUserProfile($userId, $firstName, $lastName, $email, $shippingAddress, $phoneNumber, $password)) {
-            $successMessage = "Profil mis à jour avec succès.";
+        if (updateProfil($userId, $firstName, $lastName, $email, $shippingAddress, $phoneNumber, $password)) {
+            $successMessage = "Mis à jour avec succès.";
             addMessage('successprofil', $successMessage);
         } else {
-            $errorMessage = "Échec de la mise à jour du profil.";
+            $errorMessage = "Échec de la mise à jour, veuillez réessayer.";
             addMessage('error', $errorMessage); 
         }
     }

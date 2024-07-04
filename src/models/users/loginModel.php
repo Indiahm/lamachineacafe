@@ -19,7 +19,7 @@ function getUserByEmail($email)
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-function checkUserCredentials($email, $password)
+function userVerification($email, $password)
 {
     $user = getUserByEmail($email);
     if ($user && password_verify($password, $user['pwd'])) {

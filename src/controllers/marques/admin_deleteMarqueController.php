@@ -3,7 +3,7 @@
 if (!empty($_GET['id']) && !empty(getAlreadyIddd()->id)) {
     deleteMarques();
 } else {
-    alert('Impossible de supprimer cette marque.', 'danger');
+    alert('La suppression de la marque a échoué', 'danger');
 }
 
 header('Location: ' . $router->generate('marques'));

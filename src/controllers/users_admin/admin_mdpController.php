@@ -23,7 +23,7 @@ if (!empty($_POST)) {
                 if ($password !== $confirm_password) {
                     alert('Les mots de passe ne correspondent pas', 'danger');
                 } else {
-                    updateMdp($_GET['uuid'], $password);
+                    updatePassword($_GET['uuid'], $password);
 
                     alert('Le mot de passe de l\'utilisateur a été mis à jour avec succès', 'success');
                 }

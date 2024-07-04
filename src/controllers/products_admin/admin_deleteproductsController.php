@@ -7,10 +7,10 @@ if (!empty($_GET['id'])) {
     if ($product) {
         deleteProduct();
     } else {
-        alert('Impossible de supprimer ce produit.', 'danger');
+        alert('La suppression du produit a échoué', 'danger');
     }
 } else {
-    alert('ID du produit manquant.', 'danger');
+    alert('Des informations sont manquantes', 'danger');
 }
 
 header('Location: ' . $router->generate('products'));

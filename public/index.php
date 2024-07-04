@@ -1,21 +1,27 @@
 <?php
-
 require '../vendor/autoload.php';
+
 // Ajout des en-têtes de sécurité
 header("Content-Security-Policy: frame-ancestors 'self';");
 header("X-Frame-Options: DENY");
+
 use Dotenv\Dotenv;
 
-// Démarrage de la session
+session_set_cookie_params([
+    'lifetime' => 0, 
+    'path' => '/', 
+    'domain' => 'votre-domaine.com', 
+    'secure' => true, 
+    'httponly' => true, 
+    'samesite' => 'Strict' 
+]);
+
 session_start();
 
 define('SRC', '../src/');
 
-
-
 require SRC . 'includes/functions.php';
 generateCsrfToken();
-
 
 // Initialisation du panier s'il n'existe pas encore
 if (!isset($_SESSION['cart'])) {
@@ -27,7 +33,6 @@ $dotenv = Dotenv::createImmutable(SRC . 'config');
 $dotenv->load();
 require SRC . 'config/database.php';
 require SRC . 'includes/forms.php';
-
 
 // Initialisation du routeur AltoRouter
 $router = new AltoRouter();
@@ -46,7 +51,9 @@ if (!empty($match['target'])) {
     require SRC . 'controllers/' . $match['target'] . 'Controller.php';
     require SRC . 'views/' . $match['target'] . 'View.php';
 } else {
+    // Redirection vers une page d'erreur 404
     http_response_code(404);
     header('Location: ' . $router->generate('error'));
+    exit();
 }
 ?>

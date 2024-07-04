@@ -1,6 +1,5 @@
 <?php
 
-
 $products = getProducts();
 
 $productsPerPage = 2; // Afficher seulement 2 produits par page
@@ -19,5 +18,5 @@ $totalProducts = getTotalProductsCount();
 $totalPages = ceil($totalProducts / $productsPerPage);
 
 
-
+$successes = getAndClearMessages('successlogin');
 checkAdminAccess($router);

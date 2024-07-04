@@ -19,6 +19,11 @@ foreach ($successes as $success) :
 <a href="<?= $router->generate('addProduct'); ?>" class="btn btn-success mb-4">+ Ajouter un nouveau produit</a>
 
 <div class="table-responsive">
+    
+        <?php
+        displaySuccessMessages($successes);
+        ?>
+        
     <table class="table table-striped table-bordered">
         <thead>
             <tr>

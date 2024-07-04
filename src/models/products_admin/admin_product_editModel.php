@@ -53,7 +53,7 @@ function dateValid($date, $format = 'Y-m-d')
     return $dt && $dt->format($format) === $date;
 }
 
-function handleDatabaseError(PDOException $e)
+function databaseError(PDOException $e)
 {
     if ($_ENV['DEBUG'] == 'true') {
         echo "Erreur de base de données : " . $e->getMessage();

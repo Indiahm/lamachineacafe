@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
         // Le jeton CSRF est invalide, gérer l'erreur
-        die("Erreur CSRF : Le jeton CSRF est invalide.");
+        die("Erreur détectée. Veuillez réessayer à nouveau.");
     }
     
 }
@@ -41,10 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty(array_filter($errorMessage))) {
         if (!empty($_GET['id'])) {
             updateProduct();
-            alert('Le produit a été mis à jour avec succès', 'success');
+            alert('Produit modifié', 'success');
         } else {
             addProduct(); 
-            alert('Le produit a été ajouté avec succès', 'success');
+            alert('Produit ajouté', 'success');
         }
     }
 }

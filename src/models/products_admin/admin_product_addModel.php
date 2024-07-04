@@ -1,6 +1,5 @@
 <?php
 
-// Ajouter un produit dans la base de données
 function addProduct()
 {
     global $db;
@@ -9,9 +8,9 @@ function addProduct()
         $db->beginTransaction();
 
         $categoryId = $_POST['categorie_id'];
-        $categoryExists = checkCategoryExists($categoryId);
+        $categoryExists = checkExistingCategory($categoryId);
         $marqueId = $_POST['marque_id'];
-        $marqueExists = checkMarqueExists($marqueId);
+        $marqueExists = checkExistingBrand($marqueId);
 
         if (!$categoryExists || !$marqueExists) {
             $errorMessage = (!$categoryExists) ? "La catégorie sélectionnée n'existe pas." : "La marque sélectionnée n'existe pas.";
@@ -60,7 +59,6 @@ function addProduct()
             'marque_id' => $marqueId,
         ];
 
-        // Requête SQL pour insérer le produit
         $sql = 'INSERT INTO produits (nom, description, prix, modele, stock, code_ean, origine, poids, watts, dimensions, image, categorie_id, marque_id) VALUES (:nom, :description, :prix, :modele, :stock, :code_ean, :origine, :poids, :watts, :dimensions, :image, :categorie_id, :marque_id)'; // Mettre à jour cette ligne
 
         $query = $db->prepare($sql);
@@ -77,8 +75,7 @@ function addProduct()
     }
 }
 
-// Vérifier si une marque existe
-function checkMarqueExists($marqueId): bool
+function checkExistingBrand($marqueId): bool
 {
     global $db;
 
@@ -94,8 +91,7 @@ function checkMarqueExists($marqueId): bool
     }
 }
 
-// Vérifier si une catégorie existe
-function checkCategoryExists($categoryId): bool
+function checkExistingCategory($categoryId): bool
 {
     global $db;
 
@@ -118,8 +114,5 @@ function handleDatabaseError($e) {
 }
 
 
-// Appel à la fonction pour récupérer les catégories
 $categories = getCategories();
-
-// Appel à la fonction pour récupérer les marques
 $marques = getMarques();

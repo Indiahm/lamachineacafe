@@ -7,7 +7,7 @@ $errorMessage = [
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['nom'])) {
-        $errorMessage['nom'] = 'Merci de remplir le nom de la marque';
+        $errorMessage['nom'] = 'Veuillez renseigner le nom de la marque';
     }
 }
 

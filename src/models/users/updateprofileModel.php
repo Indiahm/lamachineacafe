@@ -1,5 +1,5 @@
 <?php 
-function updateUserProfile($userId, $firstName, $lastName, $email, $shippingAddress, $phoneNumber, $password = null)
+function updateProfil($userId, $firstName, $lastName, $email, $shippingAddress, $phoneNumber, $password = null)
 {
     global $db;
 

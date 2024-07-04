@@ -1,6 +1,5 @@
 <?php
 
-/* Obtenir tous les produits avec leurs catégories et marques */
 function getProducts()
 {
     global $db;
@@ -15,7 +14,6 @@ function getProducts()
     return $query->fetchAll(PDO::FETCH_OBJ);
 }
 
-// Fonction pour récupérer les produits avec pagination
 function getProductsWithPagination($offset, $limit) {
     global $db;
 
@@ -29,8 +27,6 @@ function getProductsWithPagination($offset, $limit) {
 }
 
 
-
-// Fonction pour obtenir le nombre total de produits
 function getTotalProductsCount() {
     global $db;
 
