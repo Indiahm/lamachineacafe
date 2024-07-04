@@ -74,6 +74,17 @@ function generateCsrfToken() {
     }
 }
 
+function getCsrfToken() {
+    return $_SESSION['csrf_token'] ?? '';
+}
+
+
+/**
+ * Vérifie si le jeton CSRF soumis correspond à celui enregistré en session.
+ * @param string $csrfToken Le jeton CSRF soumis par le formulaire
+ * @throws Exception Si le jeton CSRF est invalide ou non trouvé
+ * @return bool True si la vérification du jeton CSRF est réussie
+ */
 function verifyCsrfToken($csrfToken) {
     if (!isset($_SESSION['csrf_token'])) {
         throw new Exception('CSRF token not found');

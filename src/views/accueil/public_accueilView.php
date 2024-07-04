@@ -22,7 +22,6 @@
 
         <?php
         displaySuccessMessages($successes);
-        var_dump($successes);
         ?>
         
 

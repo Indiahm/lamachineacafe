@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     
@@ -31,6 +33,7 @@
                 <li><a href="#">Adresse</a></li>
                 <li><a href="#">Téléphone</a></li>
                 <li><a href="#">Email</a></li>
+                <li><a href="<?= $router->generate('rgpd') ?>">Politique de Confidentialité</a></li>
             </ul>
         </div>
     </div>
@@ -39,66 +42,3 @@
     </div>
 </footer>
 
-<style>
-
-footer {
-    background-color: #fff6e0;
-    color: #000000; /* Change text color to black */
-    padding: 20px 0;
-    margin-top: 250px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-section {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.footer-section h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    
-}
-
-.footer-section p,
-.footer-section ul {
-    margin: 0;
-    padding: 0;
-
-}
-
-.footer-section ul li {
-    list-style: none;
-    margin-bottom: 5px;
-    color: #000000; /* Change text color to black */
-
-
-}
-
-.footer-section ul li a {
-    text-decoration: none;
-    color: #000000; /* Change text color to black */
-
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    color: #ffffff; 
-
-}
-
-.footer-bottom p {
-    font-size: 14px;
-    color: #000000; /* Change text color to black */
-
-}
-
-</style>

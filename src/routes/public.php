@@ -20,6 +20,9 @@ $router->map('GET', $public . '/cafe', 'products/public_productcoffee', 'cafe');
 
 $router->map('GET', $public . '/nous-decouvrir', 'accueil/public_info', 'info');
 
+$router->map('GET', $public . '/politique-de-confidentialite', 'rgpd/rgpd', 'rgpd');
+
+
 $router->map( 'GET|POST', $public . '/connexion', 'users/login', 'login');
 
 

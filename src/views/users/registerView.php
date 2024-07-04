@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/register.css">
 </head>
-
 <body>
     <section>
         <div class="container">
@@ -18,8 +16,7 @@
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                     <div class="wrapper">
                         <div class="row">
-
-                            <?php if (isset($error_message) && !empty($error_message)) : ?>
+                            <?php if (!empty($error_message)) : ?>
                                 <div class="alert alert-danger" role="alert">
                                     <?= htmlspecialchars($error_message); ?>
                                 </div>
@@ -30,7 +27,7 @@
                             </div>
                         </div>
                         <form method="post">
-                            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(getCsrfToken()); ?>">
 
                             <div class="row align-items-center">
                                 <div class="col mt-4">
@@ -57,18 +54,24 @@
                             <div class="row align-items-center mt-4">
                                 <div class="col">
                                     <label for="phone_number">Numéro de téléphone :</label>
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number" value="<?= htmlspecialchars($phone_number ?? ''); ?>">
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" required value="<?= htmlspecialchars($phone_number ?? ''); ?>">
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">
                                 <div class="col">
                                     <label for="first_name">Prénom :</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name" value="<?= htmlspecialchars($first_name ?? ''); ?>">
+                                    <input type="text" class="form-control" id="first_name" name="first_name" required value="<?= htmlspecialchars($first_name ?? ''); ?>">
                                 </div>
                                 <div class="col">
                                     <label for="last_name">Nom :</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name" value="<?= htmlspecialchars($last_name ?? ''); ?>">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" required value="<?= htmlspecialchars($last_name ?? ''); ?>">
                                 </div>
+                            </div>
+                            <div class="row mt-4">
+                            <div class="consent-container">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label class="message" for="consent">J'accepte la <a href="<?= $router->generate('rgpd') ?>">Politique de Confidentialité</a></label>
+                            </div>
                             </div>
                             <div class="row justify-content-start mt-4 center-button">
                                 <div class="col">
@@ -82,8 +85,9 @@
         </div>
     </section>
 </body>
-
 </html>
 
-<?php get_footer('public'); ?>
-<?php checkSessionTimeout(); ?>
+<?php
+get_footer('public');
+checkSessionTimeout();
+?>

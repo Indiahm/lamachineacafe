@@ -1,47 +1,57 @@
 <?php
 
-generateCsrfToken(); 
+// Génération du jeton CSRF pour le formulaire
+generateCsrfToken();
 
 $error_message = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!verifyCsrfToken($_POST['csrf_token'])) {
-        $error_message = "Invalid CSRF token.";
-    } else {
-        $email = $_POST['email'];
+    try {
+        verifyCsrfToken($_POST['csrf_token']);
+
+        // Récupération et validation des données utilisateur
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirm_password'];
-        $shippingAddress = $_POST['shipping_address'];
-        $phoneNumber = $_POST['phone_number'];
-        $firstName = $_POST['first_name'];
-        $lastName = $_POST['last_name'];
+        $shipping_address = htmlspecialchars($_POST['shipping_address']);
+        $phone_number = htmlspecialchars($_POST['phone_number']);
+        $first_name = htmlspecialchars($_POST['first_name']);
+        $last_name = htmlspecialchars($_POST['last_name']);
+        $consent = isset($_POST['consent']) ? true : false;
 
-        if ($password !== $confirmPassword) {
+        // Validation des données
+        if (!$email) {
+            $error_message = "Email invalide.";
+        } elseif ($password !== $confirmPassword) {
             $error_message = "Les mots de passe ne correspondent pas.";
+        } elseif (!isValidPassword($password)) {
+            $error_message = "Le mot de passe doit contenir au moins 8 caractères, avec au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
+        } elseif (!$consent) {
+            $error_message = "Vous devez accepter notre politique de confidentialité.";
+        } elseif (checkExistingPhoneNumber($phone_number)) {
+            $error_message = "Le numéro de téléphone existe déjà.";
+        } elseif (checkAlreadyExistEmail($email)) {
+            $error_message = "L'email existe déjà.";
         } else {
-            if (!isValidPassword($password)) {
-                $error_message = "Le mot de passe doit contenir au moins 8 caractères, avec au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
-            } else {
-                if (checkExistingPhoneNumber($phoneNumber)) {
-                    $error_message = "Le numéro de téléphone existe déjà.";
+            // Hachage du mot de passe
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                  } else {
-                        if (checkAlreadyExistEmail()) {
-                            $error_message = "L'email existe déja.";
-                } else {
-                    $registrationSuccess = registerUser($email, $password, $shippingAddress, $phoneNumber, $firstName, $lastName);
-                    
-                    if ($registrationSuccess) {
-                        $_SESSION['registration_success'] = true;
-                        header('Location: ' . $router->generate('login'));
-                        exit();
-                    } else {
-                        $error_message = "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.";
-                    }
-                }
+            // Enregistrement des données (assurez-vous de bien valider et assainir avant l'insertion dans la base de données)
+            $registrationSuccess = registerUser($email, $hashed_password, $shipping_address, $phone_number, $first_name, $last_name);
+            
+            if ($registrationSuccess) {
+                $_SESSION['registration_success'] = true;
+                header('Location: ' . $router->generate('login'));
+                exit();
+            } else {
+                $error_message = "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.";
             }
         }
+    } catch (Exception $e) {
+        $error_message = $e->getMessage();
     }
 }
-}
 ?>
+
+
+
