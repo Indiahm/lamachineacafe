@@ -4,13 +4,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Vérifiez le jeton CSRF lors du traitement du formulaire
+// Check the CSRF token when processing the form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verifyCsrfToken($_POST['csrf_token'])) {
-        // Le jeton CSRF est invalide, gérer l'erreur
+        // CSRF token is invalid, handle error
         die("Erreur détectée. Veuillez réessayer à nouveau.");
     }
-    
 }
 
 $errorMessage = [
@@ -43,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             updateProduct();
             alert('Produit modifié', 'success');
         } else {
-            addProduct(); 
+            addProduct();
             alert('Produit ajouté', 'success');
         }
     }
@@ -60,7 +59,7 @@ if (!empty($_GET['id'])) {
     if ($query->rowCount() > 0) {
         $productData = $query->fetch(PDO::FETCH_ASSOC);
 
-        $_POST['product_id'] = $productId; 
+        $_POST['product_id'] = $productId;
         $_POST['nom'] = $productData['nom'];
         $_POST['description'] = $productData['description'];
         $_POST['prix'] = $productData['prix'];
@@ -72,7 +71,7 @@ if (!empty($_GET['id'])) {
         $_POST['watts'] = $productData['watts'];
         $_POST['dimensions'] = $productData['dimensions'];
         $_POST['categorie_id'] = $productData['categorie_id'];
-        $_POST['marque_id'] = $productData['marque_id']; 
+        $_POST['marque_id'] = $productData['marque_id'];
     }
 }
 

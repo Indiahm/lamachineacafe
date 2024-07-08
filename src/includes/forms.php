@@ -29,13 +29,12 @@ function getValue (string $field): string
 	return '';
 }
 
-// Dans loginModel.php ou un fichier similaire
 
 /**
- * Récupère les informations d'un utilisateur à partir de son UUID.
+ * 
  *
- * @param string $userId L'UUID de l'utilisateur.
- * @return array|false Les informations de l'utilisateur sous forme de tableau associatif ou false si non trouvé.
+ * @param string 
+ * @return array|false 
  */
 function getUserById($userId)
 {

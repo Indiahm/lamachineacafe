@@ -34,14 +34,14 @@ footer {
 .footer-section ul li {
     list-style: none;
     margin-bottom: 5px;
-    color: #000000; /* Change text color to black */
+    color: #000000;
 
 
 }
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #000000; /* Change text color to black */
+    color: #000000; 
 
 }
 
@@ -54,6 +54,6 @@ footer {
 
 .footer-bottom p {
     font-size: 14px;
-    color: #000000; /* Change text color to black */
+    color: #000000; 
 
 }

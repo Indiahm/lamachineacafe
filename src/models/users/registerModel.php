@@ -62,5 +62,4 @@ function isValidName($name) {
 function isValidPassword($password) {
     return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/', $password);
 }
-
 ?>

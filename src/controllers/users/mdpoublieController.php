@@ -15,7 +15,7 @@ function handlePasswordResetRequest()
             return;
         }
 
-        $user = getUserEmail($email);
+        $user = getUserByEmail($email);
 
         if ($user) {
             $newPassword = generateRandomPassword();

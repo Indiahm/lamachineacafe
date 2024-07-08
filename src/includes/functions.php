@@ -10,9 +10,9 @@ function get_header(string $title, string $layout = 'public'): void
 {
     global $router;
 
-    // Vérifier si l'utilisateur est connecté et s'il a un rôle défini
+    // Check if the user is logged in and has a defined role
     if (isset($_SESSION['role'])) {
-        // Si l'utilisateur est connecté, déterminer le layout en fonction de son rôle
+        // If the user is logged in, determine the layout according to their role
         switch ($_SESSION['role']) {
             case 'admin':
                 $layout = 'admin';
@@ -21,11 +21,11 @@ function get_header(string $title, string $layout = 'public'): void
                 $layout = 'login';
                 break;
             default:
-                $layout = 'public'; // Par défaut, utiliser le layout public
+                $layout = 'public'; // By default, use the public layout
+
         }
     }
 
-    // Inclure le bon en-tête en fonction du layout sélectionné
     require_once '../src/views/layouts/' . $layout . '/header.php';
 }
 
@@ -68,24 +68,27 @@ function displayAlert(): void
     }
 }
 
-function generateCsrfToken() {
+function generateCsrfToken()
+{
     if (!isset($_SESSION['csrf_token'])) {
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
 }
 
-function getCsrfToken() {
+function getCsrfToken()
+{
     return $_SESSION['csrf_token'] ?? '';
 }
 
 
 /**
- * Vérifie si le jeton CSRF soumis correspond à celui enregistré en session.
- * @param string $csrfToken Le jeton CSRF soumis par le formulaire
- * @throws Exception Si le jeton CSRF est invalide ou non trouvé
- * @return bool True si la vérification du jeton CSRF est réussie
+ * .
+ * @param string 
+ * @throws 
+ * @return bool 
  */
-function verifyCsrfToken($csrfToken) {
+function verifyCsrfToken($csrfToken)
+{
     if (!isset($_SESSION['csrf_token'])) {
         throw new Exception('CSRF token not found');
     }
@@ -145,8 +148,8 @@ function checkSessionTimeout()
             if ($inactiveTime > $inactiveTimeout) {
                 $_SESSION['logout_message'] = "Vous avez été déconnecté en raison d'une inactivité.";
 
-                session_unset();    
-                session_destroy();  
+                session_unset();
+                session_destroy();
                 exit();
             }
         }
@@ -189,9 +192,9 @@ function getUser()
     global $db;
 
     try {
-        $sql = 'SELECT email, role_id FROM users WHERE uuid = :uuid'; 
+        $sql = 'SELECT email, role_id FROM users WHERE uuid = :uuid';
         $query = $db->prepare($sql);
-        $query->execute(['uuid' => $_GET['uuid']]); 
+        $query->execute(['uuid' => $_GET['uuid']]);
         return $query->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {
@@ -210,7 +213,7 @@ function checkAlreadyExistEmail(): mixed
     if (!empty($_GET['uuid'])) {
         $userData = getUser();
         if ($userData && $userData['email'] === $_POST['email']) {
-            return false; 
+            return false;
         }
     }
 
@@ -220,7 +223,7 @@ function checkAlreadyExistEmail(): mixed
     $query->execute();
     $count = $query->fetchColumn();
 
-    return $count > 0; // Retourne vrai si l'email existe déjà dans la base de données
+    return $count > 0;
 }
 
 
@@ -285,14 +288,15 @@ function displaySuccessMessages($successes)
     }
 }
 
-    function displayErrorMessages($errors) {
-        foreach ($errors as $error) {
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-            echo htmlspecialchars($error);
-            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-            echo '</div>';
-        }
+function displayErrorMessages($errors)
+{
+    foreach ($errors as $error) {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+        echo htmlspecialchars($error);
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+        echo '</div>';
     }
+}
 
 function displayRegistrationSuccessMessage()
 {
@@ -301,7 +305,7 @@ function displayRegistrationSuccessMessage()
         echo 'Inscription réussie ! Connectez-vous avec vos identifiants.';
         echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
         echo '</div>';
-        
+
         unset($_SESSION['registration_success']);
     }
 }

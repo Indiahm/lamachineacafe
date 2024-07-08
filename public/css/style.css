@@ -13,8 +13,24 @@ header {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-
 }
+
+@media (max-width: 768px) {
+
+  .menu ul li {
+      display: block;
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+  .menu ul li a {
+      font-size: 14px;
+  }
+
+  .header .logo-bar img {
+      width: 20px; 
+  }
+}
+
 
 img {
   max-width: 100%;
@@ -334,3 +350,6 @@ body {
   font-size: 1em;
   text-decoration: none;
 }
+
+
+
